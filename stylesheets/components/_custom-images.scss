@@ -1,0 +1,7 @@
+.pointer-image {
+    cursor: pointer;
+    transition: all .3s;
+    &:hover {
+        box-shadow: 0 0 8px 2px #adb5bd;
+    };
+};

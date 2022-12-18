@@ -1,0 +1,22 @@
+
+.cart-icon , .favorite-icon{
+    font-size: 32px;
+    display: block;
+};
+
+
+// // 三角形製作
+.custom-triangle-icon::after {
+    content: '';
+    display: block;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    bottom: -30px;
+    right: 20%;
+    filter: drop-shadow(2px 2px 1px rgba(0,0,0,.0980392));
+    border-top: 30px solid #fff;
+    border-right: 30px solid transparent;
+    border-bottom: 0 solid transparent;
+    border-left: 0 solid transparent;
+};

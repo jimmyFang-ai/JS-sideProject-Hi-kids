@@ -1,0 +1,35 @@
+@mixin custom-banner ($url , $position) {
+    background: url($url) no-repeat ; 
+    background-position: $position;
+};
+
+
+
+// 雙實線
+@mixin custom-double-decoline($color) {
+    display: block;
+    position: relative;
+    letter-spacing: 2px;
+    &::before {
+        position: absolute;
+        content: "";
+        left: 0;
+        bottom: 50%;
+        width: 100px;
+        height: 2px;
+        background: $color;
+    };
+    &::after {
+        position: absolute;
+        content: "";
+        right: 0;
+        bottom: 50%;
+        width: 100px;
+        height: 2px;
+        background: $color;
+        };
+};
+
+
+
+

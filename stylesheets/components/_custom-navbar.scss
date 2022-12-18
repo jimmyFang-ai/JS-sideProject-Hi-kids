@@ -1,0 +1,29 @@
+.custom-nav-link {
+    display: block;
+    color: $dark;
+    &:hover{
+      color: $primary;
+      .material-icons-outlined  {
+        color: $primary;
+      }
+      .material-icons-round  {
+        color: $primary;
+      }
+    };
+
+    &:focus {
+      color: $primary;
+      .material-icons-outlined  {
+        color: $primary;
+      }
+      .material-icons-round  {
+        color: $primary;
+      }
+    };
+
+    &.active {
+      color: $primary;
+  }
+};
+
+

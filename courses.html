@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <!-- icon form www.flaticon.com , author: https://www.freepik.com  -->
+    <!-- <link rel="icon" href="./images/kindergarten.png" sizes="32x32" type="image/png"> -->
+    <title> Hi kids - JS 專題</title>
+
+
+    <!-- google icon Round-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
+    <!--  google icon outline--->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+    <!-- Swiper css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./stylesheets/all.css">
+</head>
+
+<body>
+
+
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light  bg-white mb-8 mb-md-9">
+        <div class="container">
+
+            <!-- logo -->
+            <a class="navbar-brand p-0 text-primary me-9" href="./index.html"
+                style="font-family: 'Fredoka One', cursive;letter-spacing: 5px;">
+                <h1>Hi kids</h1>
+            </a>
+
+
+            <!-- 漢堡按鈕 -->
+            <button class="navbar-toggler  border-0 text-primary" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <!-- offcanvas  手機 -->
+            <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header justify-content-end py-6">
+                    <button type="button" class="btn-close  text-primary" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body text-center">
+                    <ul>
+                        <li class="mb-5">
+                            <a class="custom-nav-link active d-flex justify-content-center align-items-center"
+                                aria-current="page" href="#">
+                                <span class="material-icons-outlined me-3">
+                                    mode_edit
+                                </span>
+                                最新消息
+                            </a>
+                        </li>
+                        <li class="mb-5">
+                            <a class="custom-nav-link d-flex justify-content-center align-items-center" href="#">
+                                <span class="material-icons-round me-3">
+                                    people
+                                </span>
+                                關於我們</a>
+                        </li>
+                        <li class="mb-5">
+                            <a class="custom-nav-link d-flex justify-content-center align-items-center"
+                                href="./courses.html">
+                                <span class="material-icons-round me-3">
+                                    menu_book
+                                </span>
+                                課程介紹
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li class=" mb-5">
+                            <!-- 手機板 -->
+                            <a class="d-block  btn btn-outline-primary  rounded-1" aria-current="page" href="#">
+                                <span class="material-icons-round cart-icon">
+                                    shopping_cart
+                                </span>
+                            </a>
+                        </li>
+                        <li class="mb-5">
+                            <a href="./signup.html"
+                                class="btn btn-primary  d-flex justify-content-center align-items-center  rounded-1  py-2 ">
+                                <span class="material-icons-round me-3">
+                                    person_outline
+                                </span>
+                                註冊
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./login.html"
+                                class="btn  btn-primary   d-flex justify-content-center align-items-center  rounded-1 py-2 ">
+                                <span class="material-icons-round me-3">
+                                    input
+                                </span>
+                                登入</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- 選單 ( lg 以上)-->
+            <div class="d-none d-lg-flex flex-grow-1 justify-content-between align-items-center">
+                <ul class="d-flex align-items-center">
+                    <li class="me-8">
+                        <a class="custom-nav-link" aria-current="page" href="#">最新消息</a>
+                    </li>
+                    <li class="me-8">
+                        <a class="custom-nav-link" href="#">關於我們</a>
+                    </li>
+                    <li class="me-8">
+                        <a class="custom-nav-link active" href="./courses.html">課程介紹</a>
+                    </li>
+                </ul>
+
+
+                <ul class="d-flex align-items-center" id="user-menu">
+
+                </ul>
+
+
+
+
+                <ul class="d-flex align-items-center" id="guest-menu">
+                    <!-- <li class="me-lg-5">
+                    
+                        <a class="custom-cart-btn  p-0" aria-current="page" href="#">
+                            <span class="material-icons-round cart-icon">
+                                shopping_cart
+                            </span>
+                        </a>
+                    </li> -->
+                    <li class="me-lg-3">
+                        <a class="btn btn-primary  rounded-1  py-2 px-5" href="./signup.html">註冊</a>
+                    </li>
+                    <li>
+                        <a class="btn  btn-primary  rounded-1 py-2  px-5" href="./login.html">登入</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- haeder   ( 要再換 banner )-->
+    <header class="d-flex align-items-center mb-10 mb-lg-9 bg-sz-cover bg-p-center  sub-banner p-5"
+        style="background-image: url('./images/共用banner.jpg');">
+        <div class="container">
+            <h2 class="fw-bold">
+                優質課程、專業師資，<br>
+                等你來體驗
+            </h2>
+        </div>
+    </header>
+
+
+    <!-- 主要區塊 -->
+    <section class="mb-10 mb-lg-9">
+
+        <div class="container">
+            <!-- bread -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-5" id="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="./index.html">首頁</a></li>
+                    <li class="breadcrumb-item"><a href="./courses.html">課程介紹</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">全部課程</li>
+                </ol>
+            </nav>
+
+
+
+            <div class="row mb-9">
+
+                <div class="col-md-3 mb-9 mb-md-0">
+                    <div class="sticky-top" style="top:144px;">
+                        <!-- 列表選單  (手機板以上)  (sticky 滾動到底時會有問題)-->
+                        <div class="list-group d-none d-md-block" id="category-list">
+                            <!-- 動態新增課程類別選單 -->
+                        </div>
+
+
+                        <!-- 下拉選單 (手機) -->
+                        <select class="form-select d-blcok d-md-none" aria-label="Default select example"
+                            id="select-list">
+                            <!-- 動態新增課程類別選單 -->
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- 課程列表 -->
+                <div class="col-md-9">
+                    <ul class="row row-cols-1 row-cols-lg-3 gy-6" id="courseLists">
+                        <!-- 動態新增課程資料 -->
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+            <!-- 分頁  -->
+            <nav aria-label="Page navigation ">
+                <ul class="pagination mb-0 justify-content-center" id="pageId">
+                    <li class="page-item disabled"><span class="page-link">«</span></li>
+                    <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#" aria-label="Next" data-page="2">»</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- footer -->
+    <footer class="footer bg-primary pb-3 pt-6">
+        <div class="container text-white mb-3 border-bottom pb-3">
+            <div class="row row-cols-1 row-cols-md-3">
+
+                <div class="col  mb-9 mb-md-0">
+
+                    <a class="fw-bold fs-1 fs-md-2 text-center text-md-start  text-white d-block mb-4"
+                        href="./index.html" style="font-family: 'Fredoka One', cursive; letter-spacing: 5px;">
+                        Hi kids
+                    </a>
+
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3  d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>優質師資
+                        </li>
+                        <li class="mb-3  d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>口碑保證
+                        </li>
+                        <li class="d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>快樂學習
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col mb-9 mb-md-0">
+                    <h5 class="py-2 mb-4 text-center text-md-start decoline-light">網站資訊</h5>
+
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3">
+                            <a class="text-white d-flex  align-items-center " href="#">
+                                <span class="material-icons-outlined me-2 fs-6">
+                                    mode_edit
+                                </span>
+                                最新消息
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a class="text-white d-flex align-items-center" href="#">
+                                <span class="material-icons-round me-2 fs-6">
+                                    people
+                                </span>
+                                關於我們</a>
+                        </li>
+                        <li>
+                            <a class="text-white d-flex  align-items-center">
+                                <span class="material-icons-round me-2 fs-6">
+                                    menu_book
+                                </span>
+                                課程介紹
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h5 class="py-2 mb-4 text-center text-md-start decoline-light">聯絡我們</h5>
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3">
+                            <a class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    home
+                                </span>
+                                通訊地址｜台北市內湖區大湖山莊
+                            </a>
+                        </li>
+
+                        <li class="mb-3">
+                            <a href="tel:+886-2-2227336" class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    phone
+                                </span>
+                                客服專線｜(02) 1235636
+                            </a>
+                        </li>
+
+                        <li class="mb-3">
+                            <a href="mailto:hiKidsedu@gmail.com" class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    mail
+                                </span>
+                                客服信箱｜hiKidsedu@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center py-3">
+            <p class=" mb-0">Copyright © 2022 Hi kids.All rights reserved. <br>作業練習使用，無商業用途</p>
+        </div>
+    </footer>
+
+
+
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+
+
+    <!-- 使用者登入才會出現 -->
+    <script type="module" src="./javaScript/renderUserTemplate.js"></script>
+    <script type="module">
+
+        // 匯入 共用工具
+        import * as utils from './javaScript/utils.js';
+
+        // 匯入 共用 API
+        import * as api from './javaScript/api.js';
+
+
+
+
+
+        // DOM
+        const breadcrumbLinks = document.querySelectorAll('#breadcrumb-list li');
+        const courseLists = document.querySelector('#courseLists');
+        const categoryList = document.querySelector('#category-list');
+        const selectList = document.querySelector('#select-list');
+
+
+        // 儲存遠端資料
+        let courseProducts = [];
+
+
+
+
+        // 課程資訊 - 取得全部課程
+        function getCourses() {
+            api.apiGetProducts()
+                .then(res => {
+                    courseProducts = res.data;
+                    renderCourseLists(courseProducts);
+
+                    // 渲染列表選單類別選項
+                    renderListGroup();
+                    // 渲染下拉選單類別選項
+                    renderSelectOpiton();
+
+
+                    // 渲染分頁碼
+                    renderPages(courseProducts, 1);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        };
+
+
+        // 課程資訊 - 渲染課程列表
+        function renderCourseLists(data) {
+            courseLists.innerHTML = data.map(course => {
+                return `
+        <li class="col" data-course-id="${course.id}">
+        <div class="card rounded-4 p-3 course-card">
+            <div class="ratio ratio-3x2 mb-6">
+                <img class="img-fluid rounded-4"
+                    src="${course.imageUrl}">
+            </div>
+
+            <div class="card-body px-3 pt-0">
+                <h4 class="card-title fw-bold mb-3">${course.title}</h4>
+                <p class="card-text mb-3">${course.category}</p>
+                <h5 class="mb-3">NT$ <span class="text-primary fw-bold ms-2">${utils.tothousands(course.price)}</span></h5>
+                <a href="./courseInner.html?courseId=${course.id}&courseCategory=${course.category}"
+                    class="btn btn-primary d-flex justify-content-center align-items-center fs-5">
+                    <span class="material-icons-round me-3">
+                        menu_book
+                    </span>
+                    查看課程內容
+                </a>
+            </div>
+        </div>
+    </li>`
+            }).join('');
+        };
+
+
+
+        // 課程資訊 - 列表選單渲染
+        function renderListGroup() {
+            const categoryAry = Array.from(new Set(courseProducts.map(course => course.category)));
+            let categoryStr = `<a href="#" data-category="全部課程" class="list-group-item list-group-item-action active"
+    aria-current="true"> 全部課程</a>`;
+
+            categoryAry.forEach(category => {
+                categoryStr += `<a href="#" data-category="${category}" class="list-group-item list-group-item-action">${category}</a>`;
+            });
+
+            // 顯示列表選單
+            categoryList.innerHTML = categoryStr;
+        };
+
+
+
+        // 課程資訊 - 列表選單監聽
+        categoryList.addEventListener('click', (e) => {
+            e.preventDefault();
+            // 取得 category 的值
+            let categoryVal = e.target.dataset.category;
+
+            // 渲染後才能取到 類別按鈕
+            const categoryLinks = document.querySelectorAll('#category-list a');
+            // 切換 active 樣式
+            categoryLinks.forEach(link => link.classList.remove('active'));
+            e.target.classList.add('active');
+
+            // 篩選課程類別
+            filterCategory(categoryVal);
+
+            // 更新 麵包削狀態
+            breadcrumbLinks[2].textContent = categoryVal;
+        });
+
+
+
+        // 課程資訊 - 下拉選單渲染
+        function renderSelectOpiton() {
+            const categoryAry = Array.from(new Set(courseProducts.map(course => course.category)));
+            let optionStr = `<option value="全部課程" selected>全部課程</option>`;
+
+            categoryAry.forEach(option => {
+                optionStr += `<option value="${option}">${option}</option>`
+            });
+
+            // 顯示下拉選單
+            selectList.innerHTML = optionStr;
+        };
+
+
+
+        // 課程資訊 - 下拉選單監聽
+        selectList.addEventListener('change', (e) => {
+            // 取得 category 的值
+            let categoryVal = e.target.value;
+            // 篩選課程類別
+            filterCategory(categoryVal);
+            // 更新 麵包削狀態
+            breadcrumbLinks[2].textContent = categoryVal;
+        });
+
+
+
+        // 課程資訊 - 篩選類別
+        function filterCategory(categoryVal) {
+            const filterCategoryAry = courseProducts.filter(course => course.category === categoryVal);
+            categoryVal === "全部課程" ? renderCourseLists(courseProducts) : renderCourseLists(filterCategoryAry);
+        };
+
+
+        // 分頁功能 - 整體分頁功能
+        function renderPages(data, nowPage) {
+
+            // 每一頁只顯示五筆資料
+            const dataPerPage = 5;
+
+            // page 按鈕總數量公式: 資料數量總額 / 每一頁要顯示的資料數量
+            // 因為計算過程會有餘數產生，所以要無條件進位，使用 Math.ceil()函式取得一個大於等於指定數字的最小整數。
+            const totalPages = Math.ceil(data.length / dataPerPage);
+
+
+
+            // 頁數
+            // 當前頁數，對應現在當前頁數
+            let currentPage = nowPage;
+            // 當 "當前頁數" 比 "總頁數" 大的時候， "當前頁數" 等於 "總頁數"
+            if (currentPage > totalPages) {
+                currentPage = totalPages;
+            };
+
+
+
+            // 資料筆數
+            const minData = (currentPage * dataPerPage) - dataPerPage + 1; // 最小資料筆數
+            const maxData = (currentPage * dataPerPage);  // 最大資料筆數
+
+            // 取出當前頁數的資料
+            const currentPageData = [];
+
+            // // 取得 productsData 資料的索引位置
+            data.forEach((item, index) => {
+                //取得 data 索引位置，因為索引是從 0 開始，所以要 +1
+                //當 index+1 比 minData 大且又小於 maxData 就push 進去 currentPageData 陣列
+                if (index + 1 >= minData && index + 1 <= maxData) {
+                    currentPageData.push(item);
+                };
+            });
+
+
+            // 物件方式傳遞資料
+            const pageInfo = {
+                totalPages,
+                currentPage,
+                hasPage: currentPage > 1,
+                hasNext: currentPage < totalPages,
+            };
+
+            // 呈現出該頁資料
+            renderCourseLists(currentPageData);
+
+            // 呈現出分頁按鈕
+            renderPageBtn(pageInfo);
+        };
+
+        // 取得分頁 DOM 元素
+        const pageId = document.querySelector("#pageId");
+
+        // 在 pageId 綁定監聽
+        pageId.addEventListener("click", switchPage);
+
+
+        // 分頁功能 - 渲染分頁按鈕
+        function renderPageBtn(pageInfo) {
+            let str = "";
+
+            const totalPages = pageInfo.totalPages;
+
+            // 判斷 總頁數是否大於 1 頁
+            if (totalPages > 1) {
+                //點選上一頁
+                str += (pageInfo.hasPage) ?
+                    `<li class="page-item"><a class="page-link" href="#"  data-page="${Number(pageInfo.currentPage) - 1}">&laquo;</a></li>`
+                    : `<li class="page-item disabled"><span class="page-link">&laquo;</span></li>`;
+
+                // 點選頁數
+                for (let i = 1; i <= totalPages; i++) {
+                    // 一開始預設顯示第一頁，如果是第一頁會加上 .active 樣式
+                    str += (Number(pageInfo.currentPage) === i) ?
+                        `<li class="page-item active"><a class="page-link" href="#"  data-page="${i}">${i}</a></li>`
+                        : `<li class="page-item"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+                };
+
+                // 點選下一頁
+                str += (pageInfo.hasNext) ?
+                    `<li class="page-item"><a class="page-link" href="#" aria-label="Next" data-page="${Number(pageInfo.currentPage) + 1}">&raquo;</a></li>`
+                    : `<li class="page-item disabled"><span class="page-link" >&raquo;</span></li>`;
+
+            } else {
+                //總頁數小於 1 頁，只顯示分頁按鈕
+                for (let i = 1; i <= totalPages; i++) {
+                    // 一開始預設顯示第一頁，如果是第一頁會加上 .active 樣式
+                    str += (Number(pageInfo.currentPage) === i) ?
+                        `<li class="page-item active"><a class="page-link" href="#"  data-page="${i}">${i}</a></li>`
+                        : `<li class="page-item"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+                };
+            };
+
+            pageId.innerHTML = str;
+        };
+
+        //分頁功能 - 點擊按鈕切換頁面功能
+        function switchPage(e) {
+            e.preventDefault();
+            if (e.target.nodeName !== "A") return;
+            const clickPage = e.target.dataset.page;
+            renderPages(courseProducts, clickPage);
+        };
+
+
+        // 初始化
+        function init() {
+            getCourses();
+        };
+
+        init();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <!-- icon form www.flaticon.com , author: https://www.freepik.com  -->
+    <!-- <link rel="icon" href="./images/kindergarten.png" sizes="32x32" type="image/png"> -->
+    <title> Hi kids - JS 專題</title>
+
+
+    <!-- google icon Round-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
+    <!--  google icon outline--->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+    <!-- Swiper css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./stylesheets/all.css">
+</head>
+
+<body>
+
+
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light  bg-white sticky-top ">
+        <div class="container">
+
+            <!-- logo -->
+            <a class="navbar-brand p-0 text-primary me-9" href="./index.html"
+                style="font-family: 'Fredoka One', cursive;letter-spacing: 5px;">
+                <h1>Hi kids</h1>
+            </a>
+
+
+            <!-- 漢堡按鈕 -->
+            <button class="navbar-toggler  border-0 text-primary" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <!-- offcanvas  手機 -->
+            <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header justify-content-end py-6">
+                    <button type="button" class="btn-close  text-primary" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body text-center">
+                    <ul>
+                        <li class="mb-5">
+                            <a class="custom-nav-link  d-flex justify-content-center align-items-center"
+                                aria-current="page" href="#">
+                                <span class="material-icons-outlined me-3">
+                                    mode_edit
+                                </span>
+                                最新消息
+                            </a>
+                        </li>
+                        <li class="mb-5">
+                            <a class="custom-nav-link d-flex justify-content-center align-items-center" href="#">
+                                <span class="material-icons-round me-3">
+                                    people
+                                </span>
+                                關於我們</a>
+                        </li>
+                        <li class="mb-5">
+                            <a class="custom-nav-link d-flex justify-content-center align-items-center active"
+                                href="./courses.html">
+                                <span class="material-icons-round me-3">
+                                    menu_book
+                                </span>
+                                課程介紹
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li class=" mb-5">
+                            <!-- 手機板 -->
+                            <a class="d-block  btn btn-outline-primary  rounded-1" aria-current="page" href="#">
+                                <span class="material-icons-round cart-icon">
+                                    shopping_cart
+                                </span>
+                            </a>
+                        </li>
+                        <li class="mb-5">
+                            <a href="./signup.html"
+                                class="btn btn-primary  d-flex justify-content-center align-items-center  rounded-1  py-2 ">
+                                <span class="material-icons-round me-3">
+                                    person_outline
+                                </span>
+                                註冊
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./login.html"
+                                class="btn  btn-primary   d-flex justify-content-center align-items-center  rounded-1 py-2 ">
+                                <span class="material-icons-round me-3">
+                                    input
+                                </span>
+                                登入</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- 選單 ( lg 以上)-->
+            <div class="d-none d-lg-flex flex-grow-1 justify-content-between align-items-center">
+                <ul class="d-flex align-items-center">
+                    <li class="me-8">
+                        <a class="custom-nav-link" aria-current="page" href="#">最新消息</a>
+                    </li>
+                    <li class="me-8">
+                        <a class="custom-nav-link" href="#">關於我們</a>
+                    </li>
+                    <li class="me-8">
+                        <a class="custom-nav-link active" href="./courses.html">課程介紹</a>
+                    </li>
+                </ul>
+
+                <ul class="d-flex align-items-center" id="user-menu">
+
+                </ul>
+
+
+
+
+                <ul class="d-flex align-items-center" id="guest-menu">
+                    <!-- <li class="me-lg-5">
+                    
+                        <a class="custom-cart-btn  p-0" aria-current="page" href="#">
+                            <span class="material-icons-round cart-icon">
+                                shopping_cart
+                            </span>
+                        </a>
+                    </li> -->
+                    <li class="me-lg-3">
+                        <a class="btn btn-primary  rounded-1  py-2 px-5" href="./signup.html">註冊</a>
+                    </li>
+                    <li>
+                        <a class="btn  btn-primary  rounded-1 py-2  px-5" href="./login.html">登入</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- haeder   ( 要再換 banner )-->
+    <header class="d-flex align-items-center mb-10 mb-lg-9 bg-sz-cover bg-p-center  sub-banner p-5"
+        style="background-image: url('./images/共用banner.jpg');">
+        <div class="container">
+            <h2 class="fw-bold text-center">會員註冊</h2>
+        </div>
+    </header>
+
+
+
+    <!-- 註冊表單 -->
+    <section class="mb-10 mb-lg-9 py-6">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-8 col-lg-6">
+
+                    <form class="px-3 px-md-5 py-6   shadow border-top border-4 border-primary rounded">
+
+                        <h2 class="mb-8 text-center fw-bold">會員基本資料</h2>
+                        <div class="mb-5">
+                            <label for="userName" class="form-label d-flex align-items-cneter mb-2">
+                                <span class="material-icons-round me-2">
+                                    person
+                                </span>姓名
+                            </label>
+                            <input type="text" class="form-control" id="userName" placeholder="請填寫正確姓名" name="姓名">
+                            <!-- 提示驗證錯誤訊息 -->
+                            <p class="validata-msg" data-message="姓名"></p>
+                        </div>
+                        <div class="mb-5">
+                            <label for="userEmail" class="form-label d-flex align-items-cneter mb-2">
+                                <span class="material-icons-round me-2">
+                                    mail
+                                </span>信箱
+                            </label>
+                            <input type="text" class="form-control" id="userEmail" placeholder="請填寫正確 Email 信箱"
+                                name="信箱">
+                            <!-- 提示驗證錯誤訊息 -->
+                            <p class="validata-msg" data-message="信箱"></p>
+                        </div>
+                        <div class="mb-5">
+                            <label for="userPassword" class="form-label d-flex align-items-cneter mb-2">
+                                <span class="material-icons-round me-2">
+                                    lock
+                                </span>密碼
+                            </label>
+                            <input type="password" class="form-control" id="userPassword" placeholder="●●●●●●●●"
+                                name="密碼">
+                            <!-- 提示驗證錯誤訊息 -->
+                            <p class="validata-msg" data-message="密碼"></p>
+                        </div>
+
+                        <div class="mb-5">
+                            <p> 已經有帳號了?
+                                <a class="ps-3" href="./login.html">登入</a>
+
+                            </p>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-lg btn-primary  rounded-1  py-2 px-5" id="signup-btn">
+                                註冊
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- footer -->
+    <footer class="footer bg-primary pb-3 pt-6">
+        <div class="container text-white mb-3 border-bottom pb-3">
+            <div class="row row-cols-1 row-cols-md-3">
+
+                <div class="col  mb-9 mb-md-0">
+
+                    <a class="fw-bold fs-1 fs-md-2 text-center text-md-start  text-white d-block mb-4"
+                        href="./index.html" style="font-family: 'Fredoka One', cursive; letter-spacing: 5px;">
+                        Hi kids
+                    </a>
+
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3  d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>優質師資
+                        </li>
+                        <li class="mb-3  d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>口碑保證
+                        </li>
+                        <li class="d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>快樂學習
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col mb-9 mb-md-0">
+                    <h5 class="py-2 mb-4 text-center text-md-start decoline-light">網站資訊</h5>
+
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3">
+                            <a class="text-white d-flex  align-items-center " href="#">
+                                <span class="material-icons-outlined me-2 fs-6">
+                                    mode_edit
+                                </span>
+                                最新消息
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a class="text-white d-flex align-items-center" href="#">
+                                <span class="material-icons-round me-2 fs-6">
+                                    people
+                                </span>
+                                關於我們</a>
+                        </li>
+                        <li>
+                            <a class="text-white d-flex  align-items-center">
+                                <span class="material-icons-round me-2 fs-6">
+                                    menu_book
+                                </span>
+                                課程介紹
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h5 class="py-2 mb-4 text-center text-md-start decoline-light">聯絡我們</h5>
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3">
+                            <a class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    home
+                                </span>
+                                通訊地址｜台北市內湖區大湖山莊
+                            </a>
+                        </li>
+
+                        <li class="mb-3">
+                            <a href="tel:+886-2-2227336" class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    phone
+                                </span>
+                                客服專線｜(02) 1235636
+                            </a>
+                        </li>
+
+                        <li class="mb-3">
+                            <a href="mailto:hiKidsedu@gmail.com" class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    mail
+                                </span>
+                                客服信箱｜hiKidsedu@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center py-3">
+            <p class=" mb-0">Copyright © 2022 Hi kids.All rights reserved. <br>作業練習使用，無商業用途</p>
+        </div>
+    </footer>
+
+
+
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- sweetalert2.js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./javaScript/custom-swiper.js"></script>
+    <script type="module">
+
+        // 匯入 共用工具
+        import * as utils from './javaScript/utils.js';
+
+        // 匯入 共用 API
+        import * as api from './javaScript/api.js';
+
+
+        // DOM
+
+        const userName = document.querySelector('#userName');
+        const userEmail = document.querySelector('#userEmail');
+        const userPassword = document.querySelector('#userPassword');
+        const signupBtn = document.querySelector('#signup-btn');
+
+
+
+
+
+        // 註冊功能(不能註冊同一個 Email ，會被擋掉)
+        function signup() {
+            console.log("註冊");
+
+            const data = {
+                name: userName.value.trim(),
+                email: userEmail.value.trim(),
+                password: userPassword.value.trim()
+            };
+
+            const hasInput = data.email && data.password;
+
+            if (hasInput) {
+                api.apiSignup(data)
+                    .then((res) => {
+                        console.log(res);
+                        // 狀態碼為 201，成功
+                        if (res.status === 201) {
+                            const { accessToken, user } = res.data;
+                            // saveUserToLocalForSignUp(accessToken, user);
+                            utils.swalMassage(`${user.email} 註冊成功`, 'success', 600);
+
+                            // 導到登入頁
+                            window.location.replace('/login.html');
+                        };
+                    })
+                    .catch((error) => {
+                        const { response } = error;
+                        console.log(response.data);
+                    })
+            }
+        };
+
+
+        // 初始化
+        function init() {
+            signupBtn.addEventListener('click', () => signup());
+        };
+        init();
+
+    </script>
+</body>
+
+</html>

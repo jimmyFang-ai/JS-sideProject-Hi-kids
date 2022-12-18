@@ -1,0 +1,18 @@
+{
+  "name": "hikids-project",
+  "version": "1.0.0",
+  "description": ">  因為目前是全職奶爸，想說以後小孩長大要選才藝班學習， >  希望透過這個線上購課服務，幫助家長為小孩選到理想的課程。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server-json": "json-server --watch db.json --port 10000",
+    "server-auth": "json-server-auth db.json --port 10000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "json-server": "^0.17.1",
+    "json-server-auth": "^2.1.0"
+  }
+}

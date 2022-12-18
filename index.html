@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <!-- icon form www.flaticon.com , author: https://www.freepik.com  -->
+    <!-- <link rel="icon" href="./images/kindergarten.png" sizes="32x32" type="image/png"> -->
+    <title> Hi kids - JS 專題</title>
+
+
+    <!-- google icon Round-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
+    <!--  google icon outline--->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+    <!-- Swiper css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./stylesheets/all.css">
+</head>
+
+<body>
+
+
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light  bg-white mb-8 mb-md-9">
+        <div class="container">
+
+            <!-- logo -->
+            <a class="navbar-brand p-0 text-primary me-9" href="./index.html"
+                style="font-family: 'Fredoka One', cursive;letter-spacing: 5px;">
+                <h1>Hi kids</h1>
+            </a>
+
+
+            <!-- 漢堡按鈕 -->
+            <button class="navbar-toggler  border-0 text-primary" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <!-- offcanvas  手機 -->
+            <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header justify-content-end py-6">
+                    <button type="button" class="btn-close  text-primary" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body text-center">
+                    <ul>
+                        <li class="mb-5">
+                            <a class="custom-nav-link active d-flex justify-content-center align-items-center"
+                                aria-current="page" href="#">
+                                <span class="material-icons-outlined me-3">
+                                    mode_edit
+                                </span>
+                                最新消息
+                            </a>
+                        </li>
+                        <li class="mb-5">
+                            <a class="custom-nav-link d-flex justify-content-center align-items-center" href="#">
+                                <span class="material-icons-round me-3">
+                                    people
+                                </span>
+                                關於我們</a>
+                        </li>
+                        <li class="mb-5">
+                            <a class="custom-nav-link d-flex justify-content-center align-items-center"
+                                href="./courses.html">
+                                <span class="material-icons-round me-3">
+                                    menu_book
+                                </span>
+                                課程介紹
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li class=" mb-5">
+                            <!-- 手機板 -->
+                            <a class="d-block  btn btn-outline-primary  rounded-1" aria-current="page" href="#">
+                                <span class="material-icons-round cart-icon">
+                                    shopping_cart
+                                </span>
+                            </a>
+                        </li>
+                        <li class="mb-5">
+                            <a href="./signup.html"
+                                class="btn btn-primary  d-flex justify-content-center align-items-center  rounded-1  py-2 ">
+                                <span class="material-icons-round me-3">
+                                    person_outline
+                                </span>
+                                註冊
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./login.html"
+                                class="btn  btn-primary   d-flex justify-content-center align-items-center  rounded-1 py-2 ">
+                                <span class="material-icons-round me-3">
+                                    input
+                                </span>
+                                登入</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- 選單 ( lg 以上)-->
+            <div class="d-none d-lg-flex flex-grow-1 justify-content-between align-items-center">
+                <ul class="d-flex align-items-center">
+                    <li class="me-8">
+                        <a class="custom-nav-link" aria-current="page" href="#">最新消息</a>
+                    </li>
+                    <li class="me-8">
+                        <a class="custom-nav-link" href="#">關於我們</a>
+                    </li>
+                    <li class="me-8">
+                        <a class="custom-nav-link active" href="./courses.html">課程介紹</a>
+                    </li>
+                </ul>
+
+
+                <ul class="d-flex align-items-center" id="user-menu">
+
+                </ul>
+
+
+
+
+                <ul class="d-flex align-items-center" id="guest-menu">
+                    <!-- <li class="me-lg-5">
+                    
+                        <a class="custom-cart-btn  p-0" aria-current="page" href="#">
+                            <span class="material-icons-round cart-icon">
+                                shopping_cart
+                            </span>
+                        </a>
+                    </li> -->
+                    <li class="me-lg-3">
+                        <a class="btn btn-primary  rounded-1  py-2 px-5" href="./signup.html">註冊</a>
+                    </li>
+                    <li>
+                        <a class="btn  btn-primary  rounded-1 py-2  px-5" href="./login.html">登入</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- haeder  -->
+    <header class="mb-10 mb-lg-9">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 align-items-center flex-row-reverse gx-md-5">
+
+                <div class="col mb-6 mb-md-0">
+                    <div class="circle-danger">
+                        <img class="img-fluid" src="./images/banner-lg.png" alt="">
+                    </div>
+                </div>
+
+                <div class="col text-center text-lg-start">
+                    <h2 class="mb-6 hero-title">陪伴孩子一同
+                        <img class="d-none d-xl-inline"
+                            src="https://lh3.googleusercontent.com/4DYLK_PtRJ-gJ27cw2rKHPcdr5xYPPIkexXuhDdqRff1DEhkKv0ghS0GEPx5v3WczQltmNtD4jLzRQ99vArAdI-uN6SAisOnHSytfRJAsDdXn9STs8g9778AS5p3Ur7Hxqal9qHkjgZqPm9iIfKfC3yFFrK67LMrvbHGdEpAr1lmiTvQgVr0IR-tC1cknSXCG9HowSZXAofW72gzj9WAMo5oJNo2Am0vhgwZBh-9FdcpcdM4OFCI74ForK3utQF4FxF3gB-hx_0uYNpK_mWufzx1jnuSeFpp-oqfxGIz3AVJ80ya9oK5aUDyQ9Sw3vFyIHMVfTYrDspIpE1Od9QkSnLNiZdpD-TUpm3MDhUK_PPiw8-gcwS2DpMOxWTlgCiMuYnMzlHeFqgrLV85j3n8VSc-9k1WRemgX4_kI20fw16MnLHs7B6NcH6XtV8Y69PDACNwzGXEUdZRauhlln4G10tf1qjrEJ6htcfTj0MJgMGc3CrPoJgB8xINRowzOjEt9zK-9HGwsoLN7SPrySygklxJY--BX51fhtL_fwCs3OMnwvkl5WCvWORUmv9E2_lUuzn9TFxldH1CMpm-Ezv_7cTxqEtlSo9G9fNn7Zi0qlRisoyhA1Drfpsaq9esQSMC-b6GsaSCM55VqI7WFvateLuWGFxe9sInW8Uaf4ISAdtPx6qc21cEAcgiYSo5TDItTFFSBNl4c5EVQBJ05TeoNnnaELj8-hJ0uyv6hz_tIYpfW07GL_U1vJJdmy5Fa1ng3YA865kJrWkOVlVIeEGkNMcpg20CUB5tBnnpKGu21f1YluHchQVM_PONxLXJPa0KlxmSmOYjWXrw-UMkf10CwZvlsyTSdAHgfcLJ240b8nhVAgYghZzkKa7y9mZirwmXCLBs1sqOKe82m8CQwGQdnIS7KM_KVpM88l10ob1-7cXs6Sx50l6KvOZ-ayyIO2O530Zr_nQJekG3bXNkASCQgEWazxUAjcEmpR71I_sCGEJSCBwLloLEtQ=s72-no?authuser=0"
+                            style="width: 60px;height:60px;" alt="book">
+                        <br>成長的最佳選擇
+                    </h2>
+                    <p class="mb-6 mb-md-5 fs-5 fs-lg-3">用最自然的方式，學習藝<br class="d-block d-lg-none">術、語言、運動、舞蹈</p>
+
+                    <div>
+                        <a class="btn  btn-primary fs-lg-5 d-inline-flex align-items-center border-1 py-2 px-3  me-3 me-lg-6"
+                            aria-current="page" href="#">
+                            <span class="material-icons-outlined me-2 ">
+                                mode_edit
+                            </span>
+                            立即選課
+                        </a>
+
+                        <!-- 播放影片按鈕 (modal 未建立) -->
+                        <button type="button"
+                            class="btn btn-outline-primary   fs-lg-5 d-inline-flex align-items-center border-1 py-2 px-3  me-3 me-lg-6"
+                            data-bs-toggle="modal" data-bs-target="#">
+                            <span class="material-icons-round me-2 ">
+                                play_arrow
+                            </span>
+                            觀看影片
+                        </button>
+
+                        <!-- ***** modal (測試中 要無聲) *****-->
+                        <!-- <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModal"
+                            style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <iframe id="player" class="rounded" style="width:100%;max-height:500px;"
+                                        height="500px"
+                                        src="https://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&allowsInlineMediaPlayback=true&playsinline=1&origin"
+                                        title="YouTube video player" allowfullscreen="allowfullscreen">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- sort content -->
+    <section class="sort-section-banner   mb-10 mb-lg-9">
+        <div class="container">
+
+            <div class="row  row-cols-1 row-cols-md-2  gx-md-6 gy-6 gy-md-0 mb-9">
+                <div class="col">
+                    <!-- 圖片重疊 處理 -->
+                    <div class="img-warp circle-pink text-end">
+                        <img class="img-fluid" src="./images/class-img.png" alt="">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="px-6 py-md-6 px-md-0">
+                        <span class="fs-4  mb-5 text-primary decoline-primary">熱門訊息</span>
+                        <h2 class="text-primary sub-title  fw-bold mb-5">最新招生資訊與<br class="d-blcok d-lg-none">優惠活動
+                        </h2>
+                        <span class="mb-3 fw-bold d-block">2022.10.19</span>
+                        <h3 class="mb-3">兒童芭蕾開始招生中</h3>
+                        <p class="mb-6">芭蕾是一種輕盈、舒緩、優雅的舞蹈，它在全球均具影響力，更定義了很多其他舞蹈的基礎技巧。 這次的芭蕾舞啟蒙課程，我們將編製成「小班教學」的形式。
+                        </p>
+                        <button type="button"
+                            class="btn btn-outline-primary d-inline-flex  justify-content-center align-items-center   w-100 w-md-auto px-md-6">
+                            查看更多
+                            <span class="material-icons-outlined ms-3 ms-md-2">
+                                add
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row  row-cols-1 row-cols-md-2   flex-row-reverse  gx-md-6 gy-6 gy-md-0">
+                <div class="col">
+                    <div class="img-warp circle-warning  text-start">
+                        <img class="img-fluid" src="./images/class-img2.png" alt="">
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="px-6 py-md-6 px-md-0">
+                        <span class="fs-4 text-primary mb-5  decoline-primary">了解我們</span>
+                        <h2 class="text-primary sub-title  fw-bold mb-5">我們的用心，<br class="d-blcok d-lg-none">您感受的到
+                        </h2>
+                        <p class="mb-6">
+                            用最自然的方式培養孩子對力與美的感知，以引導式教學啟發孩子與生俱來的天賦，使孩子能在正向積極的環境中、快樂培養專長！
+                        </p>
+                        <button type="button"
+                            class="btn btn-outline-primary d-inline-flex  justify-content-center align-items-center   w-100 w-md-auto px-md-6">
+                            查看更多
+                            <span class="material-icons-outlined ms-3 ms-md-2">
+                                add
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- course content  (差 decoline )-->
+    <!-- 平板以上沒 swiper ， 手機板 有swiper 手滑動 -->
+    <section class="py-8 py-lg-9 mb-10 mb-lg-11 course-section-banner">
+        <div class="container">
+            <span class="text-white text-center  fs-4 mb-3 double-decoline-light">熱門課程</span>
+            <h2 class="fw-bold mb-6 mb-md-8  text-center" style="letter-spacing: 8px;"> 為您的孩子開設的課程 </h2>
+            <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-6 gy-lg-0" id="popular-course">
+                <!-- 動態寫入資料 -->
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- teacher content -->
+    <section class="mb-10 mb-lg-11 teacher-section-banner">
+        <div class="container">
+            <span class="text-primary text-center  fs-4 mb-3 double-decoline-primary">師資介紹</span>
+            <h2 class="fw-bold mb-6  text-center"> 優質師資、口碑認證 </h2>
+
+            <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-5 gy-md-0">
+                <li class="col text-center teacher-card">
+                    <img class="img-fluid mb-3  card-image"
+                        src="https://lh3.googleusercontent.com/Ieh2yLbxYumbt3bnYE_snprjOVUwqSoKL9G3vLlIxuXlIPtGv-UERZlEqNdcgys1FSFjCP-ke9hyrS7A8kiNzQf_36OuWJKqSlmtM85nY4AjKNf-yaaaT5C1PDW61N00PCVm24ImfOQLlQt67U9xU-D8Y4xEpyZfZm_yIIIevSCkucWS3rTbxylmt_0Ycdqsu1p9m09hr2zsD8muIHD30aqB-yUAbAUP10w6NAeFB6g3nX-yWBvVbJFXsRjuj8YhUCI_En6eTk9WfhMhQ9pEPvYEs8PgAb6hzF8z7uz7cp3lBeiqMThbTuqjEF2eUvXV4chk5Zfj4xlZfG2gRwUHXfpIbMWr2YcuHogXqsTLPdlqZeFM9gsOBKWPZhtdBuMSNLuXBfIzvBZQ7cX5-8kHVMGGHTrlxopQI-Vj-rv81YyQ_fguF4U_mW-vDN_XddX4wpOfpIABQhSeb_Mp5-0rOLF_mvtbVCI5sfLeyVfCl9TubhRDRgNQ7hrspp7Dp5O08c7WpsG_14Hdi9WGDw-pfLOgR_p13K3jPA9UnGcZ4bWA7u9y09waTL8VrmSx5XHunWA3FoDZyCRg6ZlgS40Y8SsHnifd_reQm1_lIFGd8_wUr3BUjfINg-CRGeJTd_CSE3UzHa7ebi4XkoC_jsWEkrRzjZOvVddmbvj3NM0N0F9Z6ufRHS_9XH4-YLZA0j4bf2LO0soJgxoeQokkCmUOun_HLL61Ev0IZRp5s1wCLB2lEo68SM0ZfLhvsjaalHwq-2THsblSWuRcbY56V9Wqn5dX9fS1hTT6iwQPop0YpawCWla_rPTyaBRW8MA9hFitZVhYSH_dGWdhfCRpyAze1jCCtQtVru3JatjubDjrmxzEQOlxUar4BOtg0SR6rnkKjdurDYfSv70MCTn-430tZBRNuN1w6nQQMzA2klBJ7775ufUU_9kwpnRFhrkb6dU1l559UwD0SLtUVO30Kzj9rze5Y8I7d6BH1KAwQYfSF2eQJELtxTYQbQ=s160-no?authuser=0"
+                        alt="舞蹈老師">
+                    <h4 class="mb-3 card-title fw-bold">Janny</h4>
+                    <span>舞蹈老師</span>
+                </li>
+
+                <li class="col text-center teacher-card">
+                    <img class="img-fluid mb-3  card-image"
+                        src="https://lh3.googleusercontent.com/O9t7dZL1-cTu1m52_HNv4A0jFJiwMpyNjD3j6CLue3ol2jBUiWcYAD4j8EVk8h4kjdbc5osK4_1uhwrjbtLgFPTVF6FgSby7fvAPqpe1LZckJd9zpGNYOSV4HOAEqVDqVtdjAifg1psbgPPxvMOleV45wGZNUOkcXfpzbW3OvU_7xHaBsBF1DPGh-iJz9y737KUyRTr0kmUJQF_z9qJTJvaGegi4t_XUzdX2SZIJLH2bC69SKSaDUoAlrc0qhhpkdepenD995XlDLs3tKKv16Qdy5TbMQ3q06D-AO3bl-gcM3vyrIQqW2dc2Hm0G2yNoe5cDQ-ZUwhjzORkGkU0lead39vr1aK7fP6ON4-fzzPV9jQ2vTcldKriWjhfVEk2STb98Zku7ANt0qvJOIi3ss9PudsRChKbdgOZKqkrDSLDakJ5DzEDMDqVJfCO7HrE6G3RZ9W4SYdP6m4qAFLTis8OH0A8BylB-ZwASco6kuA1Tg0GgprkpstWbndjAItVB-2So8Kbr-S_v5wm6uM7mBsfg2OjQeZq4GR31qFADk-0_Yl6VNPlcL_riZisge5szca0Ds9wp2crjnczpCva5XOxVPOZhoMSfmyD-PyDGHxu5R3UAAGm_JWyWAJzIxdl3FMhMqjFi3Rp8YnmNdHIfCxmDbBZw0UMfzaNq8ZTUpNX0jMaShkcZ_8pGNStQSh_wBoqcM-ct5HFFffttJXHBYGnX_KrtGkU6cMJv6oKd_mM9mJAAMVCHh5bRqbe3Drd8WXnUW2_9q-aKfHrF6cbZTROm01oIfUonGCxJ7O6-ecXnmMZEHq2_q-AEIhVuD4gMcLWni_DH2xokFQAn3fLFWZ4vDgU9ZQZDYKMEbxhVvQF0nxdNAiKKE4JZRWD6IZneVBF89XJh7UwoK9u8tjQft16JOPMLztdwjeavs5nAMbMvjqIAY-8mi9WvOyQq1obXFmcwNCOGBYUB3qz12pbm2k7E9FMH_8Ru1OTj-vFQMZGMevnoPrr0Zw=s160-no?authuser=0"
+                        alt="語言老師">
+                    <h4 class="mb-3 card-title fw-bold">TOM</h4>
+                    <span>語言老師</span>
+                </li>
+
+                <li class="col text-center teacher-card">
+                    <img class="img-fluid mb-3  card-image"
+                        src="https://lh3.googleusercontent.com/lZxVDwZAmw_3KHxc7IxNlDRX8iCH61MA56jkR3_eJZ61-PekAFLHzALIi7uEf2mzaTvtIGB6rLN9I6W65Tp_ULZvfuNFOKxiVbK7FgHFISJ4BSC8ZcCL4tPf5e0KBC9eDKaC1vSqAJuwy3l4iAo6CBDb3rneQL5jgFMJDnc5Z1sPbAslknpftz1Zw4k8YX5wAcafmE-FpV9HbrmdrwSqJF8ZZddst2lr96_gdbhLoD1-bJqAqrkr3azikOtnC7ug3NDBjCTmbvGAVNKfUOz_XNfl_5kasHKFt8o8sWXFjC4z0Dy7cvQ6I_WPF5c5A4UwPTDXfNUBB-8g9S30jXYgLg_oXN1MrABvV3dlgj_d0J1mIFzY_EAzYMv-iOOcjFEH52Pc32RZpIBoVYQMKJ4__ffJnXlDTzfZIwk9N018ShZm80ZobTIRA2yOu0DAf5Xn2vrmAxm7eaLxKTqiVqhlB-ezFnARxsMQchxm9zNvJwGFIY7REhSuxF1ysLgvA8UpsWBqLOjEfFY3F_qXGRPKhsrh3ynzam8YUwYfduIgV9hpa4LCVsnngXKnxgulpkXPctQGMRGkTmiy8n396nZwGXBt-_k6uVtC6dssRMRtxk6F5aBqu7HXk3QpHOPZGKMUqXhVY79ZJfl9iDBKJ9NXnEK_BqkbZYNPaMt30zewFCjgabx0eyKzqrySvokz0emI9t-sHJ0Jki-Qj0F-RFBBeGBbzkv6m_PoCPHuz8qeys0QEs9SOfYK1D_KlGvI-yiU916R5Yp8X4NjrT22parQ-c1o3P3ax8lbGVyAvzFks_fXA5UVKfQscUFxU3WwAfZTBkBGoYKtKzMVTALDGxnJPr0X6ZeEz2d0ZE0VNxJwHhFc8ru3ZcyBjknIzH7O18tFyPUI06XjKMNWd7GfIO6zPGH5HxZKIPsJN_8ZZEtlY3m8VWeClibJCQsKZaCrKCCkxKNcRBxtUPgSusLBy5mFLbSWDVUryYEhAsZKybR1jLIuMRFNfPqTDw=s160-no?authuser=0"
+                        alt="美術老師">
+                    <h4 class="mb-3 card-title fw-bold">Mary</h4>
+                    <span>美術老師</span>
+                </li>
+
+                <li class="col text-center teacher-card">
+                    <img class="img-fluid mb-3  card-image"
+                        src="https://lh3.googleusercontent.com/a27BlEieDtLoLBVWchuOu1vF1NxVAXSHmdUhm5c3vijj7XWxQoynW8SGqwrSboQsDgft1QQyfGpLB5RYXvZCooZkA7WUfbaBTyjIQvFiLy2KNNQSnBr_NI7aCKJjhyRz_U1-nVJn7znPbulKht24M-KCzbT_mBtwT58s5k5NuLd5obbjjmj5p5XGh1YY6f3bA4fushJbraElXpivDEMiZY_6wWjlmpieEemeEyXh5iqLaN25tI41nYoERV0PDm2iCIdBxEblZvOuq7H-aKGH5QWtj607yUvx3ajkxEynlunr5FVj0V8j8rH2N77cs7MbZTCrxLr08CgFF4PqivuiTMfep5-x4Uz71GTkiHsFOMiZ_xr2F3vjkKzJLu-10S0hakdrIoCFNnXzZk6iz5epDwx0tvrVTVPPiHKM5hrGqoqRpU-35yB54u2DTjIb4DRONubrSMFpUkWGXGGiSiZyWb5xO4Gs3kdOenxaa-r7GfL0RjotG7OQujU8-gtH5gCj9Ai1bY6uDboDzlZqyz_Q7judfXfGBxLPzZa9pPrXazeBLjOIUeTl1sijUdsTJoIXD07Fn-Q0wk9QkfwDuSGmkYQKukU2sAo4OdtgQXec_FSP4WcJKwpGWhLSVlm9XOoJ-AIsVaRHVwaE2sP1Kfw62bxy3gThk8cDSEBk9OJO-ffVUOAf2p2lH5Iygb_EAdWM1DKjSk_yHT1WY9FiWgH0gPt-nsYZKbZzWP3wJ0OdzNZw08JQX7TKIOkohvRIDvRBYIW4ArjJPlB8J4lmSEkR0Qylca9ynNv3D9_OXrxq8mpcBtvF8sVEuhN7tkmd3cVmurIY0Acfz3J8RlvDQHIkpS9GpZ2z9WCfrpFb0KuQg6CoiuT9wUliWa1ZsEr6UJ2__zfMzboT-vg3a6ope38pWbGvr51Z9zseBS92TqudiKh_f9qu5LyTL8qmGIgzCm7otx32L9a3IeRXp9RF_sbaI-2mQyrW_m13ylRhvcqPDwpHoCNPbtrnCw=s160-no?authuser=0"
+                        alt="體育老師">
+                    <h4 class="mb-3 card-title fw-bold">Bob</h4>
+                    <span>體育老師</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+
+    <!-- feedBack content -->
+    <section class="pt-6 pb-9 bg-yellow">
+        <div class="container">
+            <span class="text-primary text-center  fs-4 mb-3 double-decoline-primary">好評不斷</span>
+            <h2 class="fw-bold mb-6   text-center"> 父母怎麼說 </h2>
+
+            <!-- swiper 輪播 -->
+            <div class="swiper swiper-feedback">
+                <ul class="swiper-wrapper mb-6 pb-6 pb-md-6">
+                    <li class="swiper-slide ">
+                        <div class="bg-white rounded-4 p-4 mb-5 shadow-sm position-relative">
+
+                            <!-- 評價星星 -->
+                            <div class="text-warning mb-3">
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_outline
+                                </span>
+                            </div>
+                            <p>Janny 老師，兒童芭蕾教得很棒，小朋友都跳得很好。
+                            </p>
+
+                            <!-- 三角形 iocn -->
+                            <span class="custom-triangle-icon"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid  me-5"
+                                src="https://lh3.googleusercontent.com/mwiO-ed1MKyVI-524wXtl2VBJh35zeeVyJ5SpZFsNtvvmmKmW0r1UPr6eJJrw9ccpPSvd5q3gKoEQStsuOCffvpxTenKJDXFZHY6u-DNwATUwNntTD9KqCmJKBzbnp5YnxHc6G9LZ2CH4WSvbx6BBq_Kqnrk8wfGc-T7_8vb32oenTrtDjOD2UcAdUMaLsGsqnCyMkzZjbIS1pwqKv1uNhJo63kYl9LMmIa4vo59FqNgdvHMTx2kIl1D4xBs17ECn3aNzNhrZmfdnOjwenCSIlec574FeJqPhrKmyeSPOqmHWapjY72Fb1I9dC_Do34rGEeiDyCUTILbdum3DxyS7kYegW9KPJbF8NzkFB92pu-O1DsYwSxL7urLhHK42alJieoWvYRRA_3Ojl33tsRFuIlUDvjgV-Dergi1cP8aGfLuX0RpibYksFruj1f1uPnpSf4NxLYwT3LKz9bUAGvUwhsDPVyvp4Oj_Wc5mBwljeF9E2UpiicvcK5AJNWq5YcNhJWVB6Y13GXAXocQcwM1fkVsf6v2uQ4tpf-rk4qQcsyMRTcZsfb6ZPZxyDgSrkYnbtiuFGuxlI2O8JAXkm_LnIaODlunSSCKI-sa4GAUh-J9W5rTJcleGY0H1qfqTcSg77gH82PnixIYD8AHH281t34D_uummHpHycryOjDiwUTus3UkoJJnEkCM1RMq1VVCZliMj2HhH-E0BupR1d6iRcgSSnr23QlcMqo-zxHoZXDPjY81T07DMIlnlb0w3nKQBal3aJRDM5u1CbTWCOsIf8sGj7V6_sbUS98w9_K2TInFJaalSa3HDj-S-6X3EadnGiGH70YMGGLm7HOSSEv51SPRbX3ycNkWaFsO9msV6iWqjp313KJqvs_nHXl2lzMfLLdPZUxc1LTYiiDZShGmnFKedbTrYiVsd63way-6I6s1JzNvcsREgDKB9JGg1E5ef8zL5U_ftXqXFYjseQIuv_sDwjRyPzPw_HV885Scork0RM4eT-6JTQ=s120-no?authuser=0"
+                                alt="家長評論">
+                            <div>
+                                <h4 class="fw-bold mb-3">Alex</h4>
+                                <span>工程師</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="swiper-slide ">
+                        <div class="bg-white rounded-4 p-4 mb-5 shadow-sm position-relative">
+
+                            <!-- 評價星星 -->
+                            <div class="text-warning mb-3">
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_outline
+                                </span>
+                            </div>
+                            <p>Bob 老師，兒童籃球教得很棒，小朋友都打得不錯！</p>
+
+                            <!-- 三角形 iocn -->
+                            <span class="custom-triangle-icon"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid  me-5"
+                                src="https://lh3.googleusercontent.com/u5PV5-mSexs6PBh-JCBtF2Oyutig3_VxuXkFbtBbhibabnZOYqRtqI0B5WONztP2Wy2roLtRUfkjwSCL0mSjAbeSlAJhU-tmDw9X_GSK3xinH6dNP-f6Iu7DN2AAYJ1ejUx5Z2bnwLVeVbT2JjLyjxiZla3WSIUCHhWi60h5kHuY713z29AmrcARQsY15jVSN8bMMB9ODIX0TIqc6B_R9hjDr6RlmtXGlufz9Ej0Kcgckly8KNrp3BHAOP0M4Ss0Y2uTCKjbJ3fQgk8X-0BxiLSOp7vh2DzThWC2dViH_I9q7-CSdzxu9oxBojgO-yBBH9DHkqoSkVbAJ5HlqEQ1SHkPCwGQfqFOa4ZgW9v13iFDUVA0w48-G7nBhfIBklN3xelOhIB6toQ6R0UoI3dt2yThj2u5I4AYmCut-yUC8wxdGfdUwMzlB9VGiOFv41wdxQpTq__wY_x5AjiOMs60Msmxaz2IsUYBZNqo2IftCOp979IIy9xEZCHj7VxphENJx1TxGxwrOd_fxP_R2KystPvrUQZA-DO75FOo6Ct5KSqSaTmXuG3LDHJfF-SxNI3EUPTzjZyigfS3__MEl7CTQ6B2JMQGZiM8AZAjrxY9FAL1D6ae-bK0tQhEYuRQXjxSF1F4C8_2DZNd2BWwptQwy8osxQAE5J2tFMmqrDOqe25dY1Bzdtb14JcQ9__N_OzN66YOBDkjNgJ7kta0eGWP2_i-Uq_FrIq8peTpEKI3vlea_zk8xCt2Rjmf3W4_J0w1roAUiwX9rZBSskugms-QfEBypuW5xuQfrMCQFb3gzImm8aCHsdAbuq0S9Da67QuJNt9BtguT3k1N7RquEKjIg72Nx-f2QYbcrmKSNUFLhEwR4UY3TYkTHBs6SFGnETd98btUHCMkxTJIFZd3e8wZI1UzE4ftYyNxC_6b-8o7QXaa6F6Ph_nqGDS10Wf0nzvWITCNY9-1fbpEuwy5fvfG89MWcyOoH_1_E_8At6BiIqDunL7EM24ptg=s120-no?authuser=0"
+                                alt="家長評論">
+                            <div>
+                                <h4 class="fw-bold mb-3">Jimmy</h4>
+                                <span>老師</span>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="swiper-slide ">
+                        <div class="bg-white rounded-4 p-4 mb-5 shadow-sm position-relative">
+
+                            <!-- 評價星星 -->
+                            <div class="text-warning mb-3">
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_outline
+                                </span>
+                            </div>
+                            <p>Tom 老師，兒童英文教得很棒，小朋友英文口說能力進步很多～</p>
+
+                            <!-- 三角形 iocn -->
+                            <span class="custom-triangle-icon"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid  me-5"
+                                src="https://lh3.googleusercontent.com/a4h6FtmsoXrta2RnSUz_Q-RKbrOWuWjYINXm_rxc7XXcz5dwfU39hSXiFxU00jjop6nLETGPGtUHMpCnO_0IQe8QG1i4tXxU8C0fJXqGIiOt_tHwcUaXHdx9ZgS5Fp4sFCVHR3MiFUhuhiAayg6xen_OhEPs6U4HHonJfnp0EwzFbBz5brvKLclDcFsFOZdS7JYSjTMV9yHPqUifhSKjcB00uJl8JzcScCPevwHmj4b4f-F0kc-l6PloJYruiEmnZIY7bN2n9oLZUKDsSBdXnDNUmGvvdqBxKsP6KTBE6enUGdSfHtoFMdHBSgmrdz3MEcWxyMU5VycuJmzTxed6lst2xMZXdhYNq35ElxriSBVum0Mv_RFaywyBE5YmnxQ_5kJoW-KTSuKUBT1bDQvj_smmTgbBGC3mxeWK5JNzOArnPtN1ii1Srq4zbCl1wZnNGDBITunVARNfKTI0pyRF-7S3QHsgGzE0U1_3Klxw-12O_zHuyeGg8Av011Gxr5IxmOhECXhfD734ysjUCN6njsAozWbMpMNwuB2LKbZoIOxbTZWGlMmvhQ4q1m2qKcSkJKh4pq2JqOfKy3cWvQSdxMJm0FHriRcbRlp5Jh9ksbcuEeSPE4aLg8T2orw2Kqg4BwCe6UvCe3EDf6AM1s5-4TyZSIbs4AmqDy814AL1rVJVCK8xtLRhf9-YpwhULoi0qrLaJ8gJOwo-DOEtQPy8dkJgbvU73Sz1y7ysFY6NQWEX54fH-oina4apwuXe-F-2LkUMeDBNmOQi1aBCabas9uegbMtS17EdHENfarjSm78JwoNWz2xzKT6IqnGrItXqRmk_-EffCZF3G7b1jqyE5y18YguxKJ2EzNlRcGC-j4lGpgw0QJRCSTqYrp1Jtj4XEP-SJWTU7v0yErGsoLzrpIxSXzpqTjacNTJmgTzrimmchw0IVmjH9OFakqp6o1XPb0zjhHw2_XliSGxgvh8UN6GUXV2IOR-ed5cjQ9UPoLCZ-b4J17Ptzg=s120-no?authuser=0"
+                                alt="家長評論">
+                            <div>
+                                <h4 class="fw-bold mb-3">Ann</h4>
+                                <span>會計師</span>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="swiper-slide ">
+                        <div class="bg-white rounded-4 p-4 mb-5 shadow-sm position-relative">
+
+                            <!-- 評價星星 -->
+                            <div class="text-warning mb-3">
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_rate
+                                </span>
+                                <span class="material-icons-round">
+                                    star_outline
+                                </span>
+                            </div>
+                            <p class="multiline-ellipsis">Lisa老師，引導小朋友的方式清楚和善，讓孩子對課程活潑有熱情，小朋友很喜歡這門課程、推薦給各位家長！</p>
+
+                            <!-- 三角形 iocn -->
+                            <span class="custom-triangle-icon"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <img class="img-fluid  me-5"
+                                src="https://lh3.googleusercontent.com/LN9k_ysVjQLfkXUY7UCDDdBlfKHakiC_lOPUYAaR47KIJe5gacdHzklJNBhpkuL-kWAIwXfCZ-4Zbfj25pWYt5_ofj_oDInDsIDMkDb_0QtkGkiOf0vMIgfRSEMqT9N5fA_H1q-wSr4Ym0Kr24sDS233CxQcOPNORlHVW1luTS6Hc6S_fuJSXrJlNt7n4pIy-r7ZH8WJquVtcvFETAGG5esY-7QHyg5jSas8rWGSFdKRUqOCeCQnFrAYsx4pshv0zUPFs5zLd53EbOxZv2D-3Y0SFyL38Q1UuBacxOpgTPgv--wonJ0rKuBTQdobBicJ7E07Ree2_WQ5FyiJChnlkB37IDHK6UPtEQnon9FM7yhrrdp4V1Jbz3dHPTJ7xjU1XB4_2XYAsEbzTNOoYlgqwQHav9MyUJ0-M_60p4hKKs_kWZaFYHbAJfKcE_5yL6DldtfS0jD3hAJI0bi53pJ43Zl5g3ZPzlk4n4uOKzXRK8sup9bt5R0G-Oe0QqMvZhmdt5dfeNUb9ur2_4dXVPzS0_Eof5c6Z6WizVMVpH_HKyqT0-rlJXad6NSJVtOvVrSZ2ewRFfcpdenkRfsfz-SZ_wm13UgjAoCEQAUj6lIvDe3iPT280wJTcmHwhmpAbaicJkil-SbBOwxL7B4RqnnLqUUkIooBTBlG2tbSWP9QX-3v5y3XxZMRjwDANGWrSgvHqhapoy7rZ-mWD6KhJNwK9zwbvkLVJ0vgFGNSTFlHqegI56Gd_kIEEk0Crn0dqDh008regaKpuaPsRy_XnE1ROf-ZzFV3Q1KETtxX6ySsygouadNdp3nrcBTkg19HcJ1IzGCLXXMR4xCHPs9wvgcwnD-T26ZBZXIramQs3uUK8I__nzXbMjz6wlgdW8dkcowrei8j8WIq-h8J94ApL4G9qqSWLT717V39H3FaTjFSCt-RFSptGTUZAlv7OpkA0bk8GNkUSsZxbfIEv0D526BuqxH2aTNZH1-NOXBWRggKU0kh-s3mY2BT9Q=s120-no?authuser=0"
+                                alt="家長評論">
+                            <div>
+                                <h4 class="fw-bold mb-3">Tommy</h4>
+                                <span>全職主夫</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- navigation buttons -->
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- footer -->
+    <footer class="footer bg-primary pb-3 pt-6">
+        <div class="container text-white mb-3 border-bottom pb-3">
+            <div class="row row-cols-1 row-cols-md-3">
+
+                <div class="col  mb-9 mb-md-0">
+
+                    <a class="fw-bold fs-1 fs-md-2 text-center text-md-start  text-white d-block mb-4"
+                        href="./index.html" style="font-family: 'Fredoka One', cursive; letter-spacing: 5px;">
+                        Hi kids
+                    </a>
+
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3  d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>優質師資
+                        </li>
+                        <li class="mb-3  d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>口碑保證
+                        </li>
+                        <li class="d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>快樂學習
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col mb-9 mb-md-0">
+                    <h5 class="py-2 mb-4 text-center text-md-start decoline-light">網站資訊</h5>
+
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3">
+                            <a class="text-white d-flex  align-items-center " href="#">
+                                <span class="material-icons-outlined me-2 fs-6">
+                                    mode_edit
+                                </span>
+                                最新消息
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a class="text-white d-flex align-items-center" href="#">
+                                <span class="material-icons-round me-2 fs-6">
+                                    people
+                                </span>
+                                關於我們</a>
+                        </li>
+                        <li>
+                            <a class="text-white d-flex  align-items-center">
+                                <span class="material-icons-round me-2 fs-6">
+                                    menu_book
+                                </span>
+                                課程介紹
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h5 class="py-2 mb-4 text-center text-md-start decoline-light">聯絡我們</h5>
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3">
+                            <a class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    home
+                                </span>
+                                通訊地址｜台北市內湖區大湖山莊
+                            </a>
+                        </li>
+
+                        <li class="mb-3">
+                            <a href="tel:+886-2-2227336" class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    phone
+                                </span>
+                                客服專線｜(02) 1235636
+                            </a>
+                        </li>
+
+                        <li class="mb-3">
+                            <a href="mailto:hiKidsedu@gmail.com" class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    mail
+                                </span>
+                                客服信箱｜hiKidsedu@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center py-3">
+            <p class=" mb-0">Copyright © 2022 Hi kids.All rights reserved. <br>作業練習使用，無商業用途</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- youtube api  測試中 要改換 plyr.js-->
+    <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+
+    <script type="module" src="./javaScript/custom-swiper.js"></script>
+
+    <!-- 使用者登入才會出現 -->
+    <script type="module" src="./javaScript/renderUserTemplate.js"></script>
+
+    <script type="module">
+        // 匯入 共用工具
+        import * as utils from './javaScript/utils.js';
+
+        // 匯入 共用 API
+        import * as api from './javaScript/api.js';
+
+        const popularCourse = document.querySelector('#popular-course');
+
+
+        // 課程資訊 - 取得全部課程
+        function getCourses() {
+            api.apiGetProducts()
+                .then(res => {
+                    const { data } = res;
+                    renderPopularCourse(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        };
+
+
+        // 課程資訊 - 渲染熱門課程列表
+        function renderPopularCourse(data) {
+            // 去除重複的類別
+            const set = new Set();
+            const trimCategory = data.filter(item => !set.has(item.category) ? set.add(item.category) : false);
+            popularCourse.innerHTML = trimCategory.map(course => {
+                return `
+                <li class="col">
+                    <div class="card rounded-4 p-3 course-card">
+                        <div class="ratio ratio-3x2 mb-6">
+                            <img class="img-fluid rounded-4"
+                                src="${course.imageUrl}" alt="${course.title}">
+                        </div>
+
+                        <div class="card-body px-3 pt-0">
+                            <h4 class="card-title fw-bold mb-3">${course.title}</h4>
+                            <p class="card-text mb-3">${course.category}</p>
+                            <h5 class="mb-3">NT$ <span class="text-primary fw-bold ms-2">${utils.tothousands(course.price)}</span></h5>
+                            <a href="./courseInner.html?courseId=${course.id}&courseCategory=${course.category}" class="btn btn-primary d-flex justify-content-center align-items-center fs-5">
+                                <span class="material-icons-round me-3">
+                                    menu_book
+                                </span>
+                                查看課程內容
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                   `
+            }).join('');
+        };
+
+
+
+        // 初始化
+        function init() {
+            getCourses();
+        };
+        init();
+
+    </script>
+</body>
+
+</html>

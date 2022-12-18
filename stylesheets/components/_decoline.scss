@@ -1,0 +1,178 @@
+// for sort-section
+.decoline-primary {
+    display: block;
+    position: relative;
+    letter-spacing: 2px;
+    &::before {
+    position: absolute;
+    content: "";
+    bottom: 50%;
+    left: 40%;
+    width: 120px;
+    height: 2px;
+    background: $primary;
+    };
+};
+
+
+@include media-breakpoint-up(lg) {
+    .decoline-primary {
+        &::before {
+        left: 30%;
+        }
+    };
+};
+
+
+@include media-breakpoint-up(xl) {
+    .decoline-primary {
+        &::before {
+        left: 20%;
+        }
+    };
+};
+
+
+
+
+//for footer
+.decoline-light {
+    position: relative;
+    letter-spacing: 3px;
+    &::before {
+    position: absolute;
+    content: "";
+    bottom: -5px;
+    left: 50%;
+    width: 120px;
+    height: 1px;
+    background: $white;
+    transform: translate(-50%, -50%);
+    }
+};
+
+
+@include media-breakpoint-up(md) {
+    .decoline-light {
+        &::before {
+        height: 2px;
+        bottom: 40%;
+        width: 80px;
+        left: 70%;
+        }
+    }
+};
+
+
+@include media-breakpoint-up(lg) {
+    .decoline-light{
+        &::before { 
+        left: 60%;
+        width: 120px;
+        }
+    }
+};
+
+
+@include media-breakpoint-up(xl) {
+    .decoline-light{
+        &::before { 
+        left: 40%;
+        }
+    }
+};
+
+
+
+// 雙實線
+.double-decoline-light {
+    @include custom-double-decoline($white);
+};
+
+
+@include media-breakpoint-up(md) {
+    .double-decoline-light {
+        &::before {
+            left: 25%;
+        };
+    
+        &::after {
+            right:  25%;
+        };
+    };
+};
+
+
+@include media-breakpoint-up(lg) {
+    .double-decoline-light {
+        &::before {
+            left: 60%;
+            width: 120px;
+        };
+    
+        &::after {
+            right:  60%;
+            width: 120px;
+        };
+    };
+};
+
+
+@include media-breakpoint-up(xl) {
+    .double-decoline-light {
+        &::before {
+            left: 56%;
+        };
+    
+        &::after {
+            right:  56%;
+        };
+    };
+};
+
+
+
+.double-decoline-primary {
+    @include custom-double-decoline($primary);
+};
+
+
+@include media-breakpoint-up(md) {
+    .double-decoline-primary {
+        &::before {
+            left: 25%;
+        };
+    
+        &::after {
+            right:  25%;
+        };
+    };
+};
+
+
+@include media-breakpoint-up(lg) {
+    .double-decoline-primary  {
+        &::before {
+            left: 58%;
+            width: 120px;
+        };
+    
+        &::after {
+            right:  58%;
+            width: 120px;
+        };
+    };
+};
+
+
+@include media-breakpoint-up(xl) {
+    .double-decoline-primary  {
+        &::before {
+            left: 56%;
+        };
+    
+        &::after {
+            right:  56%;
+        };
+    };
+};

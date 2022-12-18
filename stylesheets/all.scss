@@ -1,0 +1,85 @@
+
+// google fonts
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans+TC:wght@400;700&display=swap');
+
+
+
+// #1. 必須 import 的檔案
+@import "../node_modules/bootstrap/scss/functions";
+// bootstrap 變數檔案(客製化)
+@import "./helpers/variables-bs5";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// 客製化 通用類別
+@import "./helpers/utilities-bs5";
+
+
+// #2. 必須 import 的檔案
+// 這三支為 BS 的預設值，建議加入必匯入檔案
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+
+
+// #3. 選取需要的檔案匯入
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/tables";
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/dropdown";
+@import "../node_modules/bootstrap/scss/button-group";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/card";
+@import "../node_modules/bootstrap/scss/breadcrumb";
+@import "../node_modules/bootstrap/scss/pagination";
+@import "../node_modules/bootstrap/scss/badge";
+@import "../node_modules/bootstrap/scss/list-group";
+@import "../node_modules/bootstrap/scss/close";
+@import "../node_modules/bootstrap/scss/modal";
+@import "../node_modules/bootstrap/scss/offcanvas";
+
+// Helpers
+@import "../node_modules/bootstrap/scss/helpers";
+
+// #4. 客製utilities需匯入Utilities API
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+
+
+
+
+
+// custom
+
+// base
+@import "./base/reset";
+
+
+// mixins
+@import "./helpers/mixins";
+
+
+// components
+@import "./components/custom-navbar";
+@import "./components/banners";
+@import "./components/custon-icons";
+@import "./components/custom-btns";
+@import "./components/decoline";
+@import "./components/custom-circles";
+@import "./components/custom-text";
+@import "./components/custom-cards";
+@import "./components/custom-images";
+
+
+// vendor
+@import "./vendor/custom-swiper";
+
+
+
+// pages
+

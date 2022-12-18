@@ -1,0 +1,77 @@
+.btn-primary {
+    display: block;
+    color: $white;
+    transition:  none;
+    &:hover ,&:focus ,&:active{
+        color: $dark;
+        background: $secondary;
+        border:  1px solid transparent;
+        .material-icons-round {
+            color: $dark;
+        }
+    };
+
+    &.active{
+        color: $dark;
+        background: $secondary;
+        border:  1px solid transparent;
+        .material-icons-round {
+            color: $dark;
+        }
+    };
+
+    &:first-child:active {
+        color: $dark;
+    };
+};
+
+
+.btn-outline-primary{
+    &:hover {
+    color: $white;
+    .material-icons-round {
+        color: $white;
+    };
+}
+    &:focus {
+        background: $primary;
+        color: $white;
+        .material-icons-round {
+            color: $white;
+    };
+}
+
+    &.active {
+    background: $primary;
+    color: $white;
+    .material-icons-round {
+        color: $white;
+    };
+}
+
+    &:first-child:active {
+    color: $white;
+};
+
+};
+
+
+// 購物車按鈕
+.custom-cart-btn {
+   &:hover .material-icons-round {
+        color: $dark;
+    };
+    
+    &:focus .material-icons-round {
+        color: $dark;
+    };
+
+    &.active .material-icons-round{
+        color: $dark;
+    }
+};
+  
+
+
+
+

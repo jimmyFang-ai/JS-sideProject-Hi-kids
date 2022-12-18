@@ -1,0 +1,46 @@
+// for course-card
+.course-card {
+  transform: translateY(0);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-20px);
+    .card-title {
+        color: $primary;
+    }
+  }
+};
+
+
+// for teacher card
+.teacher-card {
+  cursor: pointer;
+  .card-image {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    padding: 5px;
+    transition: all .5s;
+  };
+
+  &:hover {
+    .card-image {
+      background: $primary;
+   };
+    .card-title {
+      color: $primary;
+    };
+  }
+};
+
+
+
+.recommend-card {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    .card-title {
+        color: $primary;
+    }
+  }
+}

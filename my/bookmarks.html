@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <!-- icon form www.flaticon.com , author: https://www.freepik.com  -->
+    <!-- <link rel="icon" href="./images/kindergarten.png" sizes="32x32" type="image/png"> -->
+    <title> Hi kids - JS 專題</title>
+
+
+    <!-- google icon Round-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
+    <!--  google icon outline--->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+    <!-- Swiper css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../stylesheets/all.css">
+</head>
+
+<body>
+
+
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light  bg-white sticky-top ">
+        <div class="container">
+
+            <!-- logo -->
+            <a class="navbar-brand p-0 text-primary me-9" href="../index.html"
+                style="font-family: 'Fredoka One', cursive;letter-spacing: 5px;">
+                <h1>Hi kids</h1>
+            </a>
+
+
+            <!-- 漢堡按鈕 -->
+            <button class="navbar-toggler  border-0 text-primary" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <!-- offcanvas  手機 -->
+            <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header justify-content-end py-6">
+                    <button type="button" class="btn-close  text-primary" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body text-center">
+                    <ul>
+                        <li class="mb-5">
+                            <a class="custom-nav-link  d-flex justify-content-center align-items-center"
+                                aria-current="page" href="#">
+                                <span class="material-icons-outlined me-3">
+                                    mode_edit
+                                </span>
+                                最新消息
+                            </a>
+                        </li>
+                        <li class="mb-5">
+                            <a class="custom-nav-link d-flex justify-content-center align-items-center" href="#">
+                                <span class="material-icons-round me-3">
+                                    people
+                                </span>
+                                關於我們</a>
+                        </li>
+                        <li class="mb-5">
+                            <a class="custom-nav-link d-flex justify-content-center align-items-center active"
+                                href="../courses.html">
+                                <span class="material-icons-round me-3">
+                                    menu_book
+                                </span>
+                                課程介紹
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li class=" mb-5">
+                            <!-- 手機板 -->
+                            <a class="d-block  btn btn-outline-primary  rounded-1" aria-current="page" href="#">
+                                <span class="material-icons-round cart-icon">
+                                    shopping_cart
+                                </span>
+                            </a>
+                        </li>
+                        <li class="mb-5">
+                            <a href="../signup.html"
+                                class="btn btn-primary  d-flex justify-content-center align-items-center  rounded-1  py-2 ">
+                                <span class="material-icons-round me-3">
+                                    person_outline
+                                </span>
+                                註冊
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../login.html"
+                                class="btn  btn-primary   d-flex justify-content-center align-items-center  rounded-1 py-2 ">
+                                <span class="material-icons-round me-3">
+                                    input
+                                </span>
+                                登入</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- 選單 ( lg 以上)-->
+            <div class="d-none d-lg-flex flex-grow-1 justify-content-between align-items-center">
+                <ul class="d-flex align-items-center">
+                    <li class="me-8">
+                        <a class="custom-nav-link" aria-current="page" href="#">最新消息</a>
+                    </li>
+                    <li class="me-8">
+                        <a class="custom-nav-link" href="#">關於我們</a>
+                    </li>
+                    <li class="me-8">
+                        <a class="custom-nav-link active" href="../courses.html">課程介紹</a>
+                    </li>
+                </ul>
+
+
+                <ul class="d-flex align-items-center" id="user-menu">
+
+                </ul>
+
+
+                <ul class="d-flex align-items-center" id="guest-menu">
+                    <!-- <li class="me-lg-5">
+                    
+                        <a class="custom-cart-btn  p-0" aria-current="page" href="#">
+                            <span class="material-icons-round cart-icon">
+                                shopping_cart
+                            </span>
+                        </a>
+                    </li> -->
+                    <li class="me-lg-3">
+                        <a class="btn btn-primary  rounded-1  py-2 px-5" href="../signup.html">註冊</a>
+                    </li>
+                    <li>
+                        <a class="btn  btn-primary  rounded-1 py-2  px-5" href="../login.html">登入</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- haeder   ( 要再換 banner )-->
+    <header class="d-flex align-items-center mb-10 mb-lg-9 bg-sz-cover bg-p-center  sub-banner p-5"
+        style="background-image: url('../images/共用banner.jpg');">
+        <div class="container">
+            <h2 class="fw-bold text-center">收藏清單</h2>
+        </div>
+    </header>
+
+
+
+    <!-- 收藏清單 -->
+    <section class="mb-10 mb-lg-9 py-6">
+        <div class="container">
+            <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4" id="bookmarks-list">
+                <li class="col">
+                    <div class="card rounded-4 p-3 course-card">
+                        <div class="ratio ratio-3x2 mb-6">
+                            <img class="img-fluid rounded-4"
+                                src="https://lh3.googleusercontent.com/lISldWe4XPygYPlzCi9H6DJ8Ag1Q73qe3ed7WxxZ3rJzb2PXDHsCiK5hMXSKbTWyTdoJnYRrr8r4WwOgBCa_xIHgH7Vb3k0AWf94EfWInMHzxSckBrLKQgKq4HlFsdAAeQs-IMIfByGq8-k4rGgBHH3VVD4hqDFrtvpPQvNi7wxYVEparAgnlpS8rXNhLhSSlh2BI4AGWk9vs3yyaJFAUudQS2AD9h9gQdM_a352xC_2wysHP4E95aGjVXE0ICkCPu55ghoeGYG6ixnhWe6RR9lvSSKkt0APlhrJya5YqZ6cuC4FKmsboXMBJtiXSZud1CD1VCqaAaBT8mC-RhJvE_n_KBWrzUeCJ2zKD8205wg0lZXwtx0itSEHh3tIFvM7TYYJ_c8r5yDNewkyGLblnvdqNqAXRsCNUImpAJoLM54p-KCbhoQQitvzwUCSiAqR6g_FEstwPV1f0j0CLDXD5tqs2NO3sB1foayEsgZnnSIiRzLVQggYtRnTLFd_VoDenv9CG_KXJuR8rA-x771V8Rkakk7mngc_sX7SSKLxMIe4ui5_7R3eUq-6qEfgDhOEkSnnFk8tmv_s6B3uElBRkld5EO2hyuMl1rz_mgAH-95EXQEFQ4yl6m8gkvZMgxvOLuVERVIhkA2Ql-PX_K0JBPi5zAcgj9CwWv2ysy0qerAGjx7sGXomYEUUNWVtgeZ2itUSY2w8oIW36J-KXs7EE6ulLuSyN0nt7Loey_OCXfISzMQvNyMC21s0gD50P1LstFQIdFuidXhhEJAUCpKgkupWz8RfdRnPZ_xyU9i0ScfGkvn6uItSxCOeK3ofI8Bubtkg2uV5PTcGJYlNgcnVBdp-o0oZks8RC2Nj3EOV2VY0O6K9SChKzvJBQjR1vP-usb8fMTOgZ6ATMbJCuB045f8MEBopFPh1npFfiWDGxoEIWc7qSEk6mhnfDcuxXTYvt0iXEjhvezsqMNhuDZWA-dKg48OCHYtCWAooLFps_3Dna6gkDoE9FQ=w451-h299-no?authuser=0"
+                                alt="兒童棒球課">
+                        </div>
+
+                        <div class="card-body px-3 pt-0">
+                            <h4 class="card-title fw-bold mb-3">兒童棒球課</h4>
+                            <p class="card-text mb-3">戶外運動</p>
+                            <h5 class="mb-3">NT$ <span class="text-primary fw-bold ms-2">800</span></h5>
+                            <button
+                                class="btn btn-lg btn-primary d-flex justify-content-center align-items-center active w-100">
+                                <span class="material-icons-round me-3">
+                                    favorite
+                                </span>
+                                已收藏
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- footer -->
+    <footer class="footer bg-primary pb-3 pt-6">
+        <div class="container text-white mb-3 border-bottom pb-3">
+            <div class="row row-cols-1 row-cols-md-3">
+
+                <div class="col  mb-9 mb-md-0">
+
+                    <a class="fw-bold fs-1 fs-md-2 text-center text-md-start  text-white d-block mb-4"
+                        href="./index.html" style="font-family: 'Fredoka One', cursive; letter-spacing: 5px;">
+                        Hi kids
+                    </a>
+
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3  d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>優質師資
+                        </li>
+                        <li class="mb-3  d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>口碑保證
+                        </li>
+                        <li class="d-flex  align-items-center">
+                            <span class="material-icons-round me-2">
+                                star
+                            </span>快樂學習
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col mb-9 mb-md-0">
+                    <h5 class="py-2 mb-4 text-center text-md-start decoline-light">網站資訊</h5>
+
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3">
+                            <a class="text-white d-flex  align-items-center " href="#">
+                                <span class="material-icons-outlined me-2 fs-6">
+                                    mode_edit
+                                </span>
+                                最新消息
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a class="text-white d-flex align-items-center" href="#">
+                                <span class="material-icons-round me-2 fs-6">
+                                    people
+                                </span>
+                                關於我們</a>
+                        </li>
+                        <li>
+                            <a class="text-white d-flex  align-items-center">
+                                <span class="material-icons-round me-2 fs-6">
+                                    menu_book
+                                </span>
+                                課程介紹
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col">
+                    <h5 class="py-2 mb-4 text-center text-md-start decoline-light">聯絡我們</h5>
+                    <ul class="d-flex d-md-block flex-column align-items-center">
+                        <li class="mb-3">
+                            <a class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    home
+                                </span>
+                                通訊地址｜台北市內湖區大湖山莊
+                            </a>
+                        </li>
+
+                        <li class="mb-3">
+                            <a href="tel:+886-2-2227336" class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    phone
+                                </span>
+                                客服專線｜(02) 1235636
+                            </a>
+                        </li>
+
+                        <li class="mb-3">
+                            <a href="mailto:hiKidsedu@gmail.com" class="text-white d-block">
+                                <span class="material-icons-round me-2 align-middle fs-6">
+                                    mail
+                                </span>
+                                客服信箱｜hiKidsedu@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center py-3">
+            <p class=" mb-0">Copyright © 2022 Hi kids.All rights reserved. <br>作業練習使用，無商業用途</p>
+        </div>
+    </footer>
+
+
+
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+
+    <!-- Swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- sweetalert2.js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- 使用者登入才會出現 -->
+    <script type="module" src="../javaScript/renderUserTemplate.js"></script>
+
+    <script type="module">
+
+        // 匯入 共用工具
+        import * as utils from '../javaScript/utils.js';
+
+        // 匯入 共用 API
+        import * as api from '../javaScript/api.js';
+
+        // 取的登入使用者 id
+        import { getLoggedID } from '../javaScript/renderUserTemplate.js';
+
+        // DOM
+        const bookmarksList = document.querySelector('#bookmarks-list');
+
+
+
+        // 收藏資料 - 取得所有收藏清單
+        function getBookmarks() {
+            const userId = getLoggedID();
+            api.apiGetBookmarks(userId)
+                .then(res => {
+                    const { data, status } = res
+                    console.log(data, status);
+
+                    if (status === 200) {
+                        const bookmarksData = data;
+                        // 將收藏資料顯示在畫面上
+                        bookmarksList.innerHTML = renderBookmarksList(bookmarksData);
+
+                        if (data.length === 0) {
+                            bookmarksList.innerHTML = '...還沒有收藏 (◕ᴥ◕Ʋ)';
+                        };
+                    };
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        };
+
+
+
+
+
+        // 收藏資料 - 移除單一產品收藏
+        function removeBookmarks(e) {
+
+            if (e.target.nodeName !== "BUTTON") return;
+
+            let bookmarksId = e.target.dataset.bookmarksId;
+            console.log(bookmarksId);
+
+            api.apiRemoveBookmarks(bookmarksId)
+                .then(res => {
+                   
+                    console.log(res);
+
+                    if (res.status === 200) {
+                        utils.swalMassage('收藏課程已移除','success',600);
+                        getBookmarks();
+                    };
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        };
+
+
+
+
+        //  收藏資料 - 渲染畫面
+        function renderBookmarksList(data) {
+            return data.map(bookmark => {
+                const { course } = bookmark;
+                return `
+                <li class="col">
+                    <div class="card rounded-4 p-3 course-card">
+                        <div class="ratio ratio-3x2 mb-6">
+                            <img class="img-fluid rounded-4"
+                                src="${course.imageUrl}"
+                                alt="兒童棒球課">
+                        </div>
+
+                        <div class="card-body px-3 pt-0">
+                            <h4 class="card-title fw-bold mb-3">${course.title}</h4>
+                            <p class="card-text mb-3">${course.category}</p>
+                            <h5 class="mb-3">NT$ <span class="text-primary fw-bold ms-2">${course.price}</span></h5>
+                            <button  data-bookmarks-id="${bookmark.id}"
+                                class="btn btn-lg btn-primary d-flex justify-content-center align-items-center active w-100">
+                                <span class="material-icons-round me-3" >
+                                    bookmark
+                                </span>
+                                已收藏
+                            </button>
+                        </div>
+                    </div>
+                </li>`
+            }).join('');
+        };
+
+        
+
+
+
+        // 初始化
+        function init() {
+            getBookmarks();
+            bookmarksList.addEventListener('click', (e) => removeBookmarks(e));
+        };
+        init();
+
+    </script>
+</body>
+
+</html>
