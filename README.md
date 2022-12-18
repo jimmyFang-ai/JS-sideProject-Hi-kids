@@ -25,6 +25,9 @@ Demo:
 
 ### [線稿圖](https://whimsical.com/2022-js-hi-kids-VmZJoqQQy517h3SNxoz47r)
 
+### json-server-auth api (部屬到 Render)
+https://demo-test.onrender.com
+
 
 ### **使用技術**
 * 切版: `Bootstrap` 、`SASS`

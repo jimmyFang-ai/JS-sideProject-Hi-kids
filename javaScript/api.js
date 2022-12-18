@@ -5,10 +5,10 @@ import { getLoggedID } from './renderUserTemplate.js';
 
 
 //  本地端
-const BASE_URL = `http://localhost:10000`;
+// const BASE_URL = `http://localhost:10000`;
 
 // Render 測試
-// const DOMAINS = `https://demo-test.onrender.com`;
+const DOMAINS = `https://demo-test.onrender.com`;
 
 // token
 let AUTH = null;
@@ -26,7 +26,7 @@ console.log(AUTH);
 
 // visitor 參訪者(無權限)
 const visitorRequest = axios.create({
-    baseURL: BASE_URL,
+    baseURL: DOMAINS,
     headers: {
         'Content-Type': 'application/json',
     }
@@ -35,7 +35,7 @@ const visitorRequest = axios.create({
 
 // user 使用者(有權限)
 const userRequest = axios.create({
-    baseURL: BASE_URL,
+    baseURL: DOMAINS,
     headers: {
         'Content-Type': 'application/json',
         'Authorization': AUTH
