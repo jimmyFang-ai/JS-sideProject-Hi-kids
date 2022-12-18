@@ -10,14 +10,14 @@ import { getLoggedID } from './renderUserTemplate.js';
 // Render 測試
 const DOMAINS = `https://demo-test.onrender.com`;
 
-// token
-let AUTH = null;
-// 確認有使用者登入後才把 token 取出來，夾帶到 headers 內
-if (getLoggedID) {
-    AUTH = `Bearer ${localStorage.getItem('token')}`;
-    // console.log(AUTH);
+
+
+//  確認有使用者登入後才把 token 取出來，夾帶到 headers 內
+function getToken() {
+  return  getLoggedID() !== 0 ? `Bearer ${localStorage.getItem('token')}`:false;
 };
-console.log(AUTH);
+// console.log(getToken() );
+
 
 
 
@@ -38,19 +38,12 @@ const userRequest = axios.create({
     baseURL: DOMAINS,
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': AUTH
+        'Authorization': getToken()
     }
 });
 
 
-// 我的最愛相關
-// const bookmarksRequest = axios.create({
-//     baseURL: DOMAINS,
-//     headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': AUTH
-//     }
-// });
+
 
 
 
@@ -81,7 +74,7 @@ export const apiAddCart = (id, data) => userRequest.post(`/600/users/${id}/carts
 // 取得所有收藏資料
 export const apiGetBookmarks = (id) => userRequest.get(`/600/users/${id}/bookmarks?_expand=course`);
 // 取得單一收藏資料
-export const apiGetBookmark = (userId,id) => userRequest.get(`/600/users/${userId}/bookmarks?courseId=${id}`);
+export const apiGetBookmark = (userId, id) => userRequest.get(`/600/users/${userId}/bookmarks?courseId=${id}`);
 // 新增收藏資料(需要登入，有權限)
 export const apiAddBookmarks = (id, data) => userRequest.post(`/600/courses/${id}/bookmarks`, data);
 // 移除收藏資料

@@ -236,8 +236,8 @@
 
                             <div class="col">
                                 <button type="button"
-                                    class="btn btn-outline-primary  justify-content-center align-items-center p-2  w-100"
-                                    id="addBookmark">
+                                    class="btn btn-outline-primary    justify-content-center align-items-center p-2  w-100"
+                                    id="addBookmark" style="display: inline-flex;">
                                     <span class="material-icons-round me-2 me-md-3 fs-5 fs-md-4">
                                         bookmark_border
                                     </span>
@@ -247,7 +247,7 @@
 
                                 <button type="button"
                                     class="btn btn-outline-primary  justify-content-center align-items-center p-2  w-100"
-                                    id="removeBookmark">
+                                    id="removeBookmark" style="display: none;">
                                     <span class="material-icons-round me-2 me-md-3 fs-5 fs-md-4">
                                         bookmark
                                     </span>
@@ -624,33 +624,6 @@
         });
 
 
-        // //  功能整合(加入購物車、加入收藏)
-        // btnGroup.addEventListener('click', (e) => {
-
-        //     if (e.target.nodeName !== "BUTTON") return;
-
-        //     if (localJWT) {
-        //         const params = new URLSearchParams(document.location.search);
-        //         const courseId = params.get('courseId');
-
-        //         if (e.target.id === "addCourseBtn") {
-        //             console.log("++");
-        //             //將數量加入購物車(產品id , 數量)
-        //             addCartItem(numSum, courseId);
-        //         };
-
-
-        //         if (e.target.id === "addBookmark") {
-        //             console.log("愛心");
-        //             addBookmark(courseId);
-        //         };
-
-        //     } else {
-        //         window.location.replace('/login.html');
-        //     };
-        // });
-
-
 
         // 購物車 - 加入單一課程(有權限)
         function addCartItem() {
@@ -773,7 +746,6 @@
             getCourse();
 
             const hasUserId = getLoggedID();
-
             if (hasUserId) {
                 getBookmarkStatus();
             };

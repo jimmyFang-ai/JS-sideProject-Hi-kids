@@ -63,12 +63,6 @@ function templateOfUserMenu(user, template = '') {
 // 取得會員資料
 function getUserData() {
     const userId = getLoggedID();
-    // const token = {
-    //     headers: {
-    //         'Authorization': auth
-    //     }
-    // };
-
     api.apiGetUserInfo(userId)
         .then(response => {
             if (response.status === 200) {
