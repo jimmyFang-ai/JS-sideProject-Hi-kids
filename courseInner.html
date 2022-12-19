@@ -447,10 +447,11 @@
         const removeBookmarkBtn = document.querySelector('#removeBookmark');
 
 
-        // 儲存全部課程
-        const localJWT = localStorage.getItem('token');
+        // 全域變數
+
         let courseProducts = [];
         let bookmarkId = 0;
+
 
 
 
@@ -600,13 +601,14 @@
         function addBookmark() {
             const params = new URLSearchParams(document.location.search);
             const courseId = params.get('courseId');
+            const hasToken = localStorage.getItem('token');
 
             const data = {
                 userId: getLoggedID(),
             };
 
 
-            if (localJWT) {
+            if (hasToken) {
                 api.apiAddBookmarks(courseId, data)
                     .then(res => {
                         const { data } = res;
@@ -670,8 +672,6 @@
 
 
 
-
-
         // 購物車
         // 加總數量初始值
         let numSum = 1;
@@ -704,11 +704,7 @@
 
 
         // 購物車 - 加入單一課程(沒有重複課程的話，新增一筆 )
-        function addCartItem(qty) {
-            const params = new URLSearchParams(document.location.search);
-            const courseId = params.get('courseId');
-            const userId = getLoggedID();
-
+        function addCartItem(userId, courseId, qty) {
             const data = {
                 userId,
                 courseId,
@@ -735,7 +731,8 @@
 
             api.apiUpdateCart(cartId, data)
                 .then(res => {
-                    console.log(res);
+                    const { data } = res;
+                    console.log(data);
                 })
                 .catch(err => {
                     console.log(err);
@@ -745,14 +742,15 @@
 
         // 點擊購物車按鈕
         addCourseBtn.addEventListener('click', (e) => {
-
+            const hasToken = localStorage.getItem('token');
             const params = new URLSearchParams(document.location.search);
             const courseId = params.get('courseId');
             const userId = getLoggedID();
 
 
+
             // 取得使用者 id ，判斷是否有登入，就返回登入頁面
-            if (getLoggedID()) {
+            if (hasToken) {
                 api.apiGetCarts(userId)
                     .then(res => {
                         const { data, status } = res;
@@ -780,8 +778,9 @@
                                         utils.swalMassage('修改購物車數量', 'success', 500);
                                     };
                                 });
+
                             } else {
-                                addCartItem(courseNum);
+                                addCartItem(userId, courseId, courseNum);
                                 utils.swalMassage('加入購物車', 'success', 500);
                             };
                         };
@@ -789,12 +788,11 @@
                     .catch(error => {
                         console.log(error);
                     })
+
+
             } else {
                 window.location.replace('./login.html');
             };
-
-
-
         });
 
 

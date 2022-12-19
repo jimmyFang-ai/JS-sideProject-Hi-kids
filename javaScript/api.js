@@ -5,10 +5,10 @@ import { getLoggedID } from './renderUserTemplate.js';
 
 
 //  本地端
-const BASE_URL = `http://localhost:10000`;
+// const BASE_URL = `http://localhost:10000`;
 
 // Render 測試
-// const DOMAINS = `https://demo-test.onrender.com`;
+const DOMAINS = `https://demo-test.onrender.com`;
 
 
 
@@ -30,7 +30,7 @@ const BASE_URL = `http://localhost:10000`;
 
 // user 使用者(有權限)
 const userRequest = axios.create({
-    baseURL: BASE_URL,
+    baseURL: DOMAINS,
     headers: {
         'Content-Type': 'application/json',
     }
