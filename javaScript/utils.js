@@ -35,4 +35,4 @@ function swalMassage(title, icon, time) {
 
 
 
-export { tothousands, getRandom,swalMassage };
+export { tothousands, getRandom, swalMassage, calcTotalPrice };

@@ -202,48 +202,7 @@
                             </thead>
                             <!-- tbody -->
                             <tbody class="text-center text-nowrap" id="cart-list">
-                                <tr>
-                                    <td>
-                                        <div class="row gx-0 align-items-center">
-                                            <div class="col-6 d-none d-md-block">
-                                                <img class="img-fluid" src="https://i.imgur.com/f8bwUJw.jpg"
-                                                    alt="巴西莓果碗">
-                                            </div>
-                                            <div class="col col-md-6">
-                                                <p class="mb-2">巴西莓果碗</p>
-                                                <span>NT$ 360</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex justify-content-center">
-                                            <div class="input-group text-center" style="max-width: 160px;">
-                                                <button type="button"
-                                                    class="btn text-primary fs-4  border-0 px-1 px-md-3"
-                                                    data-cart-btn=""="minusNumBtn">
-                                                    -
-                                                </button>
-                                                <input type="number" class="form-control text-center w-25 px-1 px-md-2 "
-                                                    data-product-num="0" value="1" min="1">
-                                                <button type="button"
-                                                    class="btn text-primary fs-4   border-0  px-1 px-md-3"
-                                                    data-cart-btn=""="plusNumBtn">
-                                                    +
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>NT$ 360</td>
-                                    <td>
-                                        <button type="button" class="btn delCart-btn   border-0"
-                                            data-cart-btn="delCartBtn">
-                                            <span class="material-icons-round">
-                                                clear
-                                            </span>
-                                        </button>
-                                    </td>
-                                </tr>
-
+                                <!-- 動態新增購物車課程 -->
                             </tbody>
                             <!-- tfoot -->
                             <tfoot id="cartAccout" style="border-color: white;">
@@ -252,8 +211,8 @@
                                         <button type="button" class="btn btn-outline-danger delAllCart-Btn"
                                             id="delAllCartBtn">清空購物車</button>
                                     </td>
-                                    <td class="text-end  fw-bold py-4" colspan="3">
-                                        總計: NT$ <span id="cartTotalPrice">640</span>元
+                                    <td class="text-end  fw-bold py-4" colspan="3" id="cartTotalPrice">
+                                        總計: NT$ <span>640</span>元
                                     </td>
                                 </tr>
                             </tfoot>
@@ -426,7 +385,6 @@
 
         // 購物車 - 取得購物車列表
         function getCarts() {
-
             const userId = getLoggedID();
             api.apiGetCarts(userId)
                 .then(res => {
@@ -436,7 +394,6 @@
                     if (status === 200) {
                         renderCartList(data);
                     };
-
                 })
                 .catch(err => {
                     console.log(err);
@@ -447,9 +404,14 @@
 
         //  購物車 - 顯示購物車列表
         function renderCartList(data) {
-            cartList.innerHTML = data.map(cart => {
-                const { imageUrl, title, price } = cart.course;
-                return `
+            const cartAccout = document.querySelector('#cartAccout');
+            const cartTotalPrice = document.querySelector('#cartTotalPrice');
+            const finalTotalAry = data.map(cart => cart.course.price * cart.qty);
+
+            if (data.length > 0) {
+                cartList.innerHTML = data.map(cart => {
+                    const { imageUrl, title, price } = cart.course;
+                    return `
                 <tr data-cart-id="${cart.id}">
                     <td>
                         <div class="row gx-0 align-items-center">
@@ -468,32 +430,158 @@
                                             <div class="input-group text-center" style="max-width: 160px;">
                                                 <button type="button"
                                                     class="btn text-primary fs-4  border-0 px-1 px-md-3"
-                                                    data-cart-btn=""="minusNumBtn">
+                                                     data-cart-btn="minusNum" data-course-title="${title}">
                                                     -
                                                 </button>
                                                 <input type="number" class="form-control text-center w-25 px-1 px-md-2 "
-                                                    data-product-num="${cart.qty}" value="${cart.qty}" min="1">
+                                                data-cart-id="${cart.id}"  data-cart-qty="${cart.qty}" value="${cart.qty}" min="1">
                                                 <button type="button"
                                                     class="btn text-primary fs-4   border-0  px-1 px-md-3"
-                                                    data-cart-btn=""="plusNumBtn">
+                                                    data-cart-btn="plusNum" data-course-title="${title}">
                                                     +
                                                 </button>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>NT$ 360</td>
+                                    <td>NT$ ${utils.tothousands(price * cart.qty)}</td>
                                     <td>
                                         <button type="button" class="btn delCart-btn   border-0"
-                                            data-cart-btn="delCartBtn">
+                                            data-cart-btn="delCartItem" data-course-title="${title}">
                                             <span class="material-icons-round">
                                                 clear
                                             </span>
                                         </button>
                                     </td>
                                 </tr>`
-            }).join('');
+                }).join('');
+
+
+
+                // 顯示 table-footer
+                cartAccout.style.display = 'table-footer-group';
+                // 顯示購物車總金額
+                cartTotalPrice.innerHTML = `總計: NT$ <span>${utils.calcTotalPrice(finalTotalAry)}</span>元`;
+
+            } else {
+                cartList.innerHTML = `
+                <tr>
+                    <td colspan="6" class="py-6">
+                   <h5 class="mb-5 text-center">購物車內沒有課程，趕快去逛逛吧!</h5>
+                   <a class="btn btn-primary btn-lg d-inline-block" href="../courses.html">立即選課</a>
+                  </td>
+                </tr>`
+
+                // 隱藏table-footer
+                cartAccout.style.display = 'none';
+            };
         };
 
+
+
+        // 購物車 - 功能整合(delete 、 patch)
+        cartList.addEventListener('click', (e) => {
+            if (e.target.nodeName !== "BUTTON") return;
+
+            // 取得購物車 id
+            let cartId = e.target.closest('tr').dataset.cartId;
+            let btnType = e.target.dataset.cartBtn;
+            let courseTitle = e.target.dataset.courseTitle;
+
+
+            // 刪除購物車內單筆課程
+            if (btnType === "delCartItem") {
+                removeCartItem(cartId, courseTitle)
+            };
+
+
+
+            // 更新購物車內單筆課程數量
+            if (btnType === "minusNum" || btnType === "plusNum") {
+                const cartItemQty = document.querySelectorAll('[data-cart-qty]');
+
+                let cartItemQtyVal = 0;
+
+                // 所有 input 跑迴圈 與 cartId 比對，相同的產品將值取出來
+                [...cartItemQty].forEach((cartItem) => {
+                    if (cartItem.dataset.cartId === cartId) {
+                        cartItemQtyVal = Number(cartItem.getAttribute('value'));
+                    };
+                });
+
+                // 更新購物車數量
+                updateCartItem(cartId, cartItemQtyVal, courseTitle, btnType);
+            };
+
+
+        });
+
+
+
+
+
+        // 購物車 - 修改產品數量
+        function updateCartItem(cartId, qty, courseTitle, btnType) {
+
+            // 計算購物車數量
+            let cartQtySum = qty;
+
+            // 減少數量
+            if (btnType === "minusNum") {
+                if (cartQtySum === 1) {
+                    utils.swalMassage("課程數量最少為1", "warning", 800);
+                    return;
+                } else {
+                    cartQtySum -= 1;
+                };
+            } else if (btnType === "plusNum") {
+                //增加數量
+                cartQtySum += 1;
+            };
+
+
+
+            const data = {
+                qty: cartQtySum
+            };
+
+            api.apiUpdateCart(cartId, data)
+                .then(res => {
+                    const { data } = res;
+                    console.log(data);
+                    getCarts();
+                    utils.swalMassage(`${courseTitle} 數量已更新`, 'success', 500);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        };
+
+
+
+
+        // 購物車 - 刪除單筆課程
+        function removeCartItem(cartId, courseTitle) {
+
+            api.apiRemoveCartItem(cartId)
+                .then(res => {
+                    if (res.status === 200) {
+                        getCarts();
+                        utils.swalMassage(`${courseTitle} 刪除成功`, 'success', '500');
+                    };
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        };
+
+
+
+
+        // 購物車 - 刪除全部課程
+        function removeCarts() {
+
+
+        };
 
 
         // 初始化
