@@ -5,7 +5,7 @@
 
 
 
-Demo: 
+Demo: [Hi Kids](https://jimmyfang-ai.github.io/JS-sideProject-Hi-kids/)
 
 
 ## **專案說明**
@@ -58,8 +58,3 @@ https://demo-test.onrender.com
 
 
 
-
-### **前台版型**
-
-### **後後台版型**
-"# JS-sideProject-Hi-kids-JS" 
