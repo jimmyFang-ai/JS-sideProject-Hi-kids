@@ -73,9 +73,6 @@
   
 
 
-
-
-
 // 播放按鈕
 .video-btn {
     display: inline-block;
@@ -116,4 +113,23 @@
             font-size: 60px;
         };
     };
+};
+
+
+// 刪除按鈕
+// 購物車單筆
+.delCart-btn:hover {
+   transition: all .3s;
+    .material-icons-round {
+      transition: all .3s;
+      color: $danger;
+      transform: scale(1.1);
+    }
+};
+
+// 購物車全部
+.delAllCart-Btn:hover {
+  &:hover {
+    color: $white;
+  }
 };

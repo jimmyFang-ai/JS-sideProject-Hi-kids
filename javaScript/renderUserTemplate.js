@@ -29,7 +29,7 @@ function templateOfUserMenu(user, template = '') {
 
     template += `
     <li class="me-lg-3">
-         <a class="custom-cart-btn  p-0" aria-current="page" href="#">
+         <a class="custom-cart-btn  p-0" aria-current="page" href="../my/cart.html">
           <span class="material-icons-round cart-icon">
             shopping_cart
            </span>

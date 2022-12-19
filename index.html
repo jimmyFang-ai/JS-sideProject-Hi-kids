@@ -121,7 +121,7 @@
                         <a class="custom-nav-link" href="#">關於我們</a>
                     </li>
                     <li class="me-8">
-                        <a class="custom-nav-link active" href="./courses.html">課程介紹</a>
+                        <a class="custom-nav-link " href="./courses.html">課程介紹</a>
                     </li>
                 </ul>
 
@@ -163,18 +163,38 @@
                 <div class="col mb-6 mb-md-0">
                     <div class="circle-danger">
                         <img class="img-fluid" src="./images/banner-lg.png" alt="header-pic">
-                        <button class="video-btn d-none d-lg-block" type="button">
+                        <button class="video-btn d-none d-lg-block" type="button" data-bs-toggle="modal"
+                            data-bs-target="#videoModal">
                             <span class="material-icons-round">
                                 play_arrow
                             </span>
                             觀看影片
                         </button>
 
-                        <button class="video-btn d-blcok d-lg-none" type="button">
+                        <button class="video-btn d-blcok d-lg-none" type="button" data-bs-toggle="modal"
+                            data-bs-target="#videoModal">
                             <span class="material-icons-round">
                                 play_arrow
                             </span>
                         </button>
+
+
+                        <!-- videoModal 測試中 -->
+                        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModal"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-body">
+                                        <div class="ratio ratio-16x9">
+                                            <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+                                                title="YouTube video" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -196,7 +216,7 @@
                             </span>
                             立即選課
                         </a>
-                        
+
                     </div>
 
                 </div>
