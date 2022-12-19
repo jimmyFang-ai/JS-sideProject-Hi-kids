@@ -185,7 +185,7 @@
 
             <h2 class="fs-1 fw-bold text-center mb-10">確認 購物車</h2>
             <!-- 購物車列表 -->
-            <ul class="row justify-content-center mb-10" id="cart-list">
+            <ul class="row justify-content-center mb-10">
                 <li class="col col-md-10">
                     <div class="shadow table-responsive">
                         <table class="table align-middle  mb-0">
@@ -201,7 +201,7 @@
                                 </tr>
                             </thead>
                             <!-- tbody -->
-                            <tbody class="text-center text-nowrap">
+                            <tbody class="text-center text-nowrap" id="cart-list">
                                 <tr>
                                     <td>
                                         <div class="row gx-0 align-items-center">
@@ -420,14 +420,85 @@
         import { getLoggedID } from '../javaScript/renderUserTemplate.js';
 
         // DOM
+        const cartList = document.querySelector('#cart-list');
 
 
+
+        // 購物車 - 取得購物車列表
+        function getCarts() {
+
+            const userId = getLoggedID();
+            api.apiGetCarts(userId)
+                .then(res => {
+                    console.log(res);
+                    const { data, status } = res;
+
+                    if (status === 200) {
+                        renderCartList(data);
+                    };
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        };
+
+
+
+        //  購物車 - 顯示購物車列表
+        function renderCartList(data) {
+            cartList.innerHTML = data.map(cart => {
+                const { imageUrl, title, price } = cart.course;
+                return `
+                <tr data-cart-id="${cart.id}">
+                    <td>
+                        <div class="row gx-0 align-items-center">
+                                <div class="col-6 d-none d-md-block">
+                                    <img class="img-fluid" src="${imageUrl}"
+                                             alt="${title}">
+                                 </div>
+                                    <div class="col col-md-6">
+                                         <p class="mb-2">${title}</p>
+                                         <span>NT$ ${utils.tothousands(price)}</span>
+                                        </div>
+                                    </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                            <div class="input-group text-center" style="max-width: 160px;">
+                                                <button type="button"
+                                                    class="btn text-primary fs-4  border-0 px-1 px-md-3"
+                                                    data-cart-btn=""="minusNumBtn">
+                                                    -
+                                                </button>
+                                                <input type="number" class="form-control text-center w-25 px-1 px-md-2 "
+                                                    data-product-num="${cart.qty}" value="${cart.qty}" min="1">
+                                                <button type="button"
+                                                    class="btn text-primary fs-4   border-0  px-1 px-md-3"
+                                                    data-cart-btn=""="plusNumBtn">
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>NT$ 360</td>
+                                    <td>
+                                        <button type="button" class="btn delCart-btn   border-0"
+                                            data-cart-btn="delCartBtn">
+                                            <span class="material-icons-round">
+                                                clear
+                                            </span>
+                                        </button>
+                                    </td>
+                                </tr>`
+            }).join('');
+        };
 
 
 
         // 初始化
         function init() {
-
+            getCarts();
         };
         init();
 
