@@ -1,7 +1,6 @@
 // 引入 axios 
 import "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js";
 
-import { getLoggedID } from './renderUserTemplate.js';
 
 
 //  本地端

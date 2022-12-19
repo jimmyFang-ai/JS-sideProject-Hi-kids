@@ -75,3 +75,45 @@
 
 
 
+
+// 播放按鈕
+.video-btn {
+    display: inline-block;
+    position: absolute;
+    background: $primary;
+    right: 0;
+    bottom: 0;
+    color: $white;
+    border: 1px solid transparent;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    transition: all .5s;
+    .material-icons-round {
+        display: block;
+        font-size: 40px;
+       
+    };
+
+
+    &:hover ,&:focus ,&:active {
+        color: $dark;
+        background: $secondary;
+        .material-icons-round {
+            color: $dark;
+        };
+    }
+};
+
+
+@include media-breakpoint-up(lg) {
+    .video-btn {
+        width: 160px;
+        height: 160px;
+        .material-icons-round {
+            font-size: 60px;
+        };
+    };
+};

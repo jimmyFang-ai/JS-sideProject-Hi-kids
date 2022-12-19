@@ -12579,6 +12579,42 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #5D5D5D;
 }
 
+.video-btn {
+  display: inline-block;
+  position: absolute;
+  background: #61C7E8;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  border: 1px solid transparent;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  font-size: 24px;
+  font-weight: bold;
+  transition: all 0.5s;
+}
+.video-btn .material-icons-round {
+  display: block;
+  font-size: 40px;
+}
+.video-btn:hover, .video-btn:focus, .video-btn:active {
+  color: #5D5D5D;
+  background: #BBE7F5;
+}
+.video-btn:hover .material-icons-round, .video-btn:focus .material-icons-round, .video-btn:active .material-icons-round {
+  color: #5D5D5D;
+}
+
+@media (min-width: 992px) {
+  .video-btn {
+    width: 160px;
+    height: 160px;
+  }
+  .video-btn .material-icons-round {
+    font-size: 60px;
+  }
+}
 .decoline-primary {
   display: block;
   position: relative;
