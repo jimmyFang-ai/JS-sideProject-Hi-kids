@@ -593,66 +593,6 @@
 
 
 
-        // 加總數量初始值
-        // let courseNum = document.querySelector('#courseNum');
-        let numSum = 1;
-        // 購物車 - 更新課程數量
-        courseNumWarp.addEventListener('click', (e) => {
-            if (e.target.nodeName !== "BUTTON") return;
-
-            // let courseNum = document.querySelector('#courseNum');
-            let btnId = e.target.id;
-
-            // 增加數量
-            if (btnId === "plusNumBtn") {
-                //增加數量
-                numSum += 1;
-            };
-
-            // 減少數量
-            if (btnId === "minusNumBtn") {
-                if (numSum === 1) {
-                    utils.swalMassage("課程數量最少為1", 'warning', 500);
-                    return;
-                } else {
-                    numSum -= 1;
-                };
-            };
-
-            // 顯示運算後的數量
-            courseNum.value = numSum;
-        });
-
-
-
-        // 購物車 - 加入單一課程(有權限)
-        function addCartItem() {
-            // console.log(courseNum.value);
-            console.log(numSum);
-            const params = new URLSearchParams(document.location.search);
-            const courseId = params.get('courseId');
-            const userId = getLoggedID();
-            const data = {
-                userId,
-                courseId,
-                qty: numSum
-            };
-
-            // console.log(token.headers);
-
-            if (localJWT) {
-                api.apiAddCart(userId, data)
-                    .then(res => {
-                        const { data } = res;
-                        console.log(data);
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
-            } else {
-                window.location.replace('/login.html');
-            };
-        };
 
 
 
@@ -735,9 +675,140 @@
 
 
 
+        // 購物車
+        // 加總數量初始值
+        let numSum = 1;
+        // 購物車 - 更新課程數量
+        courseNumWarp.addEventListener('click', (e) => {
+            if (e.target.nodeName !== "BUTTON") return;
+
+            let courseNum = document.querySelector('#courseNum');
+            let btnId = e.target.id;
+
+            // 增加數量
+            if (btnId === "plusNumBtn") {
+                //增加數量
+                numSum += 1;
+            };
+
+            // 減少數量
+            if (btnId === "minusNumBtn") {
+                if (numSum === 1) {
+                    utils.swalMassage("課程數量最少為1", 'warning', 500);
+                    return;
+                } else {
+                    numSum -= 1;
+                };
+            };
+
+            // 顯示運算後的數量
+            courseNum.value = numSum;
+        });
+
+
+        // 購物車 - 加入單一課程(沒有重複課程的話，新增一筆 )
+        function addCartItem(qty) {
+
+            const params = new URLSearchParams(document.location.search);
+            const courseId = params.get('courseId');
+            const userId = getLoggedID();
+            const courseNum = Number(document.querySelector('#courseNum').value);
+
+            const data = {
+                userId,
+                courseId,
+                qty: qty += courseNum
+            };
+
+            if (localJWT) {
+                api.apiAddCart(data)
+                    .then(res => {
+                        const { data } = res;
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            } else {
+                window.location.replace('/login.html');
+            };
+        };
 
 
 
+
+        // 購物車 - 更新單一課程(有重複課程的話，更新數量)
+        function updatCartItem(cartId, qty) {
+
+            const courseNum = Number(document.querySelector('#courseNum').value);
+            const data = {
+                qty: qty += courseNum
+            };
+
+            api.apiUpdateCart(cartId, data)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        };
+
+
+
+        addCourseBtn.addEventListener('click', (e) => {
+
+            // 取得購物車列表資料
+            let cartsData = [];
+            const params = new URLSearchParams(document.location.search);
+            const courseId = params.get('courseId');
+            const userId = getLoggedID();
+
+            if (getLoggedID()) {
+                api.apiGetCarts(userId)
+                    .then(res => {
+                        const { data, status } = res;
+
+                        if (status === 200) {
+                            cartsData = data;
+
+
+                            cartsData.forEach(cart => {
+                                const { id, qty } = cart;
+
+                                // console.log(cart.courseId);
+                                // console.log(courseId);
+
+                                // 確認購物車內有沒有同品項 id，有的話發 pacth 修改數量
+                                if (cart.courseId === courseId) {
+                                    console.log(id);
+                                    console.log('修改購物車數量成功');
+                                    updatCartItem(id, qty);
+                                    // utils.swalMassage('修改購物車數量成功', 'success', 500);
+                                } else {
+                                    console.log(id);
+                                    console.log("加入購物車成功");
+                                    // post 
+                                    // addCartItem(qty);
+                                    // utils.swalMassage('加入購物車成功', 'success', 500);
+                                }
+                            });
+
+
+                        };
+
+
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            } else {
+                window.location.replace('./login.html');
+            };
+
+
+
+        });
 
 
         // 初始化
@@ -751,7 +822,6 @@
             };
 
 
-            addCourseBtn.addEventListener('click', () => addCartItem());
             addBookmarkBtn.addEventListener('click', () => addBookmark());
             removeBookmarkBtn.addEventListener('click', () => removeBookmark());
         };

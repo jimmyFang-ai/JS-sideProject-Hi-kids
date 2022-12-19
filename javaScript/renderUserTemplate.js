@@ -97,7 +97,7 @@ function logout(e) {
     localStorage.clear();
 
     setTimeout(() => {
-        window.location.replace('/');
+        window.location.replace('./');
     }, 300);
 };
 
