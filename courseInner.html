@@ -631,7 +631,6 @@
 
             api.apiGetBookmark(userId, courseId)
                 .then(res => {
-                    console.log(res);
                     const { data, status } = res;
 
                     // 收藏清單內已經有收藏過課程
@@ -659,8 +658,6 @@
         function removeBookmark() {
             api.apiRemoveBookmarks(bookmarkId)
                 .then(res => {
-                    console.log(res);
-
                     if (res.status === 200) {
                         utils.swalMassage('收藏課程已移除', 'success', 600);
                         getBookmarkStatus();
@@ -708,30 +705,23 @@
 
         // 購物車 - 加入單一課程(沒有重複課程的話，新增一筆 )
         function addCartItem(qty) {
-
             const params = new URLSearchParams(document.location.search);
             const courseId = params.get('courseId');
             const userId = getLoggedID();
-            const courseNum = Number(document.querySelector('#courseNum').value);
 
             const data = {
                 userId,
                 courseId,
-                qty: qty += courseNum
+                qty
             };
-
-            if (localJWT) {
-                api.apiAddCart(data)
-                    .then(res => {
-                        const { data } = res;
-                        console.log(data);
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
-            } else {
-                window.location.replace('./login.html');
-            };
+            api.apiAddCart(data)
+                .then(res => {
+                    const { data } = res;
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         };
 
 
@@ -739,10 +729,8 @@
 
         // 購物車 - 更新單一課程(有重複課程的話，更新數量)
         function updatCartItem(cartId, qty) {
-
-            const courseNum = Number(document.querySelector('#courseNum').value);
             const data = {
-                qty: qty += courseNum
+                qty
             };
 
             api.apiUpdateCart(cartId, data)
@@ -755,49 +743,48 @@
         };
 
 
-
+        // 點擊購物車按鈕
         addCourseBtn.addEventListener('click', (e) => {
 
-            // 取得購物車列表資料
-            let cartsData = [];
             const params = new URLSearchParams(document.location.search);
             const courseId = params.get('courseId');
             const userId = getLoggedID();
 
+
+            // 取得使用者 id ，判斷是否有登入，就返回登入頁面
             if (getLoggedID()) {
                 api.apiGetCarts(userId)
                     .then(res => {
                         const { data, status } = res;
 
                         if (status === 200) {
-                            cartsData = data;
+
+                            // 取得購物車列表資料
+                            let cartsData = data;
+                            // 取得課程數量
+                            let courseNum = Number(document.querySelector('#courseNum').value);
+                            // 確認購物車有沒有同產品 id 資料
+                            const hasCourseId = cartsData.some(item => item.courseId === courseId);
 
 
-                            cartsData.forEach(cart => {
-                                const { id, qty } = cart;
+                            // 如果購物車內有課程的話，就跑foreach 找出那筆購物車 id 發 pacth，修改數量
+                            // 沒有的話，就新增一筆課程到購物車，發 post 
+                            if (hasCourseId) {
+                                cartsData.forEach(cart => {
+                                    const { id, qty } = cart;
 
-                                // console.log(cart.courseId);
-                                // console.log(courseId);
-
-                                // 確認購物車內有沒有同品項 id，有的話發 pacth 修改數量
-                                if (cart.courseId === courseId) {
-                                    console.log(id);
-                                    console.log('修改購物車數量成功');
-                                    updatCartItem(id, qty);
-                                    // utils.swalMassage('修改購物車數量成功', 'success', 500);
-                                } else {
-                                    console.log(id);
-                                    console.log("加入購物車成功");
-                                    // post 
-                                    // addCartItem(qty);
-                                    // utils.swalMassage('加入購物車成功', 'success', 500);
-                                }
-                            });
-
-
+                                    // // 確認購物車內有沒有同品項 id，有的話發 pacth 修改數量
+                                    if (cart.courseId === courseId) {
+                                        courseNum += qty;
+                                        updatCartItem(id, courseNum);
+                                        utils.swalMassage('修改購物車數量', 'success', 500);
+                                    };
+                                });
+                            } else {
+                                addCartItem(courseNum);
+                                utils.swalMassage('加入購物車', 'success', 500);
+                            };
                         };
-
-
                     })
                     .catch(error => {
                         console.log(error);

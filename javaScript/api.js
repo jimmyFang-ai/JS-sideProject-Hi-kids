@@ -5,79 +5,70 @@ import { getLoggedID } from './renderUserTemplate.js';
 
 
 //  本地端
-// const BASE_URL = `http://localhost:10000`;
+const BASE_URL = `http://localhost:10000`;
 
 // Render 測試
-const DOMAINS = `https://demo-test.onrender.com`;
+// const DOMAINS = `https://demo-test.onrender.com`;
 
 
 
 //  確認有使用者登入後才把 token 取出來，夾帶到 headers 內
-function getToken() {
-  return  getLoggedID() !== 0 ? `Bearer ${localStorage.getItem('token')}`:false;
-};
+// function getToken() {
+//   return  getLoggedID() !== 0 ? `Bearer ${localStorage.getItem('token')}`:false;
+// };
 // console.log(getToken() );
 
 
-
-
-
-
-
-
-// visitor 參訪者(無權限)
-const visitorRequest = axios.create({
-    baseURL: DOMAINS,
-    headers: {
-        'Content-Type': 'application/json',
-    }
-});
+// // visitor 參訪者(無權限)
+// const visitorRequest = axios.create({
+//     baseURL: BASE_URL,
+//     headers: {
+//         'Content-Type': 'application/json',
+//     }
+// });
 
 
 // user 使用者(有權限)
 const userRequest = axios.create({
-    baseURL: DOMAINS,
+    baseURL: BASE_URL,
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': getToken()
     }
 });
 
 
 
 // 測試有登入後 將 token 取出來，在所有的headers ['Authorization'] 加入 token
-// axiosInstance.interceptors.request.use(
-//     (config) => {
-//       // 從 localStorage 將 token 取出
-//       const token = localStorage.getItem('token');
+userRequest.interceptors.request.use(
+    (config) => {
+      // 從 localStorage 將 token 取出
+      const token = localStorage.getItem('token');
   
-//       // 如果 token 存在的話，則帶入到 headers 當中
-//       if (token) {
-//         config.headers['Authorization'] = `Bearer ${token}`;
-//       }
-//       return config;
-//     },
-//     (err) => Promise.reject(err),
-//   );
-  
-
+      // 如果 token 存在的話，則帶入到 headers 當中
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (err) => Promise.reject(err),
+  );
 
 
 
 // 課程資訊 API
 // 所有課程資料
-export const apiGetProducts = () => visitorRequest.get('/courses');
+export const apiGetProducts = () => userRequest.get('/courses');
 // 單一課程資料
-export const apiGetProduct = (id) => visitorRequest.get(`/courses/${id}`);
+export const apiGetProduct = (id) => userRequest.get(`/courses/${id}`);
 
 
 
 
 // user 相關的 API
 // 註冊
-export const apiSignup = (data) => visitorRequest.post('/signup', data);
+export const apiSignup = (data) => userRequest.post('/signup', data);
 // 登入
-export const apiLogin = (data) => visitorRequest.post('/login', data);
+export const apiLogin = (data) => userRequest.post('/login', data);
 // 取的使用者資訊(需要登入，有權限)
 export const apiGetUserInfo = (id) => userRequest.get(`/600/users/${id}`);
 
@@ -119,38 +110,3 @@ export const apiRemoveBookmarks = (id) => userRequest.delete(`/600/bookmarks/${i
 
 
 
-// 前台使用者
-// const userRequest = axios.create({
-//     baseURL: 'https://livejs-api.hexschool.io/api/livejs/v1/customer/testwoworoom/',
-//     headers: {
-//         'Content-Type': 'application/json',
-//     }
-// });
-
-// // 後台管理者
-// const adminRequest = axios.create({
-//     baseURL: 'https://livejs-api.hexschool.io/api/livejs/v1/admin/testwoworoom',
-//     headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': auth_token,
-//     }
-// });
-
-
-// // 前台
-// // 產品 API
-// export const apiGetProducts = () => userRequest.get('/products');
-// // 購物車 API
-// export const apiGetCarts = () => userRequest.get('/carts');
-// export const apiDeleteAllCarts = () => userRequest.delete('/carts');
-// export const apiAddCart = (data) => userRequest.post('/carts',data);
-// export const apiUpdateCart = (data) => userRequest.patch('/carts',data);
-// export const apiDeleteCart = (id) => userRequest.delete(`/carts/${id}`);
-// export const apiAddOrder = (data) => userRequest.post('/orders',data);
-
-
-// // 後台 - 訂單 API
-// export const apiGetOrders = () => adminRequest.get('/orders');
-// export const apiDeleteAllOrders = () => adminRequest.delete(`/orders`);
-// export const apiDeleteOrder = (id) => adminRequest.delete(`/orders/${id}`);
-// export const apiUpdateOrder  = (data) => adminRequest.put('/orders', data);
