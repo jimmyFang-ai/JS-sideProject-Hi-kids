@@ -18,7 +18,7 @@ function templateOfUserMenu(user, template = '') {
         template = `
         <li class="nav-item">
           <div>
-            <a href="./admin/desk.html" class="btn btn-sm text-muted px-3 me-2">
+            <a href="./admin/dashboard.html" class="btn btn-sm text-muted px-3 me-2">
               前往後台
             </a>
           </div>

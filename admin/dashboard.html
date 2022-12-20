@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <!-- icon form www.flaticon.com , author: https://www.freepik.com  -->
+    <!-- <link rel="icon" href="./images/kindergarten.png" sizes="32x32" type="image/png"> -->
+    <title> Hi kids - JS 專題</title>
+
+
+    <!-- google icon Round-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
+    <!--  google icon outline--->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="../stylesheets/all.css">
+</head>
+
+<body>
+
+
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-10 mb-lg-9 shadow">
+        <div class="container">
+
+            <!-- logo -->
+            <a class="navbar-brand p-0 text-white me-9" href="../index.html"
+                style="font-family: 'Fredoka One', cursive;letter-spacing: 5px;">
+                <h1>Hi kids</h1>
+            </a>
+
+
+            <!-- 漢堡按鈕 -->
+            <button class="navbar-toggler  border-0 text-primary" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <!-- offcanvas  手機 -->
+            <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header justify-content-end py-6">
+                    <button type="button" class="btn-close  text-primary" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body text-center">
+                    <ul>
+                        <li class="mb-5">
+                            <a class="custom-nav-link  d-flex justify-content-center align-items-center text-dark"
+                                aria-current="page" href="#">
+                                後台首頁
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- 選單 ( lg 以上)-->
+            <div class="d-none d-lg-flex flex-grow-1 justify-content-between align-items-center">
+                <ul class="d-flex align-items-center">
+                    <li class="me-8">
+                        <a class="text-dark" aria-current="page" href="#">後台首頁</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+
+
+
+
+    <!-- 訂單列表 -->
+    <section class="mb-10 mb-lg-9 py-6">
+
+        <div class="container">
+            <h2 class="text-center fw-bold mb-8">訂單列表</h2>
+            <div class="row justify-content-center align-items-center">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table table-hover  table align-middle">
+                            <thead>
+                                <tr>
+                                    <th width="10%">訂單編號</th>
+                                    <th width="15%">聯絡人</th>
+                                    <th width="15%">聯絡地址</th>
+                                    <th width="15%">電子郵件</th>
+                                    <th width="15%">訂單品項</th>
+                                    <th width="15%">訂單日期</th>
+                                    <th width="15%"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="orderList">
+                                <tr>
+                                    <td>10088377474</td>
+                                    <td>
+                                        <p>小杰</p>
+                                        <p>0912345678</p>
+                                    </td>
+                                    <td>高雄市前鎮區六合路183巷66號</td>
+                                    <td>cccexample@gmail.com</td>
+                                    <td>
+                                        <p>Louvre 雙人床架</p>
+                                    </td>
+                                    <td>2021/03/08</td>
+
+                                    <td>
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-primary me-5"
+                                                data-order-btn="editOrder-btn">修改</button>
+                                            <button type="button" class="btn btn-danger"
+                                                data-order-btn="delOrder-btn">刪除</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+
+
+
+    <!-- sweetalert2.js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script type="module">
+
+        // 匯入 共用工具
+        import * as utils from './javaScript/utils.js';
+
+        // 匯入 共用 API
+        import * as api from './javaScript/api.js';
+
+
+
+
+        // 初始化
+        function init() {
+
+        };
+        init();
+
+    </script>
+</body>
+
+</html>
