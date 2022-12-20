@@ -218,15 +218,5 @@
     }
   ],
   "bookmarks": [
-    {
-      "courseId": "11",
-      "userId": "2",
-      "id": 1
-    },
-    {
-      "userId": "3",
-      "courseId": "5",
-      "id": 2
-    }
   ]
 }
