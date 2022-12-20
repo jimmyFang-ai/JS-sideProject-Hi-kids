@@ -161,7 +161,7 @@
                 <div class="position-relative m-5">
                     <div class="progress">
                         <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="33" aria-valuemin="0"
-                            aria-valuemax="100" style="width: 48%;"></div>
+                            aria-valuemax="100" style="width: 100%;"></div>
                     </div>
                     <div
                         class="custom-progress  position-absolute top-0 start-0 translate-middle custom-progress-active">
@@ -175,7 +175,8 @@
                             format_list_bulleted
                         </span>
                     </div>
-                    <div class="custom-progress  position-absolute top-0 start-100 translate-middle">
+                    <div
+                        class="custom-progress  position-absolute top-0 start-100 translate-middle  custom-progress-active">
                         <span class="material-icons-round">
                             payment
                         </span>
@@ -184,8 +185,25 @@
                 </div>
             </div>
 
+            <!-- 訂單成功建立訊息 -->
+            <div class="row mb-10 justify-content-center">
+                <div class="col col-md-6">
+                    <div class="py-6 border border-2">
+                        <h2 class="fs-1 fw-bold text-center d-flex justify-content-center align-items-center mb-5">
+                            <span class="material-icons-outlined fs-1 me-3 fw-bold">
+                                done
+                            </span>
+                            付款成功
+                        </h2>
 
-            <h2 class="fs-1 fw-bold text-center mb-10">確認付款</h2>
+                        <p class="text-center ps-3">感謝您的購買</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
 
             <ul class="row row-cols-1 row-cols-md-2 justify-content-center mb-10 gy-6 gy-md-0">
                 <!-- 購物車列表 -->
@@ -203,14 +221,14 @@
                                 </tr>
                             </thead>
                             <!-- tbody -->
-                            <tbody class="text-center text-nowrap" id="cart-list">
+                            <tbody class="text-center text-nowrap" id="order-list">
                                 <!-- 動態新增購物車課程 -->
                             </tbody>
                             <!-- tfoot -->
-                            <tfoot id="cartAccout" style="border-color: white;">
+                            <tfoot style="border-color: white;">
                                 <tr>
-                                    <td class="text-end  fw-bold py-4" colspan="3" id="cartTotalPrice">
-                                        <!-- 動態更新總價 -->
+                                    <td class="text-end  fw-bold py-4" colspan="3" id="totalPrice">
+                                        <!-- 動態新增總價 -->
                                     </td>
                                 </tr>
                             </tfoot>
@@ -218,68 +236,48 @@
                     </div>
                 </li>
 
-                <!-- 填寫訂購表單(未完成) -->
+                <!-- 訂購表單-->
                 <li class="col">
-                    <form class=" px-3 px-md-5 py-6   shadow border-top border-4 border-primary rounded" id="orderForm">
+                    <form class=" px-3 px-md-5 py-6   shadow border-top border-4 border-primary rounded">
                         <div class="mb-3">
                             <label for="customerName" class="form-label">姓名</label>
-                            <input type="text" class="form-control" placeholder="請輸入訂購人姓名" id="customerName" name="姓名">
-                            <p class="message text-danger p-2 mb-0" data-message="姓名"></p>
+                            <input type="text" class="form-control" id="customerName" disabled>
                         </div>
                         <div class="mb-3">
                             <label for="customerEmail" class="form-label">電子郵件</label>
-                            <input type="email" class="form-control" placeholder="請輸入訂購人Email" id="customerEmail"
-                                name="信箱">
-                            <p class="message text-danger p-2 mb-0" data-message="信箱"> </p>
+                            <input type="email" class="form-control" id="customerEmail" disabled>
                         </div>
                         <div class="mb-3">
                             <label for="customerPhone" class="form-label">手機號碼</label>
-                            <input type="tel" class="form-control" placeholder="請輸入訂購人電話" id="customerPhone"
-                                name="手機號碼">
-                            <p class="message text-danger p-2 mb-0" data-message="手機號碼"> </p>
+                            <input type="tel" class="form-control" id="customerPhone" disabled>
                         </div>
                         <div class="mb-3">
                             <label for="customerAddress" class="form-label">地址</label>
-                            <input type="text" class="form-control" placeholder="請輸入訂購人地址" id="customerAddress"
-                                name="地址">
-                            <p class="message text-danger p-2 mb-0" data-message="地址"> </p>
+                            <input type="text" class="form-control" id="customerAddress" disabled>
                         </div>
                         <div class="mb-3">
                             <label for="tradeWay" class="form-label">付款方式</label>
-                            <select class="form-select" id="tradeWay" name="付款方式">
-                                <option value="" selected="" disabled="">請選擇付款方式</option>
-                                <option value="Apple Pay">Apple Pay</option>
-                                <option value="Line pay">Line Pay</option>
-                                <option value="街口支付">街口支付</option>
-                                <option value="ATM轉帳">ATM轉帳</option>
+                            <select class="form-select" id="tradeWay" disabled>
+                                <option selected></option>
                             </select>
-                            <p class="message text-danger p-2 mb-0" data-message="付款方式"> </p>
                         </div>
                         <div class="mb-5">
                             <label for="customerMessage" class="form-label">備註</label>
-                            <textarea name="Remarks" class="form-control" placeholder="請填寫備註" cols="30" rows="5"
-                                id="customerMessage"></textarea>
+                            <textarea class="form-control" cols="30" rows="5" id="customerMessage" disabled></textarea>
                         </div>
                     </form>
                 </li>
             </ul>
 
 
-            <div class="d-flex justify-content-between py-3">
-                <a href="../my/cart.html"
-                    class="btn btn-outline-primary btn-lg d-inline-flex justify-content-center align-items-center">
-                    <span class="material-icons-round me-3">
-                        arrow_back_ios
-                    </span>
-                    回購物清單
+            <div class="d-flex justify-content-center py-3">
+                <a href="./"
+                    class="btn btn-outline-primary btn-lg d-inline-flex justify-content-center align-items-center me-8">
+                    回到首頁
                 </a>
-                <a href="../my/checkout.html"
-                    class="btn btn-primary btn-lg d-inline-flex justify-content-center align-items-center"
-                    id="submitFormBtn">
-                    送出訂單
-                    <span class="material-icons-round ms-3">
-                        arrow_forward_ios
-                    </span>
+                <a href="../courses.html"
+                    class="btn btn-primary btn-lg d-inline-flex justify-content-center align-items-center">
+                    再去選課
                 </a>
             </div>
         </div>
@@ -402,12 +400,6 @@
         crossorigin="anonymous"></script>
 
 
-    <!-- validate.js  -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
-
-    <!-- sweetalert2.js -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <!-- 使用者登入才會出現 -->
     <script type="module" src="../javaScript/renderUserTemplate.js"></script>
 
@@ -423,338 +415,70 @@
         import { getLoggedID } from '../javaScript/renderUserTemplate.js';
 
         // DOM
-        const cartList = document.querySelector('#cart-list');
-        const orderForm = document.querySelector("#orderForm");
-        const submitFormBtn = document.querySelector("#submitFormBtn");
+        const orderList = document.querySelector('#order-list');
+        const totalPrice = document.querySelector('#totalPrice');
+        // 取出表單欄位的 dom 標籤元素
+        const orderName = document.querySelector("#customerName"); // 姓名
+        const orderEmail = document.querySelector("#customerEmail");// Email
+        const orderPhone = document.querySelector("#customerPhone");// 手機號碼
+        const orderAddress = document.querySelector("#customerAddress");// 地址
+        const orderTradeWay = document.querySelector("#tradeWay");// 交易方式
+        const orderMessage = document.querySelector("#customerMessage");// 備註
 
 
-        // 購物車資料
-        let cartData = [];
-
-        // 購物車 - 取得購物車列表
-        function getCarts() {
+        // 訂購表單 - 取得訂單資料
+        function getOrder() {
             const userId = getLoggedID();
-            api.apiGetCarts(userId)
+
+            api.apiGetOrder(userId)
                 .then(res => {
                     const { data, status } = res;
-                    cartData = data;
-
                     if (status === 200) {
-                        renderCartList(cartData);
+                        renderOrderList(data);
                     };
+
                 })
                 .catch(err => {
                     console.log(err);
                 })
+
         };
 
 
-        // 購物車 - 顯示購物車列表
-        function renderCartList(data) {
-            const cartAccout = document.querySelector('#cartAccout');
-            const cartTotalPrice = document.querySelector('#cartTotalPrice');
-            const finalTotalAry = data.map(cart => cart.course.price * cart.qty);
-
-            if (data.length > 0) {
-                cartList.innerHTML = data.map(cart => {
-                    const { imageUrl, title, price } = cart.course;
-                    return `
-                <tr data-cart-id="${cart.id}">
-                    <td>
-                        <div class="row gx-0 align-items-center">
-                                <div class="col-6 d-none d-md-block">
-                                    <img class="img-fluid" src="${imageUrl}"
-                                             alt="${title}">
-                                 </div>
-                                    <div class="col col-md-6">
-                                         <p class="mb-2">${title}</p>
-                                         <span>NT$ ${utils.tothousands(price)}</span>
-                                        </div>
-                                    </div>
-                                    </td>
-                                    <td>
-                                        <spna>${cart.qty}</spna>
-                                    </td>
-                                    <td>NT$ ${utils.tothousands(price * cart.qty)}</td>
-                                </tr>`
-                }).join('');
-
-
-
-                // 顯示 table-footer
-                cartAccout.style.display = 'table-footer-group';
-                // 顯示購物車總金額
-                cartTotalPrice.innerHTML = `總計: NT$ <span>${utils.calcTotalPrice(finalTotalAry)}</span>元`;
-
-            } else {
-                cartList.innerHTML = `
+        // 訂購表單 - 渲染畫面
+        function renderOrderList(data) {
+            // 顯示訂單課程資訊
+            orderList.innerHTML = data[0].courses.map(course => {
+                console.log(course);
+                return `
                 <tr>
-                    <td colspan="6" class="py-6">
-                   <h5 class="mb-5 text-center">購物車內沒有課程，趕快去逛逛吧!</h5>
-                   <a class="btn btn-primary btn-lg d-inline-block" href="../courses.html">立即選課</a>
-                  </td>
-                </tr>`
+                    <td> 
+                         <p class="mb-2">${course.title}</p>
+                             <span>NT$ ${utils.tothousands(course.price)}</span>
+                    </td>
+                    <td>
+                        <spna>${course.qty}</spna>
+                     </td>
+                     <td>NT$ ${utils.tothousands(course.qty * course.price)}</td>
+                </tr>
+                `
+            }).join('');
+            // 顯示總價
+            totalPrice.innerHTML = `總計: NT$ <span>${utils.tothousands(data[0].total)}</span>元`;
 
-                // 隱藏table-footer
-                cartAccout.style.display = 'none';
-            };
+
+            // 顯示訂購表單內容
+            orderName.value = data[0].info['name'];
+            orderEmail.value = data[0].info['email'];
+            orderPhone.value = data[0].info['tel'];
+            orderAddress.value = data[0].info['address'];
+            orderTradeWay.children[0].textContent = data[0].payMethods;
         };
-
-
-
-        // 表單驗證功能
-        submitFormBtn.addEventListener("click", function (e) {
-
-            e.preventDefault();
-
-            // 取出表單欄位的 dom 標籤元素
-            const orderName = document.querySelector("#customerName"); // 姓名
-            const orderEmail = document.querySelector("#customerEmail");// Email
-            const orderPhone = document.querySelector("#customerPhone");// 手機號碼
-            const orderAddress = document.querySelector("#customerAddress");// 地址
-            const orderTradeWay = document.querySelector("#tradeWay");// 交易方式
-            const orderMessage = document.querySelector("#customerMessage");// 備註
-
-            // 選取全部的 input 輸入欄位的 dom 標籤元素
-            const inputs = document.querySelectorAll("input[type=text], input[type=tel], input[type=email],select,textarea");
-
-
-            // 訂購表單的物件資料
-            let orderObj = {
-                name: orderName.value,
-                email: orderEmail.value,
-                tel: orderPhone.value,
-                address: orderAddress.value,
-                payment: orderTradeWay.value,
-                message: orderMessage.value
-            };
-
-
-
-            if (cartData.length < 1) {
-                e.preventDefault();
-                utils.swalMassage("購物車無商品，請去選購!", "warning", 500);
-                return;
-            };
-
-
-            // 針對每個input 綁定 change 事件監聽驗證，逐一改變錯誤訊息狀態
-            inputs.forEach((item) => {
-                item.addEventListener("change", function (e) {
-                    item.classList.remove('is-invalid');
-                    item.nextElementSibling.textContent = '';
-                    let errors = validate(orderForm, validateRules()) || '';
-                    formCheck(errors);
-                })
-            });
-
-            // 將錯誤訊息 存取在 errors 變數上
-            let errors = validate(orderForm, validateRules());
-
-            // 判斷 errors 錯誤訊息
-            if (errors) {
-                e.preventDefault();
-                formCheck(errors);
-                utils.swalMassage("資料未填寫完整", "warning", 500);
-            } else {
-                e.preventDefault();
-                utils.swalMassage("訂單已建立", "success", 500);
-                // 建立訂購表單
-                createForm(orderObj);
-                // 清除表單資料
-                orderForm.reset();
-            };
-        });
-
-
-        // 表單 - 驗證規則
-        // validate 套件的驗證規則
-        function validateRules() {
-            const constraints = {
-                "姓名": {
-                    presence: {
-                        message: "必填欄位"
-                    }
-                },
-                "手機號碼": {
-                    presence: {
-                        message: "是必填的欄位"
-                    },
-                    format: {
-                        pattern: /^09\d{2}-?\d{3}-?\d{3}$/,
-                        message: "開頭須為09"
-                    },
-                    length: {
-                        is: 10,
-                        message: "長度須為10碼"
-                    }
-                },
-                "信箱": {
-                    presence: {
-                        message: "是必填的欄位"
-                    },
-                    format: {
-                        pattern: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
-                        message: "格式輸入錯誤，需有@ 、.等符號"
-                    },
-                },
-                "地址": {
-                    presence: {
-                        message: "是必填欄位"
-                    }
-                },
-                "付款方式": {
-                    presence: {
-                        message: "是必填欄位"
-                    }
-                },
-            };
-
-            return constraints;
-        };
-
-
-        // 表單 -  提示訊息
-        function formCheck(errors) {
-            Object.keys(errors).forEach(function (keys) {
-                document.querySelector(`[data-message="${keys}"]`).textContent = errors[keys];
-                document.querySelector(`[data-message="${keys}"]`).previousElementSibling.classList.add('is-invalid');
-            });
-        };
-
-
-
-
-
-
-
-        // 表單 - 建立表單資料
-        function createForm(orderObj) {
-            const userId = getLoggedID();
-
-            api.apiGetCarts(userId)
-                .then(res => {
-                    console.log(res);
-                    const { data, status } = res;
-
-
-                    if (status === 200) {
-                        const carts = data;
-                        // 將購物車資料寫入 localStorage
-                        localStorage.setItem('carts', JSON.stringify(carts));
-
-
-                        const orderItems = carts.map((item) => {
-                            return {
-                                courseId: item.courseId,
-                                qty: item.qty,
-                                title: item.course.title,
-                                price: item.course.price,
-                            };
-                        });
-                        console.log(orderItems);
-
-
-                        // 加總購物車商品金額
-                        const sumTotalPrice = data.reduce((acc, cur) => acc + (cur.course.price * cur.qty), 0);
-                        console.log(sumTotalPrice);
-
-
-                        const newOrder = {
-                            createdAt: Date.now(),
-                            userId: getLoggedID(),
-                            info: {
-                                email: orderObj.email,
-                                name: orderObj.name,
-                                tel: orderObj.tel,
-                                address: orderObj.address,
-                            },
-                            courses: orderItems,
-                            payMethods: orderObj.payment,
-                            total: sumTotalPrice,
-                        };
-                        console.log('newOrder:::', newOrder);
-
-
-                        // 送出表單
-                        sendOrder(newOrder);
-                    };
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        };
-
-
-        // 送出表單 - 刪除購物車資料
-        function axiosDeleteCart(cartId) {
-            // const url = `${CARTS_URL}/${cartId}`;
-            return api.apiRemoveCartItem(cartId);
-            // return axios.delete(url);
-        };
-
-
-
-
-
-        // 表單 - 送出訂購表單
-        function sendOrder(newOrder) {
-            const userId = getLoggedID();
-            const data = newOrder;
-
-            api.apiSendOrder(userId, data)
-                .then(res => {
-                    console.log(res);
-                    if (res.status === 201) {
-                        // 取出存在 localStorage 的購物車資料
-                        const localCarts = localStorage.getItem('carts');
-                        const carts = JSON.parse(localCarts);
-                        console.log(carts);
-
-
-                        // 刪除購物車的 api url 陣列
-                        const arrayOfDelete = carts.map((item) => {
-                            return axiosDeleteCart(item.id);
-                        });
-                     
-
-
-                        Promise.all(arrayOfDelete)
-                            .then(results => {
-                                // #TODO: results checker
-                                if (results.length === arrayOfDelete.length) {
-                                    console.log('已全部刪除！');
-
-                                    // 導到送出訂單成功頁面
-                                    setTimeout(() => {
-                                        console.log('Redirect!');
-                                        window.location.replace('../my/orderHistory.html');
-                                    }, 150);
-
-                                };
-
-
-                            })
-                            .catch(error => {
-                                console.log(error);
-                            });
-                    }
-
-
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-
-        };
-
-
-
 
 
         // 初始化
         function init() {
-            getCarts();
+            getOrder();
         };
         init();
 

@@ -78,6 +78,9 @@ export const apiRemoveBookmarks = (id) => userRequest.delete(`/600/bookmarks/${i
 
 
 // 訂單
+// 取得訂單資料
+export const apiGetOrder = (userId) => userRequest.get(`/600/users/${userId}/orders`);
+// 送出訂單
 export const apiSendOrder = (userId, data) => userRequest.post(`/600/users/${userId}/orders`, data);
 
 
