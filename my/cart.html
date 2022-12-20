@@ -226,8 +226,8 @@
                         arrow_back_ios
                     </span>繼續選購
                 </a>
-                <a href="../my/checkout.html"
-                    class="btn btn-primary btn-lg d-inline-flex justify-content-center align-items-center">
+                <a href="../my/checkout.html" class="btn btn-primary btn-lg  justify-content-center align-items-center"
+                    id="checkOutBtn">
                     確認付款
                     <span class="material-icons-round ms-3">
                         arrow_forward_ios
@@ -380,6 +380,7 @@
         const cartList = document.querySelector('#cart-list');
 
 
+
         // 購物車 - 取得購物車列表
         function getCarts() {
             const userId = getLoggedID();
@@ -400,6 +401,7 @@
 
         //  購物車 - 顯示購物車列表
         function renderCartList(data) {
+            const checkOutBtn = document.querySelector('#checkOutBtn');
             const cartAccout = document.querySelector('#cartAccout');
             const cartTotalPrice = document.querySelector('#cartTotalPrice');
             const finalTotalAry = data.map(cart => cart.course.price * cart.qty);
@@ -457,6 +459,7 @@
                 cartAccout.style.display = 'table-footer-group';
                 // 顯示購物車總金額
                 cartTotalPrice.innerHTML = `總計: NT$ <span>${utils.calcTotalPrice(finalTotalAry)}</span>元`;
+                checkOutBtn.style.display = 'inline-flex';
 
             } else {
                 cartList.innerHTML = `
@@ -469,6 +472,7 @@
 
                 // 隱藏table-footer
                 cartAccout.style.display = 'none';
+                checkOutBtn.style.display = 'none';
             };
         };
 

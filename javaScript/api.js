@@ -74,7 +74,11 @@ export const apiAddBookmarks = (id, data) => userRequest.post(`/600/courses/${id
 // 移除收藏資料
 export const apiRemoveBookmarks = (id) => userRequest.delete(`/600/bookmarks/${id}`);
 
+
+
+
 // 訂單
+export const apiSendOrder = (userId, data) => userRequest.post(`/600/users/${userId}/orders`, data);
 
 
 

@@ -216,7 +216,7 @@
       },
       "items": [
         {
-          "productId": "2",
+          "courseId": "2",
           "qty": 1,
           "title": "兒童足球課",
           "price": 1000

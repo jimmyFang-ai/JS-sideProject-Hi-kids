@@ -436,7 +436,6 @@
             const userId = getLoggedID();
             api.apiGetCarts(userId)
                 .then(res => {
-                    console.log(res);
                     const { data, status } = res;
                     cartData = data;
 
@@ -503,9 +502,6 @@
 
 
 
-
-
-
         // 表單驗證功能
         submitFormBtn.addEventListener("click", function (e) {
 
@@ -564,9 +560,9 @@
                 e.preventDefault();
                 utils.swalMassage("訂單已建立", "success", 500);
                 // 建立訂購表單
-                // createForm(orderObj);
+                createForm(orderObj);
                 // 清除表單資料
-                // orderForm.reset();
+                orderForm.reset();
             };
         });
 
@@ -618,7 +614,6 @@
         };
 
 
-
         // 表單 -  提示訊息
         function formCheck(errors) {
             Object.keys(errors).forEach(function (keys) {
@@ -626,6 +621,138 @@
                 document.querySelector(`[data-message="${keys}"]`).previousElementSibling.classList.add('is-invalid');
             });
         };
+
+
+
+
+
+
+
+        // 表單 - 建立表單資料
+        function createForm(orderObj) {
+            const userId = getLoggedID();
+
+            api.apiGetCarts(userId)
+                .then(res => {
+                    console.log(res);
+                    const { data, status } = res;
+
+
+                    if (status === 200) {
+                        const carts = data;
+                        // 將購物車資料寫入 localStorage
+                        localStorage.setItem('carts', JSON.stringify(carts));
+
+
+                        const orderItems = carts.map((item) => {
+                            return {
+                                courseId: item.courseId,
+                                qty: item.qty,
+                                title: item.course.title,
+                                price: item.course.price,
+                            };
+                        });
+                        console.log(orderItems);
+
+
+                        // 加總購物車商品金額
+                        const sumTotalPrice = data.reduce((acc, cur) => acc + (cur.course.price * cur.qty), 0);
+                        console.log(sumTotalPrice);
+
+
+                        const newOrder = {
+                            createdAt: Date.now(),
+                            userId: getLoggedID(),
+                            info: {
+                                email: orderObj.email,
+                                name: orderObj.name,
+                                tel: orderObj.tel,
+                                address: orderObj.address,
+                            },
+                            courses: orderItems,
+                            payMethods: orderObj.payment,
+                            total: sumTotalPrice,
+                        };
+                        console.log('newOrder:::', newOrder);
+
+
+                        // 送出表單
+                        sendOrder(newOrder);
+                    };
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        };
+
+
+        // 送出表單 - 刪除購物車資料
+        function axiosDeleteCart(cartId) {
+            // const url = `${CARTS_URL}/${cartId}`;
+            return api.apiRemoveCartItem(cartId);
+            // return axios.delete(url);
+        };
+
+
+
+
+
+        // 表單 - 送出訂購表單
+        function sendOrder(newOrder) {
+            const userId = getLoggedID();
+            const data = newOrder;
+
+            api.apiSendOrder(userId, data)
+                .then(res => {
+                    console.log(res);
+                    if (res.status === 201) {
+                        // 取出存在 localStorage 的購物車資料
+                        const localCarts = localStorage.getItem('carts');
+                        const carts = JSON.parse(localCarts);
+                        console.log(carts);
+
+
+                        // 刪除購物車的 api url 陣列
+                        const arrayOfDelete = carts.map((item) => {
+                            return axiosDeleteCart(item.id);
+                        });
+                        console.log('arrayOfDelete:::', arrayOfDelete);
+
+
+                        Promise.all(arrayOfDelete)
+                            .then(results => {
+                                console.log(results);
+
+
+                                // #TODO: results checker
+                                if (results.length === arrayOfDelete.length) {
+                                    console.log('已全部刪除！');
+
+                                    // 導到送出訂單成功頁面
+                                    // setTimeout(() => {
+                                    //     console.log('Redirect!');
+                                    //     window.location.replace('./history.html');
+                                    // }, 150);
+
+                                };
+
+
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
+                    }
+
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
+        };
+
+
+
 
 
         // 初始化
