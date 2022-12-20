@@ -18,7 +18,7 @@ function templateOfUserMenu(user, template = '') {
         template = `
         <li class="nav-item">
           <div>
-            <a href="/admin/desk.html" class="btn btn-sm text-muted px-3 me-2">
+            <a href="./admin/desk.html" class="btn btn-sm text-muted px-3 me-2">
               前往後台
             </a>
           </div>
@@ -29,7 +29,7 @@ function templateOfUserMenu(user, template = '') {
 
     template += `
     <li class="me-lg-3">
-         <a class="custom-cart-btn  p-0" aria-current="page" href="../my/cart.html">
+         <a class="custom-cart-btn  p-0" aria-current="page" href="./cart.html">
           <span class="material-icons-round cart-icon">
             shopping_cart
            </span>
@@ -37,7 +37,7 @@ function templateOfUserMenu(user, template = '') {
      </li>
   
      <li class="me-lg-3">
-     <a class="custom-cart-btn  p-0 active" aria-current="page" href="../my/bookmarks.html">
+     <a class="custom-cart-btn  p-0 active" aria-current="page" href="./bookmarks.html">
      <span class="material-icons-round favorite-icon">
            favorite
      </span>
@@ -97,7 +97,7 @@ function logout(e) {
     localStorage.clear();
 
     setTimeout(() => {
-        window.location.replace('./');
+        window.location.replace('/');
     }, 300);
 };
 

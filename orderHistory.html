@@ -27,7 +27,7 @@
 
 
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light  bg-white sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light  bg-white sticky-top mb-8 mb-md-9">
         <div class="container">
 
             <!-- logo -->
@@ -83,7 +83,8 @@
                     <ul>
                         <li class=" mb-5">
                             <!-- 手機板 -->
-                            <a class="d-block  btn btn-outline-primary  rounded-1" aria-current="page" href="#">
+                            <a class="d-block  btn btn-outline-primary  rounded-1" aria-current="page"
+                                href="../my/cart.html">
                                 <span class="material-icons-round cart-icon">
                                     shopping_cart
                                 </span>
@@ -121,7 +122,7 @@
                         <a class="custom-nav-link" href="#">關於我們</a>
                     </li>
                     <li class="me-8">
-                        <a class="custom-nav-link" href="../courses.html">課程介紹</a>
+                        <a class="custom-nav-link " href="../courses.html">課程介紹</a>
                     </li>
                 </ul>
 
@@ -153,27 +154,137 @@
     </nav>
 
 
-    <!-- haeder   ( 要再換 banner )-->
-    <header class="d-flex align-items-center mb-10 mb-lg-9 bg-sz-cover bg-p-center  sub-banner p-5"
-        style="background-image: url('../images/共用banner.jpg');">
-        <div class="container">
-            <h2 class="fw-bold text-center">收藏清單</h2>
-        </div>
-    </header>
-
-
-
-    <!-- 收藏清單 -->
     <section class="mb-10 mb-lg-9 py-6">
         <div class="container">
-            <ul class="row row-cols-1 row-cols-md-2 row-cols-lg-4" id="bookmarks-list">
-               <!-- 動態新增收藏列表 -->
+            <!-- 進度條 -->
+            <div class="pb-10">
+                <div class="position-relative m-5">
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="33" aria-valuemin="0"
+                            aria-valuemax="100" style="width: 100%;"></div>
+                    </div>
+                    <div
+                        class="custom-progress  position-absolute top-0 start-0 translate-middle custom-progress-active">
+                        <span class="material-icons-round">
+                            shopping_cart
+                        </span>
+                    </div>
+                    <div
+                        class="custom-progress  position-absolute top-0 start-50 translate-middle  custom-progress-active">
+                        <span class="material-icons-round">
+                            format_list_bulleted
+                        </span>
+                    </div>
+                    <div
+                        class="custom-progress  position-absolute top-0 start-100 translate-middle  custom-progress-active">
+                        <span class="material-icons-round">
+                            payment
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 訂單成功建立訊息 -->
+            <div class="row mb-10 justify-content-center">
+                <div class="col col-md-6">
+                    <div class="py-6 border border-2">
+                        <h2 class="fs-1 fw-bold text-center d-flex justify-content-center align-items-center mb-5">
+                            <span class="material-icons-outlined fs-1 me-3 fw-bold">
+                                done
+                            </span>
+                            付款成功
+                        </h2>
+
+                        <p class="text-center ps-3">感謝您的購買</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <ul class="row row-cols-1 row-cols-md-2 justify-content-center mb-10 gy-6 gy-md-0">
+                <!-- 購物車列表 -->
+                <li class="col">
+                    <div class="shadow table-responsive">
+                        <table class="table align-middle  mb-0">
+                            <!-- thead -->
+                            <thead class="table-light text-center text-nowrap ">
+                                <!-- align-middle 僅用於 行內元素 及 table 表單使用， 區塊元素使用flex -->
+                                <tr class="align-middle">
+                                    <!-- scope="col" 以欄為範圍 垂直排列 -->
+                                    <th width="40%">商品資訊</th>
+                                    <th width="35%">購買數量</th>
+                                    <th width="20%">小計</th>
+                                </tr>
+                            </thead>
+                            <!-- tbody -->
+                            <tbody class="text-center text-nowrap" id="order-list">
+                                <!-- 動態新增購物車課程 -->
+                            </tbody>
+                            <!-- tfoot -->
+                            <tfoot style="border-color: white;">
+                                <tr>
+                                    <td class="text-end  fw-bold py-4" colspan="3" id="totalPrice">
+                                        <!-- 動態新增總價 -->
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </li>
+
+                <!-- 訂購表單-->
+                <li class="col">
+                    <form class=" px-3 px-md-5 py-6   shadow border-top border-4 border-primary rounded">
+                        <div class="mb-3">
+                            <label for="customerName" class="form-label">姓名</label>
+                            <input type="text" class="form-control" id="customerName" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerEmail" class="form-label">電子郵件</label>
+                            <input type="email" class="form-control" id="customerEmail" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerPhone" class="form-label">手機號碼</label>
+                            <input type="tel" class="form-control" id="customerPhone" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerAddress" class="form-label">地址</label>
+                            <input type="text" class="form-control" id="customerAddress" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tradeWay" class="form-label">付款方式</label>
+                            <select class="form-select" id="tradeWay" disabled>
+                                <option selected></option>
+                            </select>
+                        </div>
+                        <div class="mb-5">
+                            <label for="customerMessage" class="form-label">備註</label>
+                            <textarea class="form-control" cols="30" rows="5" id="customerMessage" disabled></textarea>
+                        </div>
+                    </form>
+                </li>
             </ul>
+
+
+            <div class="d-flex justify-content-center py-3">
+                <a href="/"
+                    class="btn btn-outline-primary btn-lg d-inline-flex justify-content-center align-items-center me-8">
+                    回到首頁
+                </a>
+                <a href="./courses.html"
+                    class="btn btn-primary btn-lg d-inline-flex justify-content-center align-items-center">
+                    再去選課
+                </a>
+            </div>
         </div>
+
+
+
     </section>
-
-
-
 
 
 
@@ -288,11 +399,6 @@
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
 
-    <!-- Swiper -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
-    <!-- sweetalert2.js -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- 使用者登入才會出現 -->
     <script type="module" src="../javaScript/renderUserTemplate.js"></script>
@@ -309,101 +415,70 @@
         import { getLoggedID } from '../javaScript/renderUserTemplate.js';
 
         // DOM
-        const bookmarksList = document.querySelector('#bookmarks-list');
+        const orderList = document.querySelector('#order-list');
+        const totalPrice = document.querySelector('#totalPrice');
+        // 取出表單欄位的 dom 標籤元素
+        const orderName = document.querySelector("#customerName"); // 姓名
+        const orderEmail = document.querySelector("#customerEmail");// Email
+        const orderPhone = document.querySelector("#customerPhone");// 手機號碼
+        const orderAddress = document.querySelector("#customerAddress");// 地址
+        const orderTradeWay = document.querySelector("#tradeWay");// 交易方式
+        const orderMessage = document.querySelector("#customerMessage");// 備註
 
 
-
-        // 收藏資料 - 取得所有收藏清單
-        function getBookmarks() {
+        // 訂購表單 - 取得訂單資料
+        function getOrder() {
             const userId = getLoggedID();
-            api.apiGetBookmarks(userId)
-                .then(res => {
-                    const { data, status } = res
-                    console.log(data, status);
 
+            api.apiGetOrder(userId)
+                .then(res => {
+                    const { data, status } = res;
                     if (status === 200) {
-                        const bookmarksData = data;
-                        // 將收藏資料顯示在畫面上
-                        bookmarksList.innerHTML = renderBookmarksList(bookmarksData);
-
-                        if (data.length === 0) {
-                            bookmarksList.innerHTML = '...還沒有收藏 (◕ᴥ◕Ʋ)';
-                        };
+                        renderOrderList(data);
                     };
+
                 })
-                .catch(error => {
-                    console.log(error);
-                });
+                .catch(err => {
+                    console.log(err);
+                })
+
         };
 
 
-
-
-
-        // 收藏資料 - 移除單一產品收藏
-        function removeBookmarks(e) {
-
-            if (e.target.nodeName !== "BUTTON") return;
-
-            let bookmarksId = e.target.dataset.bookmarksId;
-            console.log(bookmarksId);
-
-            api.apiRemoveBookmarks(bookmarksId)
-                .then(res => {
-                   
-                    console.log(res);
-
-                    if (res.status === 200) {
-                        utils.swalMassage('收藏課程已移除','success',600);
-                        getBookmarks();
-                    };
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        };
-
-
-
-
-        //  收藏資料 - 渲染畫面
-        function renderBookmarksList(data) {
-            return data.map(bookmark => {
-                const { course } = bookmark;
+        // 訂購表單 - 渲染畫面
+        function renderOrderList(data) {
+            // 顯示訂單課程資訊
+            orderList.innerHTML = data[0].courses.map(course => {
+                console.log(course);
                 return `
-                <li class="col">
-                    <div class="card rounded-4 p-3 course-card">
-                        <div class="ratio ratio-3x2 mb-6">
-                            <img class="img-fluid rounded-4"
-                                src="${course.imageUrl}"
-                                alt="兒童棒球課">
-                        </div>
-
-                        <div class="card-body px-3 pt-0">
-                            <h4 class="card-title fw-bold mb-3">${course.title}</h4>
-                            <p class="card-text mb-3">${course.category}</p>
-                            <h5 class="mb-3">NT$ <span class="text-primary fw-bold ms-2">${course.price}</span></h5>
-                            <button  data-bookmarks-id="${bookmark.id}"
-                                class="btn btn-lg btn-primary d-flex justify-content-center align-items-center active w-100">
-                                <span class="material-icons-round me-3" >
-                                    bookmark
-                                </span>
-                                已收藏
-                            </button>
-                        </div>
-                    </div>
-                </li>`
+                <tr>
+                    <td> 
+                         <p class="mb-2">${course.title}</p>
+                             <span>NT$ ${utils.tothousands(course.price)}</span>
+                    </td>
+                    <td>
+                        <spna>${course.qty}</spna>
+                     </td>
+                     <td>NT$ ${utils.tothousands(course.qty * course.price)}</td>
+                </tr>
+                `
             }).join('');
+            // 顯示總價
+            totalPrice.innerHTML = `總計: NT$ <span>${utils.tothousands(data[0].total)}</span>元`;
+
+
+            // 顯示訂購表單內容
+            orderName.value = data[0].info['name'];
+            orderEmail.value = data[0].info['email'];
+            orderPhone.value = data[0].info['tel'];
+            orderAddress.value = data[0].info['address'];
+            orderTradeWay.children[0].textContent = data[0].payMethods;
         };
-
-        
-
 
 
         // 初始化
         function init() {
-            getBookmarks();
-            bookmarksList.addEventListener('click', (e) => removeBookmarks(e));
+            getOrder();
         };
         init();
 

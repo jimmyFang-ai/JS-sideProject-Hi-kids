@@ -19,7 +19,7 @@
 
     <!-- Swiper css-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../stylesheets/all.css">
+    <link rel="stylesheet" href="./stylesheets/all.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
         <div class="container">
 
             <!-- logo -->
-            <a class="navbar-brand p-0 text-primary me-9" href="../index.html"
+            <a class="navbar-brand p-0 text-primary me-9" href="./index.html"
                 style="font-family: 'Fredoka One', cursive;letter-spacing: 5px;">
                 <h1>Hi kids</h1>
             </a>
@@ -71,7 +71,7 @@
                         </li>
                         <li class="mb-5">
                             <a class="custom-nav-link d-flex justify-content-center align-items-center"
-                                href="../courses.html">
+                                href="./courses.html">
                                 <span class="material-icons-round me-3">
                                     menu_book
                                 </span>
@@ -84,14 +84,14 @@
                         <li class=" mb-5">
                             <!-- 手機板 -->
                             <a class="d-block  btn btn-outline-primary  rounded-1" aria-current="page"
-                                href="../my/cart.html">
+                                href="./cart.html">
                                 <span class="material-icons-round cart-icon">
                                     shopping_cart
                                 </span>
                             </a>
                         </li>
                         <li class="mb-5">
-                            <a href="../signup.html"
+                            <a href="./signup.html"
                                 class="btn btn-primary  d-flex justify-content-center align-items-center  rounded-1  py-2 ">
                                 <span class="material-icons-round me-3">
                                     person_outline
@@ -100,7 +100,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="../login.html"
+                            <a href="./login.html"
                                 class="btn  btn-primary   d-flex justify-content-center align-items-center  rounded-1 py-2 ">
                                 <span class="material-icons-round me-3">
                                     input
@@ -161,7 +161,7 @@
                 <div class="position-relative m-5">
                     <div class="progress">
                         <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="33" aria-valuemin="0"
-                            aria-valuemax="100" style="width: 0%;"></div>
+                            aria-valuemax="100" style="width: 48%;"></div>
                     </div>
                     <div
                         class="custom-progress  position-absolute top-0 start-0 translate-middle custom-progress-active">
@@ -169,7 +169,8 @@
                             shopping_cart
                         </span>
                     </div>
-                    <div class="custom-progress  position-absolute top-0 start-50 translate-middle ">
+                    <div
+                        class="custom-progress  position-absolute top-0 start-50 translate-middle  custom-progress-active">
                         <span class="material-icons-round">
                             format_list_bulleted
                         </span>
@@ -184,10 +185,11 @@
             </div>
 
 
-            <h2 class="fs-1 fw-bold text-center mb-10">購物車清單</h2>
-            <!-- 購物車列表 -->
-            <ul class="row justify-content-center mb-10">
-                <li class="col col-md-10">
+            <h2 class="fs-1 fw-bold text-center mb-10">確認付款</h2>
+
+            <ul class="row row-cols-1 row-cols-md-2 justify-content-center mb-10 gy-6 gy-md-0">
+                <!-- 購物車列表 -->
+                <li class="col">
                     <div class="shadow table-responsive">
                         <table class="table align-middle  mb-0">
                             <!-- thead -->
@@ -198,7 +200,6 @@
                                     <th width="40%">商品資訊</th>
                                     <th width="35%">購買數量</th>
                                     <th width="20%">小計</th>
-                                    <th width="5%"></th>
                                 </tr>
                             </thead>
                             <!-- tbody -->
@@ -216,19 +217,66 @@
                         </table>
                     </div>
                 </li>
+
+                <!-- 填寫訂購表單(未完成) -->
+                <li class="col">
+                    <form class=" px-3 px-md-5 py-6   shadow border-top border-4 border-primary rounded" id="orderForm">
+                        <div class="mb-3">
+                            <label for="customerName" class="form-label">姓名</label>
+                            <input type="text" class="form-control" placeholder="請輸入訂購人姓名" id="customerName" name="姓名">
+                            <p class="message text-danger p-2 mb-0" data-message="姓名"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerEmail" class="form-label">電子郵件</label>
+                            <input type="email" class="form-control" placeholder="請輸入訂購人Email" id="customerEmail"
+                                name="信箱">
+                            <p class="message text-danger p-2 mb-0" data-message="信箱"> </p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerPhone" class="form-label">手機號碼</label>
+                            <input type="tel" class="form-control" placeholder="請輸入訂購人電話" id="customerPhone"
+                                name="手機號碼">
+                            <p class="message text-danger p-2 mb-0" data-message="手機號碼"> </p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerAddress" class="form-label">地址</label>
+                            <input type="text" class="form-control" placeholder="請輸入訂購人地址" id="customerAddress"
+                                name="地址">
+                            <p class="message text-danger p-2 mb-0" data-message="地址"> </p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tradeWay" class="form-label">付款方式</label>
+                            <select class="form-select" id="tradeWay" name="付款方式">
+                                <option value="" selected="" disabled="">請選擇付款方式</option>
+                                <option value="Apple Pay">Apple Pay</option>
+                                <option value="Line pay">Line Pay</option>
+                                <option value="街口支付">街口支付</option>
+                                <option value="ATM轉帳">ATM轉帳</option>
+                            </select>
+                            <p class="message text-danger p-2 mb-0" data-message="付款方式"> </p>
+                        </div>
+                        <div class="mb-5">
+                            <label for="customerMessage" class="form-label">備註</label>
+                            <textarea name="Remarks" class="form-control" placeholder="請填寫備註" cols="30" rows="5"
+                                id="customerMessage"></textarea>
+                        </div>
+                    </form>
+                </li>
             </ul>
 
 
             <div class="d-flex justify-content-between py-3">
-                <a href="../courses.html"
+                <a href="./cart.html"
                     class="btn btn-outline-primary btn-lg d-inline-flex justify-content-center align-items-center">
                     <span class="material-icons-round me-3">
                         arrow_back_ios
-                    </span>繼續選購
+                    </span>
+                    回購物清單
                 </a>
-                <a href="../my/checkout.html" class="btn btn-primary btn-lg  justify-content-center align-items-center"
-                    id="checkOutBtn">
-                    確認付款
+                <a href="./checkout.html"
+                    class="btn btn-primary btn-lg d-inline-flex justify-content-center align-items-center"
+                    id="submitFormBtn">
+                    送出訂單
                     <span class="material-icons-round ms-3">
                         arrow_forward_ios
                     </span>
@@ -239,9 +287,6 @@
 
 
     </section>
-
-
-
 
 
 
@@ -356,41 +401,46 @@
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
 
-    <!-- Swiper -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- validate.js  -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
 
     <!-- sweetalert2.js -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- 使用者登入才會出現 -->
-    <script type="module" src="../javaScript/renderUserTemplate.js"></script>
+    <script type="module" src="./javaScript/renderUserTemplate.js"></script>
 
     <script type="module">
 
         // 匯入 共用工具
-        import * as utils from '../javaScript/utils.js';
+        import * as utils from './javaScript/utils.js';
 
         // 匯入 共用 API
-        import * as api from '../javaScript/api.js';
+        import * as api from './javaScript/api.js';
 
         // 取的登入使用者 id
-        import { getLoggedID } from '../javaScript/renderUserTemplate.js';
+        import { getLoggedID } from './javaScript/renderUserTemplate.js';
 
         // DOM
         const cartList = document.querySelector('#cart-list');
+        const orderForm = document.querySelector("#orderForm");
+        const submitFormBtn = document.querySelector("#submitFormBtn");
 
 
+        // 購物車資料
+        let cartData = [];
 
         // 購物車 - 取得購物車列表
         function getCarts() {
             const userId = getLoggedID();
             api.apiGetCarts(userId)
                 .then(res => {
-                    console.log(res);
                     const { data, status } = res;
+                    cartData = data;
 
                     if (status === 200) {
-                        renderCartList(data);
+                        renderCartList(cartData);
                     };
                 })
                 .catch(err => {
@@ -399,9 +449,8 @@
         };
 
 
-        //  購物車 - 顯示購物車列表
+        // 購物車 - 顯示購物車列表
         function renderCartList(data) {
-            const checkOutBtn = document.querySelector('#checkOutBtn');
             const cartAccout = document.querySelector('#cartAccout');
             const cartTotalPrice = document.querySelector('#cartTotalPrice');
             const finalTotalAry = data.map(cart => cart.course.price * cart.qty);
@@ -424,32 +473,9 @@
                                     </div>
                                     </td>
                                     <td>
-                                        <div class="d-flex justify-content-center">
-                                            <div class="input-group text-center" style="max-width: 160px;">
-                                                <button type="button"
-                                                    class="btn text-primary fs-4  border-0 px-1 px-md-3"
-                                                     data-cart-btn="minusNum" data-course-title="${title}">
-                                                    -
-                                                </button>
-                                                <input type="number" class="form-control text-center w-25 px-1 px-md-2 "
-                                                data-cart-id="${cart.id}"  data-cart-qty="${cart.qty}" value="${cart.qty}" min="1">
-                                                <button type="button"
-                                                    class="btn text-primary fs-4   border-0  px-1 px-md-3"
-                                                    data-cart-btn="plusNum" data-course-title="${title}">
-                                                    +
-                                                </button>
-                                            </div>
-                                        </div>
+                                        <spna>${cart.qty}</spna>
                                     </td>
                                     <td>NT$ ${utils.tothousands(price * cart.qty)}</td>
-                                    <td>
-                                        <button type="button" class="btn delCart-btn   border-0"
-                                            data-cart-btn="delCartItem" data-course-title="${title}">
-                                            <span class="material-icons-round">
-                                                clear
-                                            </span>
-                                        </button>
-                                    </td>
                                 </tr>`
                 }).join('');
 
@@ -459,7 +485,6 @@
                 cartAccout.style.display = 'table-footer-group';
                 // 顯示購物車總金額
                 cartTotalPrice.innerHTML = `總計: NT$ <span>${utils.calcTotalPrice(finalTotalAry)}</span>元`;
-                checkOutBtn.style.display = 'inline-flex';
 
             } else {
                 cartList.innerHTML = `
@@ -472,101 +497,257 @@
 
                 // 隱藏table-footer
                 cartAccout.style.display = 'none';
-                checkOutBtn.style.display = 'none';
             };
         };
 
 
 
-        // 購物車 - 功能整合(delete 、 patch)
-        cartList.addEventListener('click', (e) => {
-            if (e.target.nodeName !== "BUTTON") return;
+        // 表單驗證功能
+        submitFormBtn.addEventListener("click", function (e) {
 
-            // 取得購物車 id
-            let cartId = e.target.closest('tr').dataset.cartId;
-            let btnType = e.target.dataset.cartBtn;
-            let courseTitle = e.target.dataset.courseTitle;
+            e.preventDefault();
+
+            // 取出表單欄位的 dom 標籤元素
+            const orderName = document.querySelector("#customerName"); // 姓名
+            const orderEmail = document.querySelector("#customerEmail");// Email
+            const orderPhone = document.querySelector("#customerPhone");// 手機號碼
+            const orderAddress = document.querySelector("#customerAddress");// 地址
+            const orderTradeWay = document.querySelector("#tradeWay");// 交易方式
+            const orderMessage = document.querySelector("#customerMessage");// 備註
+
+            // 選取全部的 input 輸入欄位的 dom 標籤元素
+            const inputs = document.querySelectorAll("input[type=text], input[type=tel], input[type=email],select,textarea");
 
 
-            // 刪除購物車內單筆課程
-            if (btnType === "delCartItem") {
-                removeCartItem(cartId, courseTitle)
+            // 訂購表單的物件資料
+            let orderObj = {
+                name: orderName.value,
+                email: orderEmail.value,
+                tel: orderPhone.value,
+                address: orderAddress.value,
+                payment: orderTradeWay.value,
+                message: orderMessage.value
             };
 
 
 
-            // 更新購物車內單筆課程數量
-            if (btnType === "minusNum" || btnType === "plusNum") {
-                const cartItemQty = document.querySelectorAll('[data-cart-qty]');
-
-                let cartItemQtyVal = 0;
-
-                // 所有 input 跑迴圈 與 cartId 比對，相同的產品將值取出來
-                [...cartItemQty].forEach((cartItem) => {
-                    if (cartItem.dataset.cartId === cartId) {
-                        cartItemQtyVal = Number(cartItem.getAttribute('value'));
-                    };
-                });
-
-                // 更新購物車數量
-                updateCartItem(cartId, cartItemQtyVal, courseTitle, btnType);
+            if (cartData.length < 1) {
+                e.preventDefault();
+                utils.swalMassage("購物車無商品，請去選購!", "warning", 500);
+                return;
             };
 
 
+            // 針對每個input 綁定 change 事件監聽驗證，逐一改變錯誤訊息狀態
+            inputs.forEach((item) => {
+                item.addEventListener("change", function (e) {
+                    item.classList.remove('is-invalid');
+                    item.nextElementSibling.textContent = '';
+                    let errors = validate(orderForm, validateRules()) || '';
+                    formCheck(errors);
+                })
+            });
+
+            // 將錯誤訊息 存取在 errors 變數上
+            let errors = validate(orderForm, validateRules());
+
+            // 判斷 errors 錯誤訊息
+            if (errors) {
+                e.preventDefault();
+                formCheck(errors);
+                utils.swalMassage("資料未填寫完整", "warning", 500);
+            } else {
+                e.preventDefault();
+                utils.swalMassage("訂單已建立", "success", 500);
+                // 建立訂購表單
+                createForm(orderObj);
+                // 清除表單資料
+                orderForm.reset();
+            };
         });
 
 
-
-        // 購物車 - 修改產品數量
-        function updateCartItem(cartId, qty, courseTitle, btnType) {
-
-            // 計算購物車數量
-            let cartQtySum = qty;
-
-            // 減少數量
-            if (btnType === "minusNum") {
-                if (cartQtySum === 1) {
-                    utils.swalMassage("課程數量最少為1", "warning", 800);
-                    return;
-                } else {
-                    cartQtySum -= 1;
-                };
-            } else if (btnType === "plusNum") {
-                //增加數量
-                cartQtySum += 1;
+        // 表單 - 驗證規則
+        // validate 套件的驗證規則
+        function validateRules() {
+            const constraints = {
+                "姓名": {
+                    presence: {
+                        message: "必填欄位"
+                    }
+                },
+                "手機號碼": {
+                    presence: {
+                        message: "是必填的欄位"
+                    },
+                    format: {
+                        pattern: /^09\d{2}-?\d{3}-?\d{3}$/,
+                        message: "開頭須為09"
+                    },
+                    length: {
+                        is: 10,
+                        message: "長度須為10碼"
+                    }
+                },
+                "信箱": {
+                    presence: {
+                        message: "是必填的欄位"
+                    },
+                    format: {
+                        pattern: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+                        message: "格式輸入錯誤，需有@ 、.等符號"
+                    },
+                },
+                "地址": {
+                    presence: {
+                        message: "是必填欄位"
+                    }
+                },
+                "付款方式": {
+                    presence: {
+                        message: "是必填欄位"
+                    }
+                },
             };
 
-            const data = {
-                qty: cartQtySum
-            };
+            return constraints;
+        };
 
-            api.apiUpdateCart(cartId, data)
-                .then(res => {
-                    const { data } = res;
-                    console.log(data);
-                    getCarts();
-                    utils.swalMassage(`${courseTitle} 數量已更新`, 'success', 500);
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+
+        // 表單 -  提示訊息
+        function formCheck(errors) {
+            Object.keys(errors).forEach(function (keys) {
+                document.querySelector(`[data-message="${keys}"]`).textContent = errors[keys];
+                document.querySelector(`[data-message="${keys}"]`).previousElementSibling.classList.add('is-invalid');
+            });
         };
 
 
 
-        // 購物車 - 刪除單筆課程
-        function removeCartItem(cartId, courseTitle) {
-            api.apiRemoveCartItem(cartId)
+
+
+
+
+        // 表單 - 建立表單資料
+        function createForm(orderObj) {
+            const userId = getLoggedID();
+
+            api.apiGetCarts(userId)
                 .then(res => {
-                    if (res.status === 200) {
-                        getCarts();
-                        utils.swalMassage(`${courseTitle} 刪除成功`, 'success', '500');
+                    console.log(res);
+                    const { data, status } = res;
+
+
+                    if (status === 200) {
+                        const carts = data;
+                        // 將購物車資料寫入 localStorage
+                        localStorage.setItem('carts', JSON.stringify(carts));
+
+
+                        const orderItems = carts.map((item) => {
+                            return {
+                                courseId: item.courseId,
+                                qty: item.qty,
+                                title: item.course.title,
+                                price: item.course.price,
+                            };
+                        });
+                        console.log(orderItems);
+
+
+                        // 加總購物車商品金額
+                        const sumTotalPrice = data.reduce((acc, cur) => acc + (cur.course.price * cur.qty), 0);
+                        console.log(sumTotalPrice);
+
+
+                        const newOrder = {
+                            createdAt: Date.now(),
+                            userId: getLoggedID(),
+                            info: {
+                                email: orderObj.email,
+                                name: orderObj.name,
+                                tel: orderObj.tel,
+                                address: orderObj.address,
+                            },
+                            courses: orderItems,
+                            payMethods: orderObj.payment,
+                            total: sumTotalPrice,
+                        };
+                        console.log('newOrder:::', newOrder);
+
+
+                        // 送出表單
+                        sendOrder(newOrder);
                     };
                 })
                 .catch(err => {
                     console.log(err);
                 })
         };
+
+
+        // 送出表單 - 刪除購物車資料
+        function axiosDeleteCart(cartId) {
+            // const url = `${CARTS_URL}/${cartId}`;
+            return api.apiRemoveCartItem(cartId);
+            // return axios.delete(url);
+        };
+
+
+
+
+
+        // 表單 - 送出訂購表單
+        function sendOrder(newOrder) {
+            const userId = getLoggedID();
+            const data = newOrder;
+
+            api.apiSendOrder(userId, data)
+                .then(res => {
+                    console.log(res);
+                    if (res.status === 201) {
+                        // 取出存在 localStorage 的購物車資料
+                        const localCarts = localStorage.getItem('carts');
+                        const carts = JSON.parse(localCarts);
+                        console.log(carts);
+
+
+                        // 刪除購物車的 api url 陣列
+                        const arrayOfDelete = carts.map((item) => {
+                            return axiosDeleteCart(item.id);
+                        });
+                     
+
+
+                        Promise.all(arrayOfDelete)
+                            .then(results => {
+                                // #TODO: results checker
+                                if (results.length === arrayOfDelete.length) {
+                                    console.log('已全部刪除！');
+
+                                    // 導到送出訂單成功頁面
+                                    setTimeout(() => {
+                                        console.log('Redirect!');
+                                        window.location.replace('./orderHistory.html');
+                                    }, 150);
+
+                                };
+
+
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
+                    }
+
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
+        };
+
 
 
 
