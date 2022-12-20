@@ -205,26 +205,6 @@
   "carts": [
   ],
   "orders": [
-    {
-      "id": 2,
-      "userId": 2,
-      "create_at": 1670324965561,
-      "info": {
-        "name": "Mei",
-        "email": "Mei@gmail.com",
-        "address": ""
-      },
-      "items": [
-        {
-          "courseId": "2",
-          "qty": 1,
-          "title": "兒童足球課",
-          "price": 1000
-        }
-      ],
-      "payMethods": "ATM",
-      "total": 1000
-    }
   ],
   "news": [
     {
