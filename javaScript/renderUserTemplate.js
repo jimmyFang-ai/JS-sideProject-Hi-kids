@@ -16,12 +16,10 @@ function templateOfUserMenu(user, template = '') {
     const isAdmin = user?.role === 'admin';
     if (isAdmin) {
         template = `
-        <li class="nav-item">
-          <div>
-            <a href="./admin/dashboard.html" class="btn btn-sm text-muted px-3 me-2">
+        <li class="me-lg-3">
+            <a href="./admin/dashboard.html" class="btn px-3 me-2">
               前往後台
             </a>
-          </div>
         </li>
       `;
     }

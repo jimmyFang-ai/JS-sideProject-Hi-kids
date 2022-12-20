@@ -33,6 +33,14 @@ function swalMassage(title, icon, time) {
 };
 
 
+// 日期格式處理
+function timeDate(time) {
+    // 時間要轉為毫秒要 13位數
+    const timeStamp = new Date(time);
+    return `${timeStamp.getFullYear()} / ${timeStamp.getMonth() + 1} / ${timeStamp.getDate()}`;
+};
 
 
-export { tothousands, getRandom, swalMassage, calcTotalPrice };
+
+
+export { tothousands, getRandom, swalMassage, calcTotalPrice, timeDate };

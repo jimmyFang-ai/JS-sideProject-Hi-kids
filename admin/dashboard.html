@@ -17,6 +17,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
 
+    <!-- Load c3.css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../stylesheets/all.css">
 </head>
 
@@ -76,6 +78,12 @@
     </nav>
 
 
+    <!-- 圖表 -->
+    <section class="wrap">
+        <h2 class="text-center fw-bold mb-8">全品項營收比重</h2>
+        <!-- 動態顯示圖表資訊 -->
+        <div id="chart"></div>
+    </section>
 
 
 
@@ -91,8 +99,8 @@
                         <table class="table table-hover  table align-middle">
                             <thead>
                                 <tr>
-                                    <th width="10%">訂單編號</th>
-                                    <th width="15%">聯絡人</th>
+                                    <th width="15%">訂單編號</th>
+                                    <th width="10%">聯絡人</th>
                                     <th width="15%">聯絡地址</th>
                                     <th width="15%">電子郵件</th>
                                     <th width="15%">訂單品項</th>
@@ -101,42 +109,12 @@
                                 </tr>
                             </thead>
                             <tbody id="orderList">
-                                <tr>
-                                    <td>10088377474</td>
-                                    <td>
-                                        <p>小杰</p>
-                                        <p>0912345678</p>
-                                    </td>
-                                    <td>高雄市前鎮區六合路183巷66號</td>
-                                    <td>cccexample@gmail.com</td>
-                                    <td>
-                                        <p>Louvre 雙人床架</p>
-                                    </td>
-                                    <td>2021/03/08</td>
-
-                                    <td>
-                                        <div class="d-flex">
-                                            <button type="button" class="btn btn-primary me-5"
-                                                data-order-btn="editOrder-btn">修改</button>
-                                            <button type="button" class="btn btn-danger"
-                                                data-order-btn="delOrder-btn">刪除</button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <!-- 動態新增訂單列表 -->
                             </tbody>
                         </table>
-
                     </div>
-
-
-
-
                 </div>
             </div>
-
-
-
-
         </div>
     </section>
 
@@ -161,20 +139,204 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+
     <script type="module">
+        import 'https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js';
+        import 'https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js';
 
         // 匯入 共用工具
-        import * as utils from './javaScript/utils.js';
+        import * as utils from '../javaScript/utils.js';
 
         // 匯入 共用 API
-        import * as api from './javaScript/api.js';
+        import * as api from '../javaScript/api.js';
 
+
+
+        // DOM
+        const orderList = document.querySelector('#orderList');
+
+
+
+
+        // 取得使用者 id
+        function getLoggedID() {
+            return localStorage.getItem('userId') || 0;
+        };
+
+        // 後台訂單 - 取得訂單列表
+        function getOrders() {
+            const userId = getLoggedID();
+
+
+            api.apiGetOrder(userId)
+                .then(res => {
+                    const { data, status } = res;
+                    if (status === 200) {
+                        const orderData = data;
+                        renderOrderList(orderData);
+
+                        // 顯示圖表
+                        renderC3Chart_LV2(orderData);
+                    };
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
+        };
+
+
+        // 後台訂單 - 顯示所有訂單列表
+        function renderOrderList(data) {
+
+            // 顯示訂單列表
+            orderList.innerHTML = data.map(order => {
+                const { id, courses, info, createdAt } = order;
+                const { address, email, name, } = info;
+
+                //組訂購產品字串
+                const orderCourse = courses.map((course) => {
+                    return ` ${course.title} x ${course.qty} <br>`;
+                }).join('');
+
+
+                return `
+                <tr data-order-id="${id} ">
+                <td>${createdAt}</td>
+                <td>
+                   ${name}
+                </td>
+                <td>${address}</td>
+                <td>${email}</td>
+                <td>
+                     <p>${orderCourse}</p>
+                </td>
+                    <td>${utils.timeDate(createdAt)}</td>
+                <td>
+                    <button type="button" class="btn delCart-btn   border-0"
+                            data-cart-btn="delorder">
+                            <span class="material-icons-round">
+                                     clear
+                            </span>
+                    </button>
+                 </td>
+             </tr>`
+            }).join('');
+        };
+
+
+        // 後台訂單 - 單筆刪除訂單
+        function removeOrder() {
+
+        };
+
+
+
+        // 圖表
+        // C3.js 圖表設計
+        function renderC3Chart_LV2(orderData) {
+
+            const newOrderData = orderData.map(order => order.courses);
+            const newAry = newOrderData.reduce((pre, cur) => {
+                return pre.concat(cur);
+            });
+
+            // // 整理 C3 圖表要的資料 => ex: [['Louvre 雙人床架', 111100],['Antony 雙人床架', 12000]]
+            const orderDataObj = {};
+            newAry.forEach((course) => {
+                const { title, price, qty } = course;
+                    if (orderDataObj[title] === undefined) {
+                        orderDataObj[title] = price * qty;
+                    } else {
+                        orderDataObj[title] += (price * qty);
+                    };
+            });
+
+           
+
+            const orderChartData = Object
+                .keys(orderDataObj)
+                .map((course) => [course, orderDataObj[course]]);
+
+                
+
+            // 降冪排列，取前三高營收，第四筆以後變其他
+            const reankSortArray = orderChartData.sort((a, b) => b[1] - a[1]);
+            if (reankSortArray.length > 3) {
+                let otherTotal = 0;
+                reankSortArray.forEach((item, index) => {
+                    if (index > 2) {
+                        otherTotal += reankSortArray[index][1];
+                    };
+                });
+                reankSortArray.splice(3, reankSortArray.length - 1);
+                reankSortArray.push(['其他', otherTotal]);
+            };
+
+
+        
+            c3.generate({
+                bindto: '#chart', // HTML 元素綁定
+                data: {
+                    type: "pie",
+                    columns: reankSortArray,
+                },
+                color: {
+                    pattern: ["#DACBFF", "#9D7FEA", "#5434A7", "#301E5F"]
+                }
+            });
+        };
+
+
+
+        // 取得使用者資料 - 判斷是否為管理者
+        function getUserData() {
+            const userId = getLoggedID();
+            api.apiGetUserInfo(userId)
+                .then(res => {
+                    const { data, status } = res;
+
+                    if (status === 200) {
+                        const isAdmin = data?.role === 'admin';
+
+
+                        // 不是管理者的話，不能登入後台
+                        if (!isAdmin) {
+                            console.log('401!,你沒有權限');
+                            window.location.replace('/');
+                        };
+
+
+                        // 是管理者的話，可以取得訂單資料
+                        if (isAdmin) {
+                            getOrders();
+                        };
+                    };
+
+
+                })
+                .catch(err => {
+                    if (err?.response?.status === 401) {
+                        console.log('401');
+                        localStorage.clear();
+
+                        window.location.replace('/login.html');
+                    }
+                })
+        };
 
 
 
         // 初始化
         function init() {
+            // 沒有使用者 id 就返回首頁
+            if (!getLoggedID()) {
+                window.location.replace('/');
+            };
 
+
+            // 取得使用者資料
+            getUserData();
         };
         init();
 
