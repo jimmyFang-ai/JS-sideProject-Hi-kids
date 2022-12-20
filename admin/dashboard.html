@@ -79,10 +79,24 @@
 
 
     <!-- 圖表 -->
-    <section class="wrap">
-        <h2 class="text-center fw-bold mb-8">全品項營收比重</h2>
-        <!-- 動態顯示圖表資訊 -->
-        <div id="chart"></div>
+    <section class="mb-10 mb-lg-9 py-6"">
+        <div class=" container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <select class="form-select mb-8" aria-label="course-select" id="revenue-select">
+                    <option>全產品類別營收比重</option>
+                    <option>全品項營收比重</option>
+                </select>
+
+
+                <!-- 動態顯示圖表資訊 -->
+                <div id="chart"></div>
+
+              
+            </div>
+        </div>
+        </div>
+
     </section>
 
 
@@ -133,10 +147,8 @@
         crossorigin="anonymous"></script>
 
 
-
     <!-- sweetalert2.js -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
 
     <script type="module">
@@ -149,12 +161,12 @@
         // 匯入 共用 API
         import * as api from '../javaScript/api.js';
 
-
-
         // DOM
+        const revenueSelect = document.querySelector('#revenue-select');
         const orderList = document.querySelector('#orderList');
 
 
+        let orderData = [];
 
         // 取得使用者 id
         function getLoggedID() {
@@ -164,23 +176,22 @@
         // 後台訂單 - 取得訂單列表
         function getOrders() {
             const userId = getLoggedID();
-
-
             api.apiGetOrder(userId)
                 .then(res => {
                     const { data, status } = res;
                     if (status === 200) {
-                        const orderData = data;
+                        orderData = data;
                         renderOrderList(orderData);
 
+
+
                         // 顯示圖表
-                        renderC3Chart_LV2(orderData);
+                        selectChart();
                     };
                 })
                 .catch(err => {
                     console.log(err);
                 })
-
         };
 
 
@@ -196,7 +207,6 @@
                 const orderCourse = courses.map((course) => {
                     return ` ${course.title} x ${course.qty} <br>`;
                 }).join('');
-
 
                 return `
                 <tr data-order-id="${id} ">
@@ -222,14 +232,11 @@
         };
 
 
-        orderList.addEventListener('click', (e) => removeOrder(e));
+
         // 後台訂單 - 單筆刪除訂單
         function removeOrder(e) {
-
             if (e.target.nodeName !== "BUTTON") return;
             let orderId = e.target.closest('tr').dataset.orderId;
-            console.log(orderId);
-
 
             Swal.fire({
                 title: `確定要刪除訂單編號 ${orderId}?`,
@@ -247,27 +254,72 @@
                         .then(res => {
                             console.log(res);
                             getOrders();
-
                         })
                         .catch(err => {
                             console.log(err);
                         })
                 }
             })
+        };
 
 
 
 
 
-
-
+        //  select 切換 圖表 
+        function selectChart() {
+            if (revenueSelect.value === "全產品類別營收比重") {
+                renderCategoryChart();
+            } else if (revenueSelect.value === "全品項營收比重") {
+                renderCourseChart();
+            };
         };
 
 
 
         // 圖表
-        // C3.js 圖表設計
-        function renderC3Chart_LV2(orderData) {
+        // 全產品類別營收比重
+        function renderCategoryChart() {
+
+            const newOrderData = orderData.map(order => order.courses);
+            const newAry = newOrderData.reduce((pre, cur) => {
+                return pre.concat(cur);
+            }, []);
+
+            // 整理 C3 圖表要的資料 => ex: [['Louvre 雙人床架', 111100],['Antony 雙人床架', 12000]]
+            const orderDataObj = {};
+            newAry.forEach((course) => {
+                const { category, price, qty } = course;
+                if (orderDataObj[category] === undefined) {
+                    orderDataObj[category] = price * qty;
+                } else {
+                    orderDataObj[category] += (price * qty);
+                };
+            });
+
+            const categoryAry = Object
+                .keys(orderDataObj)
+                .map(course => [course, orderDataObj[course]])
+                .sort((a, b) => b - a);
+
+            console.log(categoryAry);
+
+            c3.generate({
+                bindto: '#chart', // HTML 元素綁定
+                data: {
+                    type: "pie",
+                    columns: categoryAry,
+                },
+                color: {
+                    pattern: ["#DACBFF", "#9D7FEA", "#5434A7", "#301E5F"]
+                }
+            });
+        };
+
+
+
+        // 全品項營收比重圖表
+        function renderCourseChart() {
 
             const newOrderData = orderData.map(order => order.courses);
             const newAry = newOrderData.reduce((pre, cur) => {
@@ -286,11 +338,9 @@
             });
 
 
-
             const orderChartData = Object
                 .keys(orderDataObj)
                 .map((course) => [course, orderDataObj[course]]);
-
 
 
             // 降冪排列，取前三高營收，第四筆以後變其他
@@ -305,6 +355,9 @@
                 reankSortArray.splice(3, reankSortArray.length - 1);
                 reankSortArray.push(['其他', otherTotal]);
             };
+
+
+            console.log(reankSortArray);
 
 
 
@@ -367,9 +420,10 @@
                 window.location.replace('/');
             };
 
-
             // 取得使用者資料
             getUserData();
+            orderList.addEventListener('click', (e) => removeOrder(e));
+            revenueSelect.addEventListener('change', () => selectChart());
         };
         init();
 
