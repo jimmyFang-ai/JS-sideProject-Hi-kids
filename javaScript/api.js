@@ -35,7 +35,7 @@ userRequest.interceptors.request.use(
 
 
 
-// 課程資訊 API
+// 課程資訊 API(不用登入)
 // 所有課程資料
 export const apiGetProducts = () => userRequest.get('/courses');
 // 單一課程資料
@@ -54,7 +54,7 @@ export const apiGetUserInfo = (id) => userRequest.get(`/600/users/${id}`);
 
 
 
-// 購物車 API
+// 購物車 API (需登入)
 export const apiGetCarts = (userId) => userRequest.get(`/600/users/${userId}/carts?_expand=course`);
 // 新增產品到購物車 (需要登入，有權限)
 export const apiAddCart = (data) => userRequest.post(`/600/carts`, data);
@@ -64,24 +64,25 @@ export const apiUpdateCart = (id, data) => userRequest.patch(`/600/carts/${id}`,
 export const apiRemoveCartItem = (id) => userRequest.delete(`/600/carts/${id}`);
 
 
-// // 收藏 API 
+// // 收藏 API (需登入)
 // 取得所有收藏資料
 export const apiGetBookmarks = (userId) => userRequest.get(`/600/users/${userId}/bookmarks?_expand=course`);
 // 取得單一收藏資料
 export const apiGetBookmark = (userId, id) => userRequest.get(`/600/users/${userId}/bookmarks?courseId=${id}`);
-// 新增收藏資料(需要登入，有權限)
+// 新增收藏
 export const apiAddBookmarks = (id, data) => userRequest.post(`/600/courses/${id}/bookmarks`, data);
-// 移除收藏資料
+// 移除單筆收藏
 export const apiRemoveBookmarks = (id) => userRequest.delete(`/600/bookmarks/${id}`);
 
 
-
-
-// 訂單
-// 取得訂單資料
+// 訂單 (需登入)
+// 取得所有訂單資料
 export const apiGetOrder = (userId) => userRequest.get(`/600/users/${userId}/orders`);
 // 送出訂單
 export const apiSendOrder = (userId, data) => userRequest.post(`/600/users/${userId}/orders`, data);
+// 移除單筆訂單
+export const apiRemoveOrder = (id) => userRequest.delete(`/600/orders/${id}`);
+
 
 
 

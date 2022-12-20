@@ -62,24 +62,23 @@ function templateOfUserMenu(user, template = '') {
 function getUserData() {
     const userId = getLoggedID();
     api.apiGetUserInfo(userId)
-        .then(response => {
-            if (response.status === 200) {
+        .then(res => {
+            if (res.status === 200) {
                 console.log('OK!');
                 document.querySelector('#guest-menu').classList.toggle('d-none');
 
                 // 渲染使用者資料選單
-                userMenu.innerHTML = templateOfUserMenu(response.data);
+                userMenu.innerHTML = templateOfUserMenu(res.data);
             }
-            /* end of res-OK */
         })
         .catch(error => {
-            console.log('error:::', JSON.stringify(error, null, 2));
+            console.log(error);
 
             if (error?.response?.status === 401) {
                 console.log('401');
                 localStorage.clear();
             };
-            console.log(error);
+
         });
 };
 
@@ -101,10 +100,6 @@ function logout(e) {
 
 function init() {
     if (getLoggedID()) {
-        // const localToken = localStorage.getItem('token');
-        // const AUTH = `Bearer ${localToken}`;
-
-        // axios.defaults.headers.common.Authorization = AUTH;
         getUserData();
     };
 

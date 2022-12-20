@@ -724,6 +724,8 @@
                                 // #TODO: results checker
                                 if (results.length === arrayOfDelete.length) {
                                     console.log('已全部刪除！');
+                                    localStorage.removeItem('carts');
+
 
                                     // 導到送出訂單成功頁面
                                     setTimeout(() => {

@@ -432,7 +432,7 @@
                 .then(res => {
                     const { data, status } = res;
                     if (status === 200) {
-                        renderOrderList(data);
+                        renderOrderList(data[data.length - 1]);
                     };
 
                 })
@@ -446,7 +446,7 @@
         // 訂購表單 - 渲染畫面
         function renderOrderList(data) {
             // 顯示訂單課程資訊
-            orderList.innerHTML = data[0].courses.map(course => {
+            orderList.innerHTML = data.courses.map(course => {
                 console.log(course);
                 return `
                 <tr>
@@ -462,15 +462,15 @@
                 `
             }).join('');
             // 顯示總價
-            totalPrice.innerHTML = `總計: NT$ <span>${utils.tothousands(data[0].total)}</span>元`;
+            totalPrice.innerHTML = `總計: NT$ <span>${utils.tothousands(data.total)}</span>元`;
 
 
             // 顯示訂購表單內容
-            orderName.value = data[0].info['name'];
-            orderEmail.value = data[0].info['email'];
-            orderPhone.value = data[0].info['tel'];
-            orderAddress.value = data[0].info['address'];
-            orderTradeWay.children[0].textContent = data[0].payMethods;
+            orderName.value = data.info['name'];
+            orderEmail.value = data.info['email'];
+            orderPhone.value = data.info['tel'];
+            orderAddress.value = data.info['address'];
+            orderTradeWay.children[0].textContent = data.payMethods;
         };
 
 
